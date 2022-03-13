@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+Math.shiftRightUp(x,y)
+
+IRs:
+TMP_642(uint256) = LIBRARY_CALL, dest:Math, function:Math.shiftRightUp(uint256,uint8), arguments:['x', 'y'] 
+RETURN TMP_642"];
+}

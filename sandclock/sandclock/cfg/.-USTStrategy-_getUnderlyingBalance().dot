@@ -1,0 +1,14 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+underlying.balanceOf(address(this))
+
+IRs:
+TMP_1312 = CONVERT this to address
+TMP_1313(uint256) = HIGH_LEVEL_CALL, dest:underlying(IERC20), function:balanceOf, arguments:['TMP_1312']  
+RETURN TMP_1313"];
+}

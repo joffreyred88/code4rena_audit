@@ -1,0 +1,20 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->2;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+underlying.safeTransfer(vault,amount)
+
+IRs:
+LIBRARY_CALL, dest:SafeERC20, function:SafeERC20.safeTransfer(IERC20,address,uint256), arguments:['underlying', 'vault', 'amount'] "];
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+restricted()
+
+IRs:
+MODIFIER_CALL, BaseStrategy.restricted()()"];
+2->1;
+}

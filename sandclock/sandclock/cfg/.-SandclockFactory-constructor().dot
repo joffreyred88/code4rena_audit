@@ -1,0 +1,22 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->2;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+Trust(_msgSender())
+
+IRs:
+TMP_263(address) = INTERNAL_CALL, Context._msgSender()()
+INTERNAL_CALL, Trust.constructor(address)(TMP_263)"];
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+Trust(_msgSender())
+
+IRs:
+TMP_265(address) = INTERNAL_CALL, Context._msgSender()()
+INTERNAL_CALL, Trust.constructor(address)(TMP_265)"];
+2->1;
+}

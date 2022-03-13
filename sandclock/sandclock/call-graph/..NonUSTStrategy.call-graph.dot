@@ -1,0 +1,77 @@
+strict digraph {
+subgraph cluster_2560_Trust {
+label = "Trust"
+"2560_setIsTrusted" [label="setIsTrusted"]
+"2560_constructor" [label="constructor"]
+"2560_setIsTrusted" -> "2560_requiresTrust"
+}subgraph cluster_5585_BaseStrategy {
+label = "BaseStrategy"
+"5585_withdrawAllToVault" [label="withdrawAllToVault"]
+"5585__getUstBalance" [label="_getUstBalance"]
+"5585_doHardWork" [label="doHardWork"]
+"5585_finishDepositStable" [label="finishDepositStable"]
+"5585_setPerfFeePct" [label="setPerfFeePct"]
+"5585_investedAssets" [label="investedAssets"]
+"5585_constructor" [label="constructor"]
+"5585_withdrawToVault" [label="withdrawToVault"]
+"5585__getUnderlyingBalance" [label="_getUnderlyingBalance"]
+"5585_depositOperationLength" [label="depositOperationLength"]
+"5585_finishRedeemStable" [label="finishRedeemStable"]
+"5585_redeemOperationLength" [label="redeemOperationLength"]
+"5585__initDepositStable" [label="_initDepositStable"]
+"5585_initRedeemStable" [label="initRedeemStable"]
+"5585__getAUstBalance" [label="_getAUstBalance"]
+"5585_finishRedeemStable" -> "5585__getAUstBalance"
+"5585_setPerfFeePct" -> "5585_restricted"
+"5585_constructor" -> "5585_constructor"
+"5585_initRedeemStable" -> "5585_restricted"
+"5585_doHardWork" -> "5585__initDepositStable"
+"5585_doHardWork" -> "5585_restricted"
+"5585_finishRedeemStable" -> "5585__getUstBalance"
+"5585_withdrawAllToVault" -> "5585_restricted"
+"5585_withdrawAllToVault" -> "5585__getAUstBalance"
+"5585_investedAssets" -> "5585__getAUstBalance"
+"5585_investedAssets" -> "5585__getUnderlyingBalance"
+"5585_withdrawAllToVault" -> "5585_initRedeemStable"
+"5585__initDepositStable" -> "5585__getUstBalance"
+"5585_initRedeemStable" -> "5585__getAUstBalance"
+"5585_withdrawToVault" -> "5585_restricted"
+"5585_withdrawAllToVault" -> "5585__getUnderlyingBalance"
+}subgraph cluster_5628_IStrategy {
+label = "IStrategy"
+"5628_vault" [label="vault"]
+"5628_withdrawToVault" [label="withdrawToVault"]
+"5628_doHardWork" [label="doHardWork"]
+"5628_withdrawAllToVault" [label="withdrawAllToVault"]
+"5628_investedAssets" [label="investedAssets"]
+"5628_underlying" [label="underlying"]
+}subgraph cluster_5872_NonUSTStrategy {
+label = "NonUSTStrategy"
+"5872__swapUnderlyingToUst" [label="_swapUnderlyingToUst"]
+"5872__swapUstToUnderlying" [label="_swapUstToUnderlying"]
+"5872_finishRedeemStable" [label="finishRedeemStable"]
+"5872_doHardWork" [label="doHardWork"]
+"5872_investedAssets" [label="investedAssets"]
+"5872_constructor" [label="constructor"]
+"5872__swapUnderlyingToUst" -> "5872__getUnderlyingBalance"
+"5872_doHardWork" -> "5872__initDepositStable"
+"5872_investedAssets" -> "5872__getAUstBalance"
+"5872_finishRedeemStable" -> "5872_finishRedeemStable"
+"5872_constructor" -> "5872_constructor"
+"5872_investedAssets" -> "5872__getUnderlyingBalance"
+"5872_finishRedeemStable" -> "5872__swapUstToUnderlying"
+"5872_doHardWork" -> "5872_restricted"
+"5872__swapUstToUnderlying" -> "5872__getUstBalance"
+"5872_doHardWork" -> "5872__swapUnderlyingToUst"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"require(bool,string)" 
+"5585_finishDepositStable" -> "require(bool,string)"
+"5585__initDepositStable" -> "require(bool,string)"
+"5585_initRedeemStable" -> "require(bool,string)"
+"5585_setPerfFeePct" -> "require(bool,string)"
+"5585_constructor" -> "require(bool,string)"
+"5585_finishRedeemStable" -> "require(bool,string)"
+"5872_constructor" -> "require(bool,string)"
+}
+}

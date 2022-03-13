@@ -1,0 +1,9 @@
+strict digraph {
+subgraph cluster_6250_BurnMathTest {
+label = "BurnMathTest"
+"6250_getCollateral" [label="getCollateral"]
+"6250_getAsset" [label="getAsset"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

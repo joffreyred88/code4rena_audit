@@ -1,0 +1,42 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(address(_ustToken) != address(0),invalid UST token)
+
+IRs:
+TMP_590 = CONVERT _ustToken to address
+TMP_591 = CONVERT 0 to address
+TMP_592(bool) = TMP_590 != TMP_591
+TMP_593(None) = SOLIDITY_CALL require(bool,string)(TMP_592,invalid UST token)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(address(_aUstToken) != address(0),invalid aUST token)
+
+IRs:
+TMP_594 = CONVERT _aUstToken to address
+TMP_595 = CONVERT 0 to address
+TMP_596(bool) = TMP_594 != TMP_595
+TMP_597(None) = SOLIDITY_CALL require(bool,string)(TMP_596,invalid aUST token)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+ustToken = _ustToken
+
+IRs:
+ustToken(IERC20) := _ustToken(IERC20)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+aUstToken = _aUstToken
+
+IRs:
+aUstToken(IERC20) := _aUstToken(IERC20)"];
+}

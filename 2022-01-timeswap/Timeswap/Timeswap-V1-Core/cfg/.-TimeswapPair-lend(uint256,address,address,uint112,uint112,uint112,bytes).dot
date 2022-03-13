@@ -1,0 +1,225 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->21;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(block.timestamp < maturity,E202)
+
+IRs:
+TMP_215(bool) = block.timestamp < maturity
+TMP_216(None) = SOLIDITY_CALL require(bool,string)(TMP_215,E202)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(bondTo != address(0) && insuranceTo != address(0),E201)
+
+IRs:
+TMP_217 = CONVERT 0 to address
+TMP_218(bool) = bondTo != TMP_217
+TMP_219 = CONVERT 0 to address
+TMP_220(bool) = insuranceTo != TMP_219
+TMP_221(bool) = TMP_218 && TMP_220
+TMP_222(None) = SOLIDITY_CALL require(bool,string)(TMP_221,E201)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+require(bool,string)(bondTo != address(this) && insuranceTo != address(this),E204)
+
+IRs:
+TMP_223 = CONVERT this to address
+TMP_224(bool) = bondTo != TMP_223
+TMP_225 = CONVERT this to address
+TMP_226(bool) = insuranceTo != TMP_225
+TMP_227(bool) = TMP_224 && TMP_226
+TMP_228(None) = SOLIDITY_CALL require(bool,string)(TMP_227,E204)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+require(bool,string)(xIncrease > 0,E205)
+
+IRs:
+TMP_229(bool) = xIncrease > 0
+TMP_230(None) = SOLIDITY_CALL require(bool,string)(TMP_229,E205)"];
+4->5;
+5[label="Node Type: NEW VARIABLE 5
+
+EXPRESSION:
+pool = pools[maturity]
+
+IRs:
+REF_156(IPair.Pool) -> pools[maturity]
+pool(IPair.Pool) := REF_156(IPair.Pool)"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+require(bool,string)(pool.state.totalLiquidity > 0,E206)
+
+IRs:
+REF_157(IPair.State) -> pool.state
+REF_158(uint256) -> REF_157.totalLiquidity
+TMP_231(bool) = REF_158 > 0
+TMP_232(None) = SOLIDITY_CALL require(bool,string)(TMP_231,E206)"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+LendMath.check(pool.state,xIncrease,yDecrease,zDecrease,fee)
+
+IRs:
+REF_160(IPair.State) -> pool.state
+LIBRARY_CALL, dest:LendMath, function:LendMath.check(IPair.State,uint112,uint112,uint112,uint16), arguments:['REF_160', 'xIncrease', 'yDecrease', 'zDecrease', 'fee'] "];
+7->8;
+8[label="Node Type: EXPRESSION 8
+
+EXPRESSION:
+claimsOut.bond = LendMath.getBond(maturity,xIncrease,yDecrease)
+
+IRs:
+REF_161(uint128) -> claimsOut.bond
+TMP_234(uint128) = LIBRARY_CALL, dest:LendMath, function:LendMath.getBond(uint256,uint112,uint112), arguments:['maturity', 'xIncrease', 'yDecrease'] 
+REF_161 (->claimsOut) := TMP_234(uint128)"];
+8->9;
+9[label="Node Type: EXPRESSION 9
+
+EXPRESSION:
+claimsOut.insurance = LendMath.getInsurance(maturity,pool.state,xIncrease,zDecrease)
+
+IRs:
+REF_163(uint128) -> claimsOut.insurance
+REF_165(IPair.State) -> pool.state
+TMP_235(uint128) = LIBRARY_CALL, dest:LendMath, function:LendMath.getInsurance(uint256,IPair.State,uint112,uint112), arguments:['maturity', 'REF_165', 'xIncrease', 'zDecrease'] 
+REF_163 (->claimsOut) := TMP_235(uint128)"];
+9->10;
+10[label="Node Type: EXPRESSION 10
+
+EXPRESSION:
+Callback.lend(asset,xIncrease,data)
+
+IRs:
+LIBRARY_CALL, dest:Callback, function:Callback.lend(IERC20,uint112,bytes), arguments:['asset', 'xIncrease', 'data'] "];
+10->11;
+11[label="Node Type: EXPRESSION 11
+
+EXPRESSION:
+pool.state.totalClaims.bond += claimsOut.bond
+
+IRs:
+REF_167(IPair.State) -> pool.state
+REF_168(IPair.Claims) -> REF_167.totalClaims
+REF_169(uint128) -> REF_168.bond
+REF_170(uint128) -> claimsOut.bond
+REF_169(-> pool) = REF_169 (c)+ REF_170"];
+11->12;
+12[label="Node Type: EXPRESSION 12
+
+EXPRESSION:
+pool.state.totalClaims.insurance += claimsOut.insurance
+
+IRs:
+REF_171(IPair.State) -> pool.state
+REF_172(IPair.Claims) -> REF_171.totalClaims
+REF_173(uint128) -> REF_172.insurance
+REF_174(uint128) -> claimsOut.insurance
+REF_173(-> pool) = REF_173 (c)+ REF_174"];
+12->13;
+13[label="Node Type: EXPRESSION 13
+
+EXPRESSION:
+pool.claims[bondTo].bond += claimsOut.bond
+
+IRs:
+REF_175(mapping(address => IPair.Claims)) -> pool.claims
+REF_176(IPair.Claims) -> REF_175[bondTo]
+REF_177(uint128) -> REF_176.bond
+REF_178(uint128) -> claimsOut.bond
+REF_177(-> pool) = REF_177 (c)+ REF_178"];
+13->14;
+14[label="Node Type: EXPRESSION 14
+
+EXPRESSION:
+pool.claims[insuranceTo].insurance += claimsOut.insurance
+
+IRs:
+REF_179(mapping(address => IPair.Claims)) -> pool.claims
+REF_180(IPair.Claims) -> REF_179[insuranceTo]
+REF_181(uint128) -> REF_180.insurance
+REF_182(uint128) -> claimsOut.insurance
+REF_181(-> pool) = REF_181 (c)+ REF_182"];
+14->15;
+15[label="Node Type: EXPRESSION 15
+
+EXPRESSION:
+pool.state.reserves.asset += xIncrease
+
+IRs:
+REF_183(IPair.State) -> pool.state
+REF_184(IPair.Tokens) -> REF_183.reserves
+REF_185(uint128) -> REF_184.asset
+REF_185(-> pool) = REF_185 (c)+ xIncrease"];
+15->16;
+16[label="Node Type: EXPRESSION 16
+
+EXPRESSION:
+pool.state.x += xIncrease
+
+IRs:
+REF_186(IPair.State) -> pool.state
+REF_187(uint112) -> REF_186.x
+REF_187(-> pool) = REF_187 (c)+ xIncrease"];
+16->17;
+17[label="Node Type: EXPRESSION 17
+
+EXPRESSION:
+pool.state.y -= yDecrease
+
+IRs:
+REF_188(IPair.State) -> pool.state
+REF_189(uint112) -> REF_188.y
+REF_189(-> pool) = REF_189 (c)- yDecrease"];
+17->18;
+18[label="Node Type: EXPRESSION 18
+
+EXPRESSION:
+pool.state.z -= zDecrease
+
+IRs:
+REF_190(IPair.State) -> pool.state
+REF_191(uint112) -> REF_190.z
+REF_191(-> pool) = REF_191 (c)- zDecrease"];
+18->19;
+19[label="Node Type: EXPRESSION 19
+
+EXPRESSION:
+Sync(maturity,pool.state.x,pool.state.y,pool.state.z)
+
+IRs:
+REF_192(IPair.State) -> pool.state
+REF_193(uint112) -> REF_192.x
+REF_194(IPair.State) -> pool.state
+REF_195(uint112) -> REF_194.y
+REF_196(IPair.State) -> pool.state
+REF_197(uint112) -> REF_196.z
+Emit Sync(maturity.REF_193.REF_195.REF_197)"];
+19->20;
+20[label="Node Type: EXPRESSION 20
+
+EXPRESSION:
+Lend(maturity,msg.sender,bondTo,insuranceTo,xIncrease,claimsOut)
+
+IRs:
+Emit Lend(maturity.msg.sender.bondTo.insuranceTo.xIncrease.claimsOut)"];
+21[label="Node Type: EXPRESSION 21
+
+EXPRESSION:
+lock()
+
+IRs:
+MODIFIER_CALL, TimeswapPair.lock()()"];
+21->1;
+}

@@ -1,0 +1,11 @@
+strict digraph {
+subgraph cluster_6923_SafeCastTest {
+label = "SafeCastTest"
+"6923_truncateUint112" [label="truncateUint112"]
+"6923_toUint112" [label="toUint112"]
+"6923_modUint32" [label="modUint32"]
+"6923_toUint128" [label="toUint128"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

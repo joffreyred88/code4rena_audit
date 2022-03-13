@@ -1,0 +1,18 @@
+strict digraph {
+subgraph cluster_4639_FullMath {
+label = "FullMath"
+"4639_mulDivUp" [label="mulDivUp"]
+"4639_mul512" [label="mul512"]
+"4639_mulDiv" [label="mulDiv"]
+"4639_mulDiv" -> "4639_mul512"
+"4639_mulDivUp" -> "4639_mulDiv"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"mulmod(uint256,uint256,uint256)" 
+"require(bool)" 
+"4639_mulDiv" -> "require(bool)"
+"4639_mulDiv" -> "mulmod(uint256,uint256,uint256)"
+"4639_mul512" -> "mulmod(uint256,uint256,uint256)"
+"4639_mulDivUp" -> "mulmod(uint256,uint256,uint256)"
+}
+}

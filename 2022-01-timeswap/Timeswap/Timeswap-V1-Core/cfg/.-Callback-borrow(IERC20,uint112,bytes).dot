@@ -1,0 +1,41 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+collateralReserve = collateral.safeBalance()
+
+IRs:
+TMP_373(uint256) = LIBRARY_CALL, dest:SafeBalance, function:SafeBalance.safeBalance(IERC20), arguments:['collateral'] 
+collateralReserve(uint256) := TMP_373(uint256)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+ITimeswapBorrowCallback(msg.sender).timeswapBorrowCallback(collateralIn,data)
+
+IRs:
+TMP_374 = CONVERT msg.sender to ITimeswapBorrowCallback
+HIGH_LEVEL_CALL, dest:TMP_374(ITimeswapBorrowCallback), function:timeswapBorrowCallback, arguments:['collateralIn', 'data']  "];
+2->3;
+3[label="Node Type: NEW VARIABLE 3
+
+EXPRESSION:
+_collateralReserve = collateral.safeBalance()
+
+IRs:
+TMP_376(uint256) = LIBRARY_CALL, dest:SafeBalance, function:SafeBalance.safeBalance(IERC20), arguments:['collateral'] 
+_collateralReserve(uint256) := TMP_376(uint256)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+require(bool,string)(_collateralReserve >= collateralReserve + collateralIn,E305)
+
+IRs:
+TMP_377(uint256) = collateralReserve (c)+ collateralIn
+TMP_378(bool) = _collateralReserve >= TMP_377
+TMP_379(None) = SOLIDITY_CALL require(bool,string)(TMP_378,E305)"];
+}

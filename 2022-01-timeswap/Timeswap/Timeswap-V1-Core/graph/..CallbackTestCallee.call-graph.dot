@@ -1,0 +1,16 @@
+strict digraph {
+subgraph cluster_6503_CallbackTestCallee {
+label = "CallbackTestCallee"
+"6503_borrow" [label="borrow"]
+"6503_timeswapBorrowCallback" [label="timeswapBorrowCallback"]
+"6503_mint" [label="mint"]
+"6503_timeswapPayCallback" [label="timeswapPayCallback"]
+"6503_lend" [label="lend"]
+"6503_timeswapMintCallback" [label="timeswapMintCallback"]
+"6503_timeswapLendCallback" [label="timeswapLendCallback"]
+"6503_pay" [label="pay"]
+"6503_constructor" [label="constructor"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

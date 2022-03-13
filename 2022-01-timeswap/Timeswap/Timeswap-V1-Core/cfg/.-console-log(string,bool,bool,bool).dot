@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+_sendLogPayload(abi.encodeWithSignature(log(string,bool,bool,bool),p0,p1,p2,p3))
+
+IRs:
+TMP_1119(bytes) = SOLIDITY_CALL abi.encodeWithSignature()(log(string,bool,bool,bool),p0,p1,p2,p3)
+INTERNAL_CALL, console._sendLogPayload(bytes)(TMP_1119)"];
+}

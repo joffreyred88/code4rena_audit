@@ -1,0 +1,268 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->31;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(block.timestamp < maturity,E202)
+
+IRs:
+TMP_294(bool) = block.timestamp < maturity
+TMP_295(None) = SOLIDITY_CALL require(bool,string)(TMP_294,E202)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(ids.length == assetsIn.length && ids.length == collateralsOut.length,E205)
+
+IRs:
+REF_277 -> LENGTH ids
+REF_278 -> LENGTH assetsIn
+TMP_296(bool) = REF_277 == REF_278
+REF_279 -> LENGTH ids
+REF_280 -> LENGTH collateralsOut
+TMP_297(bool) = REF_279 == REF_280
+TMP_298(bool) = TMP_296 && TMP_297
+TMP_299(None) = SOLIDITY_CALL require(bool,string)(TMP_298,E205)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+require(bool,string)(to != address(0),E201)
+
+IRs:
+TMP_300 = CONVERT 0 to address
+TMP_301(bool) = to != TMP_300
+TMP_302(None) = SOLIDITY_CALL require(bool,string)(TMP_301,E201)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+require(bool,string)(to != address(this),E204)
+
+IRs:
+TMP_303 = CONVERT this to address
+TMP_304(bool) = to != TMP_303
+TMP_305(None) = SOLIDITY_CALL require(bool,string)(TMP_304,E204)"];
+4->5;
+5[label="Node Type: NEW VARIABLE 5
+
+EXPRESSION:
+pool = pools[maturity]
+
+IRs:
+REF_281(IPair.Pool) -> pools[maturity]
+pool(IPair.Pool) := REF_281(IPair.Pool)"];
+5->6;
+6[label="Node Type: NEW VARIABLE 6
+
+EXPRESSION:
+dues = pool.dues[owner]
+
+IRs:
+REF_282(mapping(address => IPair.Due[])) -> pool.dues
+REF_283(IPair.Due[]) -> REF_282[owner]
+dues(IPair.Due[]) := REF_283(IPair.Due[])"];
+6->9;
+7[label="Node Type: BEGIN_LOOP 7
+"];
+7->10;
+8[label="Node Type: END_LOOP 8
+"];
+8->22;
+9[label="Node Type: NEW VARIABLE 9
+"];
+9->7;
+10[label="Node Type: IF_LOOP 10
+
+EXPRESSION:
+i < ids.length
+
+IRs:
+REF_284 -> LENGTH ids
+TMP_306(bool) = i < REF_284
+CONDITION TMP_306"];
+10->11[label="True"];
+10->8[label="False"];
+11[label="Node Type: NEW VARIABLE 11
+
+EXPRESSION:
+due = dues[ids[i]]
+
+IRs:
+REF_285(uint256) -> ids[i]
+REF_286(IPair.Due) -> dues[REF_285]
+due(IPair.Due) := REF_286(IPair.Due)"];
+11->12;
+12[label="Node Type: EXPRESSION 12
+
+EXPRESSION:
+require(bool,string)(due.startBlock != BlockNumber.get(),E207)
+
+IRs:
+REF_287(uint32) -> due.startBlock
+TMP_307(uint32) = LIBRARY_CALL, dest:BlockNumber, function:BlockNumber.get(), arguments:[] 
+TMP_308(bool) = REF_287 != TMP_307
+TMP_309(None) = SOLIDITY_CALL require(bool,string)(TMP_308,E207)"];
+12->13;
+13[label="Node Type: IF 13
+
+EXPRESSION:
+owner != msg.sender
+
+IRs:
+TMP_310(bool) = owner != msg.sender
+CONDITION TMP_310"];
+13->14[label="True"];
+13->15[label="False"];
+14[label="Node Type: EXPRESSION 14
+
+EXPRESSION:
+require(bool,string)(collateralsOut[i] == 0,E213)
+
+IRs:
+REF_289(uint112) -> collateralsOut[i]
+TMP_311(bool) = REF_289 == 0
+TMP_312(None) = SOLIDITY_CALL require(bool,string)(TMP_311,E213)"];
+14->15;
+15[label="Node Type: END_IF 15
+"];
+15->16;
+16[label="Node Type: EXPRESSION 16
+
+EXPRESSION:
+PayMath.checkProportional(assetsIn[i],collateralsOut[i],due)
+
+IRs:
+REF_291(uint112) -> assetsIn[i]
+REF_292(uint112) -> collateralsOut[i]
+LIBRARY_CALL, dest:PayMath, function:PayMath.checkProportional(uint112,uint112,IPair.Due), arguments:['REF_291', 'REF_292', 'due'] "];
+16->17;
+17[label="Node Type: EXPRESSION 17
+
+EXPRESSION:
+due.debt -= assetsIn[i]
+
+IRs:
+REF_293(uint112) -> due.debt
+REF_294(uint112) -> assetsIn[i]
+REF_293(-> due) = REF_293 (c)- REF_294"];
+17->18;
+18[label="Node Type: EXPRESSION 18
+
+EXPRESSION:
+due.collateral -= collateralsOut[i]
+
+IRs:
+REF_295(uint112) -> due.collateral
+REF_296(uint112) -> collateralsOut[i]
+REF_295(-> due) = REF_295 (c)- REF_296"];
+18->19;
+19[label="Node Type: EXPRESSION 19
+
+EXPRESSION:
+assetIn += assetsIn[i]
+
+IRs:
+REF_297(uint112) -> assetsIn[i]
+assetIn(uint128) = assetIn (c)+ REF_297"];
+19->20;
+20[label="Node Type: EXPRESSION 20
+
+EXPRESSION:
+collateralOut += collateralsOut[i]
+
+IRs:
+REF_298(uint112) -> collateralsOut[i]
+collateralOut(uint128) = collateralOut (c)+ REF_298"];
+20->21;
+21[label="Node Type: EXPRESSION 21
+
+EXPRESSION:
+i ++
+
+IRs:
+TMP_314(uint256) := i(uint256)
+i(uint256) = i (c)+ 1"];
+21->10;
+22[label="Node Type: IF 22
+
+EXPRESSION:
+assetIn > 0
+
+IRs:
+TMP_315(bool) = assetIn > 0
+CONDITION TMP_315"];
+22->23[label="True"];
+22->24[label="False"];
+23[label="Node Type: EXPRESSION 23
+
+EXPRESSION:
+Callback.pay(asset,assetIn,data)
+
+IRs:
+LIBRARY_CALL, dest:Callback, function:Callback.pay(IERC20,uint128,bytes), arguments:['asset', 'assetIn', 'data'] "];
+23->24;
+24[label="Node Type: END_IF 24
+"];
+24->25;
+25[label="Node Type: EXPRESSION 25
+
+EXPRESSION:
+pool.state.reserves.asset += assetIn
+
+IRs:
+REF_300(IPair.State) -> pool.state
+REF_301(IPair.Tokens) -> REF_300.reserves
+REF_302(uint128) -> REF_301.asset
+REF_302(-> pool) = REF_302 (c)+ assetIn"];
+25->26;
+26[label="Node Type: EXPRESSION 26
+
+EXPRESSION:
+pool.state.reserves.collateral -= collateralOut
+
+IRs:
+REF_303(IPair.State) -> pool.state
+REF_304(IPair.Tokens) -> REF_303.reserves
+REF_305(uint128) -> REF_304.collateral
+REF_305(-> pool) = REF_305 (c)- collateralOut"];
+26->27;
+27[label="Node Type: IF 27
+
+EXPRESSION:
+collateralOut > 0
+
+IRs:
+TMP_317(bool) = collateralOut > 0
+CONDITION TMP_317"];
+27->28[label="True"];
+27->29[label="False"];
+28[label="Node Type: EXPRESSION 28
+
+EXPRESSION:
+collateral.safeTransfer(to,collateralOut)
+
+IRs:
+LIBRARY_CALL, dest:SafeTransfer, function:SafeTransfer.safeTransfer(IERC20,address,uint256), arguments:['collateral', 'to', 'collateralOut'] "];
+28->29;
+29[label="Node Type: END_IF 29
+"];
+29->30;
+30[label="Node Type: EXPRESSION 30
+
+EXPRESSION:
+Pay(maturity,msg.sender,to,owner,ids,assetsIn,collateralsOut,assetIn,collateralOut)
+
+IRs:
+Emit Pay(maturity.msg.sender.to.owner.ids.assetsIn.collateralsOut.assetIn.collateralOut)"];
+31[label="Node Type: EXPRESSION 31
+
+EXPRESSION:
+lock()
+
+IRs:
+MODIFIER_CALL, TimeswapPair.lock()()"];
+31->1;
+}

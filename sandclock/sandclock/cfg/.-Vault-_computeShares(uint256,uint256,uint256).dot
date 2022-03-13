@@ -1,0 +1,64 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: IF 1
+
+EXPRESSION:
+_amount == 0
+
+IRs:
+TMP_478(bool) = _amount == 0
+CONDITION TMP_478"];
+1->2[label="True"];
+1->3[label="False"];
+2[label="Node Type: RETURN 2
+
+EXPRESSION:
+0
+
+IRs:
+RETURN 0"];
+3[label="Node Type: END_IF 3
+"];
+3->4;
+4[label="Node Type: IF 4
+
+EXPRESSION:
+_totalShares == 0
+
+IRs:
+TMP_479(bool) = _totalShares == 0
+CONDITION TMP_479"];
+4->5[label="True"];
+4->6[label="False"];
+5[label="Node Type: RETURN 5
+
+EXPRESSION:
+_amount * SHARES_MULTIPLIER
+
+IRs:
+TMP_480(uint256) = _amount (c)* SHARES_MULTIPLIER
+RETURN TMP_480"];
+6[label="Node Type: END_IF 6
+"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+require(bool,string)(_totalUnderlyingMinusSponsored > 0,Vault: cannot compute shares when there's no principal)
+
+IRs:
+TMP_481(bool) = _totalUnderlyingMinusSponsored > 0
+TMP_482(None) = SOLIDITY_CALL require(bool,string)(TMP_481,Vault: cannot compute shares when there's no principal)"];
+7->8;
+8[label="Node Type: RETURN 8
+
+EXPRESSION:
+(_amount * _totalShares) / _totalUnderlyingMinusSponsored
+
+IRs:
+TMP_483(uint256) = _amount (c)* _totalShares
+TMP_484(uint256) = TMP_483 (c)/ _totalUnderlyingMinusSponsored
+RETURN TMP_484"];
+}

@@ -1,0 +1,2162 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/interfaces/callback/ITimeswapBorrowCallback.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "5b7132ac303001d7619f08fc3e83b72d",
+      "sourceName": "contracts/interfaces/callback/ITimeswapBorrowCallback.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "ITimeswapBorrowCallback"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/TimeswapPairCallee.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "572b110db6c4ed2743fa27dfad99e3c5",
+      "sourceName": "contracts/test/TimeswapPairCallee.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IPair.sol",
+        "../interfaces/IFactory.sol",
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "../interfaces/callback/ITimeswapBorrowCallback.sol",
+        "../interfaces/callback/ITimeswapLendCallback.sol",
+        "../interfaces/callback/ITimeswapMintCallback.sol",
+        "../interfaces/callback/ITimeswapPayCallback.sol",
+        "hardhat/console.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "TimeswapPairCallee"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/interfaces/IPair.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "f6d6d36fd72773a33bcd069449fe0f0c",
+      "sourceName": "contracts/interfaces/IPair.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./IFactory.sol",
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "IPair"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/interfaces/IFactory.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "61759b26941a04532a9e20e165bec27f",
+      "sourceName": "contracts/interfaces/IFactory.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./IPair.sol",
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "IFactory"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+      "lastModificationDate": 1641648219284,
+      "contentHash": "0eac3e1a83ee62326ca007811285b274",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC20"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/interfaces/callback/ITimeswapLendCallback.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "17641ef5b3b6f673a485f76d3574ee1c",
+      "sourceName": "contracts/interfaces/callback/ITimeswapLendCallback.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "ITimeswapLendCallback"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/interfaces/callback/ITimeswapMintCallback.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "9eb13d1069bdaed1cf5f17c576630916",
+      "sourceName": "contracts/interfaces/callback/ITimeswapMintCallback.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "ITimeswapMintCallback"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/interfaces/callback/ITimeswapPayCallback.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "f07214dcce9747af8539c5e95734198e",
+      "sourceName": "contracts/interfaces/callback/ITimeswapPayCallback.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "ITimeswapPayCallback"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/node_modules/hardhat/console.sol": {
+      "lastModificationDate": 1641648220112,
+      "contentHash": "cc4777addd464ea56fa35b1c45df0591",
+      "sourceName": "hardhat/console.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.4.22 <0.9.0"
+      ],
+      "artifacts": [
+        "console"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/libraries/CallbackTestCallee.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "db2c2f3ad2fb6ce7c460850dc658e697",
+      "sourceName": "contracts/test/libraries/CallbackTestCallee.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./CallbackTest.sol",
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "../../interfaces/callback/ITimeswapBorrowCallback.sol",
+        "../../interfaces/callback/ITimeswapLendCallback.sol",
+        "../../interfaces/callback/ITimeswapMintCallback.sol",
+        "../../interfaces/callback/ITimeswapPayCallback.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "CallbackTestCallee"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/libraries/CallbackTest.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "31afb8d36e0662fbb3a75d1594784358",
+      "sourceName": "contracts/test/libraries/CallbackTest.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../libraries/Callback.sol",
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "CallbackTest"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/libraries/Callback.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "78d99931fbd2dec62e7be66fea29b6ea",
+      "sourceName": "contracts/libraries/Callback.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "../interfaces/IPair.sol",
+        "../interfaces/callback/ITimeswapMintCallback.sol",
+        "../interfaces/callback/ITimeswapLendCallback.sol",
+        "../interfaces/callback/ITimeswapBorrowCallback.sol",
+        "../interfaces/callback/ITimeswapPayCallback.sol",
+        "./SafeBalance.sol",
+        "./SafeCast.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "Callback"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/libraries/SafeBalance.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "abe217eb30147b1cde3e38e01c3050ca",
+      "sourceName": "contracts/libraries/SafeBalance.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "@openzeppelin/contracts/utils/Address.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "SafeBalance"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/libraries/SafeCast.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "d9b1518193edd16998ee5c49523bc170",
+      "sourceName": "contracts/libraries/SafeCast.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "SafeCast"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/node_modules/@openzeppelin/contracts/utils/Address.sol": {
+      "lastModificationDate": 1641648218980,
+      "contentHash": "c5f6c4e4df069c789e7d84b4c3011913",
+      "sourceName": "@openzeppelin/contracts/utils/Address.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Address"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/TimeswapPair.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "e4e0ea6336b903ec7c754a409ad90b90",
+      "sourceName": "contracts/TimeswapPair.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./interfaces/IPair.sol",
+        "./interfaces/IFactory.sol",
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "./libraries/MintMath.sol",
+        "./libraries/BurnMath.sol",
+        "./libraries/LendMath.sol",
+        "./libraries/WithdrawMath.sol",
+        "./libraries/BorrowMath.sol",
+        "./libraries/PayMath.sol",
+        "./libraries/SafeTransfer.sol",
+        "./libraries/Array.sol",
+        "./libraries/Callback.sol",
+        "./libraries/BlockNumber.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "TimeswapPair"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/libraries/MintMath.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "1ada2b6dcc6ef87e89278bec68b3270a",
+      "sourceName": "contracts/libraries/MintMath.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IPair.sol",
+        "./Math.sol",
+        "./FullMath.sol",
+        "./SafeCast.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "MintMath"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/libraries/BurnMath.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "a1ceca29090e7bd1e71735bf5a6b84ab",
+      "sourceName": "contracts/libraries/BurnMath.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IPair.sol",
+        "./FullMath.sol",
+        "./Math.sol",
+        "./SafeCast.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "BurnMath"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/libraries/LendMath.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "e8b1c1aab7620e1081639ea9f6fa605b",
+      "sourceName": "contracts/libraries/LendMath.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IPair.sol",
+        "./FullMath.sol",
+        "./ConstantProduct.sol",
+        "./SafeCast.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "LendMath"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/libraries/WithdrawMath.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "b9fde4cf5f3df3f91b6e9adb4fff2ae8",
+      "sourceName": "contracts/libraries/WithdrawMath.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IPair.sol",
+        "./SafeCast.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "WithdrawMath"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/libraries/BorrowMath.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "56f44720d89923c3e5efdeb776ee1151",
+      "sourceName": "contracts/libraries/BorrowMath.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IPair.sol",
+        "./Math.sol",
+        "./FullMath.sol",
+        "./ConstantProduct.sol",
+        "./SafeCast.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "BorrowMath"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/libraries/PayMath.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "507ed653620fbb8102072d56807cb95e",
+      "sourceName": "contracts/libraries/PayMath.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IPair.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "PayMath"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/libraries/SafeTransfer.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "c1050709caf3e1973f0443f52c96ffc2",
+      "sourceName": "contracts/libraries/SafeTransfer.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "SafeTransfer"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/libraries/Array.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "f58b44b47ecf7bc552f969662fe15985",
+      "sourceName": "contracts/libraries/Array.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IPair.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "Array"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/libraries/BlockNumber.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "9bf5ca57be8a370db9ad836486ec75c9",
+      "sourceName": "contracts/libraries/BlockNumber.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./SafeCast.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "BlockNumber"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/libraries/Math.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "5eb7c26e10360ed18e7b70b917a35a09",
+      "sourceName": "contracts/libraries/Math.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "Math"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/libraries/FullMath.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "b895b2ba04d5d727edc18aef58c8e660",
+      "sourceName": "contracts/libraries/FullMath.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "FullMath"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/libraries/ConstantProduct.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "2184a8c2221ec93c404d5bc72b987f1d",
+      "sourceName": "contracts/libraries/ConstantProduct.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IPair.sol",
+        "./FullMath.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "ConstantProduct"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol": {
+      "lastModificationDate": 1641648219372,
+      "contentHash": "d37406082a74a9b6b114de522fcb6349",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../IERC20.sol",
+        "../../../utils/Address.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "SafeERC20"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/libraries/BlockNumberTest.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "fbc4bc5641a50c4755eb9734fe6a7811",
+      "sourceName": "contracts/test/libraries/BlockNumberTest.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../libraries/BlockNumber.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "BlockNumberTest"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/libraries/SafeCastTest.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "682c59e26b3542693fd769f3cee37947",
+      "sourceName": "contracts/test/libraries/SafeCastTest.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../libraries/SafeCast.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "SafeCastTest"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/libraries/WithdrawMathTest.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "5ae7c9cbacd0e281300efd749e136221",
+      "sourceName": "contracts/test/libraries/WithdrawMathTest.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../libraries/WithdrawMath.sol",
+        "../../interfaces/IPair.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "WithdrawMathTest"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/TimeswapFactory.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "3b06b5fec6045823fbbd4841ce332dcc",
+      "sourceName": "contracts/TimeswapFactory.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./interfaces/IFactory.sol",
+        "./interfaces/IPair.sol",
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "./TimeswapPair.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "TimeswapFactory"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
+      "lastModificationDate": 1641648219288,
+      "contentHash": "aa1be06992a99bb7393b26a6af3c4dfb",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../IERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC20Metadata"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
+      "lastModificationDate": 1641648219124,
+      "contentHash": "2cd550cedf51b8d294607dad5023d717",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "./IERC20.sol",
+        "./extensions/IERC20Metadata.sol",
+        "../../utils/Context.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ERC20"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/node_modules/@openzeppelin/contracts/utils/Context.sol": {
+      "lastModificationDate": 1641648219004,
+      "contentHash": "851485d5b925529b1a2f34a0be077891",
+      "sourceName": "@openzeppelin/contracts/utils/Context.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Context"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/TestToken.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "7409c93e8fe25cf7d875f2c58ccded4f",
+      "sourceName": "contracts/test/TestToken.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      ],
+      "versionPragmas": [
+        ">=0.8.1"
+      ],
+      "artifacts": [
+        "TestToken"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/libraries/SafeTransferTest.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "50255f388d42df316a80df37caf5abf0",
+      "sourceName": "contracts/test/libraries/SafeTransferTest.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../libraries/SafeTransfer.sol",
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "SafeTransferTest"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/libraries/SafeBalanceTest.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "8f7f015ad51fe6d7280da7b760c40c6b",
+      "sourceName": "contracts/test/libraries/SafeBalanceTest.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../libraries/SafeBalance.sol",
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "SafeBalanceTest"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/libraries/PayMathTest.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "ec0bce301a30eebf75392c6f48c86eee",
+      "sourceName": "contracts/test/libraries/PayMathTest.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../libraries/PayMath.sol",
+        "../../interfaces/IPair.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "PayMathTest"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/libraries/MintMathTest.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "4bdca57a989a39cabec0c0b7b7376d86",
+      "sourceName": "contracts/test/libraries/MintMathTest.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../libraries/MintMath.sol",
+        "../../interfaces/IPair.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "MintMathTest"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/libraries/FullMathTest.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "7b4fddb62a65c96ff9be5a8c8ffd064c",
+      "sourceName": "contracts/test/libraries/FullMathTest.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../libraries/FullMath.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "FullMathTest"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/libraries/LendMathTest.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "ed6bf16cbc6ad8ed0ea3937e5d8a3d91",
+      "sourceName": "contracts/test/libraries/LendMathTest.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../libraries/LendMath.sol",
+        "../../interfaces/IPair.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "LendMathTest"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/libraries/ConstantProductTest.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "91d56bad5e4d18d06cac98f61b0e84a6",
+      "sourceName": "contracts/test/libraries/ConstantProductTest.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../libraries/ConstantProduct.sol",
+        "../../interfaces/IPair.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "ConstantProductTest"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/libraries/BorrowMathTest.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "680a5dbf66b8579cc2070d949e86120d",
+      "sourceName": "contracts/test/libraries/BorrowMathTest.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../libraries/BorrowMath.sol",
+        "../../interfaces/IPair.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "BorrowMathTest"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/libraries/MathTest.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "54bedaf22d172217d28bce18ac5a2ef0",
+      "sourceName": "contracts/test/libraries/MathTest.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../libraries/Math.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "MathTest"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/libraries/BurnMathTest.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "8e7e59b6ed0a5fa15074db5dd50ce7f8",
+      "sourceName": "contracts/test/libraries/BurnMathTest.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../libraries/BurnMath.sol",
+        "../../interfaces/IPair.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "BurnMathTest"
+      ]
+    },
+    "/home/joffrey/Documents/smartaudit/code4rena/2022-01-timeswap/Timeswap/Timeswap-V1-Core/contracts/test/libraries/ArrayTest.sol": {
+      "lastModificationDate": 1641638339764,
+      "contentHash": "26cc5942b6b0ba031cd574abffa2279e",
+      "sourceName": "contracts/test/libraries/ArrayTest.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "../../libraries/Array.sol",
+        "../../interfaces/IPair.sol"
+      ],
+      "versionPragmas": [
+        "=0.8.4"
+      ],
+      "artifacts": [
+        "ArrayTest"
+      ]
+    }
+  }
+}

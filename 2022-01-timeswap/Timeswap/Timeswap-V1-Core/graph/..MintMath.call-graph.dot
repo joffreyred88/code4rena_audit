@@ -1,0 +1,13 @@
+strict digraph {
+subgraph cluster_5174_MintMath {
+label = "MintMath"
+"5174_getLiquidityTotal" [label="getLiquidityTotal"]
+"5174_min" [label="min"]
+"5174_getDebt" [label="getDebt"]
+"5174_getCollateral" [label="getCollateral"]
+"5174_getLiquidity" [label="getLiquidity"]
+"5174_getLiquidityTotal" -> "5174_min"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

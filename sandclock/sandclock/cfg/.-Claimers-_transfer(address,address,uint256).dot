@@ -1,0 +1,76 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(ERC721.ownerOf(tokenId) == from,ERC721: transfer of token that is not own)
+
+IRs:
+TMP_1474(address) = INTERNAL_CALL, ERC721.ownerOf(uint256)(tokenId)
+TMP_1475(bool) = TMP_1474 == from
+TMP_1476(None) = SOLIDITY_CALL require(bool,string)(TMP_1475,ERC721: transfer of token that is not own)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(to != address(0),ERC721: transfer to the zero address)
+
+IRs:
+TMP_1477 = CONVERT 0 to address
+TMP_1478(bool) = to != TMP_1477
+TMP_1479(None) = SOLIDITY_CALL require(bool,string)(TMP_1478,ERC721: transfer to the zero address)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+_beforeTokenTransfer(from,to,tokenId)
+
+IRs:
+INTERNAL_CALL, Claimers._beforeTokenTransfer(address,address,uint256)(from,to,tokenId)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+_approve(address(0),tokenId)
+
+IRs:
+TMP_1481 = CONVERT 0 to address
+INTERNAL_CALL, ERC721._approve(address,uint256)(TMP_1481,tokenId)"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+_balances[from] -= 1
+
+IRs:
+REF_574(uint256) -> _balances[from]
+REF_574(-> _balances) = REF_574 (c)- 1"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+_balances[to] += 1
+
+IRs:
+REF_575(uint256) -> _balances[to]
+REF_575(-> _balances) = REF_575 (c)+ 1"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+_owners[tokenId] = to
+
+IRs:
+REF_576(address) -> _owners[tokenId]
+REF_576 (->_owners) := to(address)"];
+7->8;
+8[label="Node Type: EXPRESSION 8
+
+EXPRESSION:
+Transfer(from,to,tokenId)
+
+IRs:
+Emit Transfer(from.to.tokenId)"];
+}

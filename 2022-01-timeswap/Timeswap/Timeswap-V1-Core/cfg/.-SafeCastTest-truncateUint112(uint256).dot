@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+SafeCast.truncateUint112(x)
+
+IRs:
+TMP_653(uint112) = LIBRARY_CALL, dest:SafeCast, function:SafeCast.truncateUint112(uint256), arguments:['x'] 
+RETURN TMP_653"];
+}

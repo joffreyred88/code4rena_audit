@@ -1,0 +1,86 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: IF 1
+
+EXPRESSION:
+to.isContract()
+
+IRs:
+TMP_187(bool) = LIBRARY_CALL, dest:Address, function:Address.isContract(address), arguments:['to'] 
+CONDITION TMP_187"];
+1->2[label="True"];
+1->11[label="False"];
+2[label="Node Type: TRY 2
+
+EXPRESSION:
+IERC721Receiver(to).onERC721Received(_msgSender(),from,tokenId,_data)
+
+IRs:
+TMP_188 = CONVERT to to IERC721Receiver
+TMP_189(address) = INTERNAL_CALL, Context._msgSender()()
+TMP_190(bytes4) = HIGH_LEVEL_CALL, dest:TMP_188(IERC721Receiver), function:onERC721Received, arguments:['TMP_189', 'from', 'tokenId', '_data']  "];
+2->3;
+2->5;
+2->12;
+3[label="Node Type: CATCH 3
+"];
+3->4;
+4[label="Node Type: RETURN 4
+
+EXPRESSION:
+retval == IERC721Receiver.onERC721Received.selector
+
+IRs:
+REF_68 (->None) := 353073666(uint256)
+TMP_191(bool) = retval == REF_68
+RETURN TMP_191"];
+5[label="Node Type: CATCH 5
+"];
+5->6;
+6[label="Node Type: IF 6
+
+EXPRESSION:
+reason.length == 0
+
+IRs:
+REF_69 -> LENGTH reason
+TMP_192(bool) = REF_69 == 0
+CONDITION TMP_192"];
+6->7[label="True"];
+6->8[label="False"];
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+revert(string)(ERC721: transfer to non ERC721Receiver implementer)
+
+IRs:
+TMP_193(None) = SOLIDITY_CALL revert(string)(ERC721: transfer to non ERC721Receiver implementer)"];
+7->10;
+8[label="Node Type: INLINE ASM 8
+"];
+8->9;
+9[label="Node Type: EXPRESSION 9
+
+EXPRESSION:
+revert(uint256,uint256)(32 + reason,mload(uint256)(reason))
+
+IRs:
+TMP_194(uint256) = 32 + reason
+TMP_195(uint256) = SOLIDITY_CALL mload(uint256)(reason)
+TMP_196(None) = SOLIDITY_CALL revert(uint256,uint256)(TMP_194,TMP_195)"];
+9->10;
+10[label="Node Type: END_IF 10
+"];
+10->12;
+11[label="Node Type: RETURN 11
+
+EXPRESSION:
+true
+
+IRs:
+RETURN True"];
+12[label="Node Type: END_IF 12
+"];
+}

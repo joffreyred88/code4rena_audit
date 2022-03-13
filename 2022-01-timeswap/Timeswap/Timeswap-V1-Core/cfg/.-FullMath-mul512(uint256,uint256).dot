@@ -1,0 +1,40 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: INLINE ASM 1
+"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+mm_mul512_asm_0 = mulmod(uint256,uint256,uint256)(a,b,~ 0)
+
+IRs:
+TMP_397 = ~ 0 
+TMP_398(uint256) = SOLIDITY_CALL mulmod(uint256,uint256,uint256)(a,b,TMP_397)
+mm_mul512_asm_0(uint256) := TMP_398(uint256)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+prod0 = a * b
+
+IRs:
+TMP_399(uint256) = a * b
+prod0(uint256) := TMP_399(uint256)"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+prod1 = mm_mul512_asm_0 - prod0 - mm_mul512_asm_0 < prod0
+
+IRs:
+TMP_400(uint256) = mm_mul512_asm_0 - prod0
+TMP_401(bool) = mm_mul512_asm_0 < prod0
+TMP_402(uint256) = TMP_400 - TMP_401
+prod1(uint256) := TMP_402(uint256)"];
+}

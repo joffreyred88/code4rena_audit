@@ -1,0 +1,35 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(address(this).balance >= amount,Address: insufficient balance)
+
+IRs:
+TMP_198 = CONVERT this to address
+REF_71 -> BALANCE TMP_198
+TMP_199(bool) = REF_71 >= amount
+TMP_200(None) = SOLIDITY_CALL require(bool,string)(TMP_199,Address: insufficient balance)"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+(success) = recipient.call{value: amount}()
+
+IRs:
+TUPLE_0(bool,bytes) = LOW_LEVEL_CALL, dest:recipient, function:call, arguments:[''] value:amount 
+success(bool)= UNPACK TUPLE_0 index: 0 "];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+require(bool,string)(success,Address: unable to send value, recipient may have reverted)
+
+IRs:
+TMP_201(None) = SOLIDITY_CALL require(bool,string)(success,Address: unable to send value, recipient may have reverted)"];
+}

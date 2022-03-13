@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+Math.divUp(x,y)
+
+IRs:
+TMP_641(uint256) = LIBRARY_CALL, dest:Math, function:Math.divUp(uint256,uint256), arguments:['x', 'y'] 
+RETURN TMP_641"];
+}

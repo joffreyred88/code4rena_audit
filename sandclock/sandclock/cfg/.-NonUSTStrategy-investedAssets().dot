@@ -1,0 +1,46 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+underlyingBalance = _getUnderlyingBalance()
+
+IRs:
+TMP_1199(uint256) = INTERNAL_CALL, BaseStrategy._getUnderlyingBalance()()
+underlyingBalance(uint256) := TMP_1199(uint256)"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+
+EXPRESSION:
+aUstBalance = _getAUstBalance() + pendingRedeems
+
+IRs:
+TMP_1200(uint256) = INTERNAL_CALL, BaseStrategy._getAUstBalance()()
+TMP_1201(uint256) = TMP_1200 (c)+ pendingRedeems
+aUstBalance(uint256) := TMP_1201(uint256)"];
+2->3;
+3[label="Node Type: NEW VARIABLE 3
+
+EXPRESSION:
+ustAssets = ((exchangeRateFeeder.exchangeRateOf(address(aUstToken),true) * aUstBalance) / 1e18) + pendingDeposits
+
+IRs:
+TMP_1202 = CONVERT aUstToken to address
+TMP_1203(uint256) = HIGH_LEVEL_CALL, dest:exchangeRateFeeder(IExchangeRateFeeder), function:exchangeRateOf, arguments:['TMP_1202', 'True']  
+TMP_1204(uint256) = TMP_1203 (c)* aUstBalance
+TMP_1205(uint256) = TMP_1204 (c)/ 1000000000000000000
+TMP_1206(uint256) = TMP_1205 (c)+ pendingDeposits
+ustAssets(uint256) := TMP_1206(uint256)"];
+3->4;
+4[label="Node Type: RETURN 4
+
+EXPRESSION:
+underlyingBalance + curvePool.get_dy_underlying(ustI,underlyingI,ustAssets)
+
+IRs:
+TMP_1207(uint256) = HIGH_LEVEL_CALL, dest:curvePool(ICurve), function:get_dy_underlying, arguments:['ustI', 'underlyingI', 'ustAssets']  
+TMP_1208(uint256) = underlyingBalance (c)+ TMP_1207
+RETURN TMP_1208"];
+}

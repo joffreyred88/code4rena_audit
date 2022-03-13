@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+MintMath.getLiquidityTotal(state,xIncrease,yIncrease,zIncrease)
+
+IRs:
+TMP_644(uint256) = LIBRARY_CALL, dest:MintMath, function:MintMath.getLiquidityTotal(IPair.State,uint112,uint112,uint112), arguments:['state', 'xIncrease', 'yIncrease', 'zIncrease'] 
+RETURN TMP_644"];
+}

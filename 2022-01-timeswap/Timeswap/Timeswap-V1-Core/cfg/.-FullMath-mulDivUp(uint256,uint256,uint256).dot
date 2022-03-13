@@ -1,0 +1,36 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+result = mulDiv(a,b,denominator)
+
+IRs:
+TMP_436(uint256) = INTERNAL_CALL, FullMath.mulDiv(uint256,uint256,uint256)(a,b,denominator)
+result(uint256) := TMP_436(uint256)"];
+1->2;
+2[label="Node Type: IF 2
+
+EXPRESSION:
+mulmod(uint256,uint256,uint256)(a,b,denominator) > 0
+
+IRs:
+TMP_437(uint256) = SOLIDITY_CALL mulmod(uint256,uint256,uint256)(a,b,denominator)
+TMP_438(bool) = TMP_437 > 0
+CONDITION TMP_438"];
+2->3[label="True"];
+2->4[label="False"];
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+result ++
+
+IRs:
+TMP_439(uint256) := result(uint256)
+result(uint256) = result (c)+ 1"];
+3->4;
+4[label="Node Type: END_IF 4
+"];
+}

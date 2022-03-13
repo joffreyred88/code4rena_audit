@@ -1,0 +1,14 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+aUstToken.balanceOf(address(this))
+
+IRs:
+TMP_728 = CONVERT this to address
+TMP_729(uint256) = HIGH_LEVEL_CALL, dest:aUstToken(IERC20), function:balanceOf, arguments:['TMP_728']  
+RETURN TMP_729"];
+}

@@ -1,0 +1,225 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->22;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(block.timestamp >= maturity,E203)
+
+IRs:
+TMP_240(bool) = block.timestamp >= maturity
+TMP_241(None) = SOLIDITY_CALL require(bool,string)(TMP_240,E203)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(assetTo != address(0) && collateralTo != address(0),E201)
+
+IRs:
+TMP_242 = CONVERT 0 to address
+TMP_243(bool) = assetTo != TMP_242
+TMP_244 = CONVERT 0 to address
+TMP_245(bool) = collateralTo != TMP_244
+TMP_246(bool) = TMP_243 && TMP_245
+TMP_247(None) = SOLIDITY_CALL require(bool,string)(TMP_246,E201)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+require(bool,string)(assetTo != address(this) && collateralTo != address(this),E204)
+
+IRs:
+TMP_248 = CONVERT this to address
+TMP_249(bool) = assetTo != TMP_248
+TMP_250 = CONVERT this to address
+TMP_251(bool) = collateralTo != TMP_250
+TMP_252(bool) = TMP_249 && TMP_251
+TMP_253(None) = SOLIDITY_CALL require(bool,string)(TMP_252,E204)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+require(bool,string)(claimsIn.bond > 0 || claimsIn.insurance > 0,E205)
+
+IRs:
+REF_198(uint128) -> claimsIn.bond
+TMP_254(bool) = REF_198 > 0
+REF_199(uint128) -> claimsIn.insurance
+TMP_255(bool) = REF_199 > 0
+TMP_256(bool) = TMP_254 || TMP_255
+TMP_257(None) = SOLIDITY_CALL require(bool,string)(TMP_256,E205)"];
+4->5;
+5[label="Node Type: NEW VARIABLE 5
+
+EXPRESSION:
+pool = pools[maturity]
+
+IRs:
+REF_200(IPair.Pool) -> pools[maturity]
+pool(IPair.Pool) := REF_200(IPair.Pool)"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+tokensOut.asset = WithdrawMath.getAsset(pool.state,claimsIn.bond)
+
+IRs:
+REF_201(uint128) -> tokensOut.asset
+REF_203(IPair.State) -> pool.state
+REF_204(uint128) -> claimsIn.bond
+TMP_258(uint128) = LIBRARY_CALL, dest:WithdrawMath, function:WithdrawMath.getAsset(IPair.State,uint128), arguments:['REF_203', 'REF_204'] 
+REF_201 (->tokensOut) := TMP_258(uint128)"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+tokensOut.collateral = WithdrawMath.getCollateral(pool.state,claimsIn.insurance)
+
+IRs:
+REF_205(uint128) -> tokensOut.collateral
+REF_207(IPair.State) -> pool.state
+REF_208(uint128) -> claimsIn.insurance
+TMP_259(uint128) = LIBRARY_CALL, dest:WithdrawMath, function:WithdrawMath.getCollateral(IPair.State,uint128), arguments:['REF_207', 'REF_208'] 
+REF_205 (->tokensOut) := TMP_259(uint128)"];
+7->8;
+8[label="Node Type: EXPRESSION 8
+
+EXPRESSION:
+pool.state.totalClaims.bond -= claimsIn.bond
+
+IRs:
+REF_209(IPair.State) -> pool.state
+REF_210(IPair.Claims) -> REF_209.totalClaims
+REF_211(uint128) -> REF_210.bond
+REF_212(uint128) -> claimsIn.bond
+REF_211(-> pool) = REF_211 (c)- REF_212"];
+8->9;
+9[label="Node Type: EXPRESSION 9
+
+EXPRESSION:
+pool.state.totalClaims.insurance -= claimsIn.insurance
+
+IRs:
+REF_213(IPair.State) -> pool.state
+REF_214(IPair.Claims) -> REF_213.totalClaims
+REF_215(uint128) -> REF_214.insurance
+REF_216(uint128) -> claimsIn.insurance
+REF_215(-> pool) = REF_215 (c)- REF_216"];
+9->10;
+10[label="Node Type: NEW VARIABLE 10
+
+EXPRESSION:
+sender = pool.claims[msg.sender]
+
+IRs:
+REF_217(mapping(address => IPair.Claims)) -> pool.claims
+REF_218(IPair.Claims) -> REF_217[msg.sender]
+sender(IPair.Claims) := REF_218(IPair.Claims)"];
+10->11;
+11[label="Node Type: EXPRESSION 11
+
+EXPRESSION:
+sender.bond -= claimsIn.bond
+
+IRs:
+REF_219(uint128) -> sender.bond
+REF_220(uint128) -> claimsIn.bond
+REF_219(-> sender) = REF_219 (c)- REF_220"];
+11->12;
+12[label="Node Type: EXPRESSION 12
+
+EXPRESSION:
+sender.insurance -= claimsIn.insurance
+
+IRs:
+REF_221(uint128) -> sender.insurance
+REF_222(uint128) -> claimsIn.insurance
+REF_221(-> sender) = REF_221 (c)- REF_222"];
+12->13;
+13[label="Node Type: EXPRESSION 13
+
+EXPRESSION:
+pool.state.reserves.asset -= tokensOut.asset
+
+IRs:
+REF_223(IPair.State) -> pool.state
+REF_224(IPair.Tokens) -> REF_223.reserves
+REF_225(uint128) -> REF_224.asset
+REF_226(uint128) -> tokensOut.asset
+REF_225(-> pool) = REF_225 (c)- REF_226"];
+13->14;
+14[label="Node Type: EXPRESSION 14
+
+EXPRESSION:
+pool.state.reserves.collateral -= tokensOut.collateral
+
+IRs:
+REF_227(IPair.State) -> pool.state
+REF_228(IPair.Tokens) -> REF_227.reserves
+REF_229(uint128) -> REF_228.collateral
+REF_230(uint128) -> tokensOut.collateral
+REF_229(-> pool) = REF_229 (c)- REF_230"];
+14->15;
+15[label="Node Type: IF 15
+
+EXPRESSION:
+tokensOut.asset > 0
+
+IRs:
+REF_231(uint128) -> tokensOut.asset
+TMP_260(bool) = REF_231 > 0
+CONDITION TMP_260"];
+15->16[label="True"];
+15->17[label="False"];
+16[label="Node Type: EXPRESSION 16
+
+EXPRESSION:
+asset.safeTransfer(assetTo,tokensOut.asset)
+
+IRs:
+REF_233(uint128) -> tokensOut.asset
+LIBRARY_CALL, dest:SafeTransfer, function:SafeTransfer.safeTransfer(IERC20,address,uint256), arguments:['asset', 'assetTo', 'REF_233'] "];
+16->17;
+17[label="Node Type: END_IF 17
+"];
+17->18;
+18[label="Node Type: IF 18
+
+EXPRESSION:
+tokensOut.collateral > 0
+
+IRs:
+REF_234(uint128) -> tokensOut.collateral
+TMP_262(bool) = REF_234 > 0
+CONDITION TMP_262"];
+18->19[label="True"];
+18->20[label="False"];
+19[label="Node Type: EXPRESSION 19
+
+EXPRESSION:
+collateral.safeTransfer(collateralTo,tokensOut.collateral)
+
+IRs:
+REF_236(uint128) -> tokensOut.collateral
+LIBRARY_CALL, dest:SafeTransfer, function:SafeTransfer.safeTransfer(IERC20,address,uint256), arguments:['collateral', 'collateralTo', 'REF_236'] "];
+19->20;
+20[label="Node Type: END_IF 20
+"];
+20->21;
+21[label="Node Type: EXPRESSION 21
+
+EXPRESSION:
+Withdraw(maturity,msg.sender,assetTo,collateralTo,claimsIn,tokensOut)
+
+IRs:
+Emit Withdraw(maturity.msg.sender.assetTo.collateralTo.claimsIn.tokensOut)"];
+22[label="Node Type: EXPRESSION 22
+
+EXPRESSION:
+lock()
+
+IRs:
+MODIFIER_CALL, TimeswapPair.lock()()"];
+22->1;
+}

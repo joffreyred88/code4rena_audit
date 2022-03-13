@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+BorrowMath.getCollateral(maturity,state,xDecrease,zIncrease)
+
+IRs:
+TMP_623(uint112) = LIBRARY_CALL, dest:BorrowMath, function:BorrowMath.getCollateral(uint256,IPair.State,uint112,uint112), arguments:['maturity', 'state', 'xDecrease', 'zIncrease'] 
+RETURN TMP_623"];
+}

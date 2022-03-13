@@ -1,0 +1,20 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+PayMath.checkProportional(assetIn,collateralOut,due)
+
+IRs:
+LIBRARY_CALL, dest:PayMath, function:PayMath.checkProportional(uint112,uint112,IPair.Due), arguments:['assetIn', 'collateralOut', 'due'] "];
+1->2;
+2[label="Node Type: RETURN 2
+
+EXPRESSION:
+true
+
+IRs:
+RETURN True"];
+}

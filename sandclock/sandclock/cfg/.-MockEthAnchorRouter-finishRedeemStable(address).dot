@@ -1,0 +1,32 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool)(redeemFinishResults[_operation] > 0)
+
+IRs:
+REF_208(uint256) -> redeemFinishResults[_operation]
+TMP_624(bool) = REF_208 > 0
+TMP_625(None) = SOLIDITY_CALL require(bool)(TMP_624)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+ustToken.safeTransfer(msg.sender,redeemFinishResults[_operation])
+
+IRs:
+REF_210(uint256) -> redeemFinishResults[_operation]
+LIBRARY_CALL, dest:SafeERC20, function:SafeERC20.safeTransfer(IERC20,address,uint256), arguments:['ustToken', 'msg.sender', 'REF_210'] "];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+redeemFinishResults[_operation] = 0
+
+IRs:
+REF_211(uint256) -> redeemFinishResults[_operation]
+REF_211 (->redeemFinishResults) := 0(uint256)"];
+}

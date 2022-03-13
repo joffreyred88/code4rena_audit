@@ -1,0 +1,257 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+(prod0,prod1) = mul512(a,b)
+
+IRs:
+TUPLE_6(uint256,uint256) = INTERNAL_CALL, FullMath.mul512(uint256,uint256)(a,b)
+prod0(uint256)= UNPACK TUPLE_6 index: 0 
+prod1(uint256)= UNPACK TUPLE_6 index: 1 "];
+3->4;
+4[label="Node Type: IF 4
+
+EXPRESSION:
+prod1 == 0
+
+IRs:
+TMP_403(bool) = prod1 == 0
+CONDITION TMP_403"];
+4->5[label="True"];
+4->9[label="False"];
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+require(bool)(denominator > 0)
+
+IRs:
+TMP_404(bool) = denominator > 0
+TMP_405(None) = SOLIDITY_CALL require(bool)(TMP_404)"];
+5->6;
+6[label="Node Type: INLINE ASM 6
+"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+result = prod0 / denominator
+
+IRs:
+TMP_406(uint256) = prod0 / denominator
+result(uint256) := TMP_406(uint256)"];
+7->8;
+8[label="Node Type: RETURN 8
+
+EXPRESSION:
+result
+
+IRs:
+RETURN result"];
+9[label="Node Type: END_IF 9
+"];
+9->10;
+10[label="Node Type: EXPRESSION 10
+
+EXPRESSION:
+require(bool)(denominator > prod1)
+
+IRs:
+TMP_407(bool) = denominator > prod1
+TMP_408(None) = SOLIDITY_CALL require(bool)(TMP_407)"];
+10->11;
+11[label="Node Type: NEW VARIABLE 11
+"];
+11->12;
+12[label="Node Type: INLINE ASM 12
+"];
+12->13;
+13[label="Node Type: EXPRESSION 13
+
+EXPRESSION:
+remainder = mulmod(uint256,uint256,uint256)(a,b,denominator)
+
+IRs:
+TMP_409(uint256) = SOLIDITY_CALL mulmod(uint256,uint256,uint256)(a,b,denominator)
+remainder(uint256) := TMP_409(uint256)"];
+13->14;
+14[label="Node Type: INLINE ASM 14
+"];
+14->15;
+15[label="Node Type: EXPRESSION 15
+
+EXPRESSION:
+prod1 = prod1 - remainder > prod0
+
+IRs:
+TMP_410(bool) = remainder > prod0
+TMP_411(uint256) = prod1 - TMP_410
+prod1(uint256) := TMP_411(uint256)"];
+15->16;
+16[label="Node Type: EXPRESSION 16
+
+EXPRESSION:
+prod0 = prod0 - remainder
+
+IRs:
+TMP_412(uint256) = prod0 - remainder
+prod0(uint256) := TMP_412(uint256)"];
+16->17;
+17[label="Node Type: NEW VARIABLE 17
+"];
+17->18;
+18[label="Node Type: EXPRESSION 18
+
+EXPRESSION:
+twos = (0 - denominator) & denominator
+
+IRs:
+TMP_413(uint256) = 0 - denominator
+TMP_414(uint256) = TMP_413 & denominator
+twos(uint256) := TMP_414(uint256)"];
+18->19;
+19[label="Node Type: INLINE ASM 19
+"];
+19->20;
+20[label="Node Type: EXPRESSION 20
+
+EXPRESSION:
+denominator = denominator / twos
+
+IRs:
+TMP_415(uint256) = denominator / twos
+denominator(uint256) := TMP_415(uint256)"];
+20->21;
+21[label="Node Type: INLINE ASM 21
+"];
+21->22;
+22[label="Node Type: EXPRESSION 22
+
+EXPRESSION:
+prod0 = prod0 / twos
+
+IRs:
+TMP_416(uint256) = prod0 / twos
+prod0(uint256) := TMP_416(uint256)"];
+22->23;
+23[label="Node Type: INLINE ASM 23
+"];
+23->24;
+24[label="Node Type: EXPRESSION 24
+
+EXPRESSION:
+twos = 0 - twos / twos + 1
+
+IRs:
+TMP_417(uint256) = 0 - twos
+TMP_418(uint256) = TMP_417 / twos
+TMP_419(uint256) = TMP_418 + 1
+twos(uint256) := TMP_419(uint256)"];
+24->25;
+25[label="Node Type: EXPRESSION 25
+
+EXPRESSION:
+prod0 |= prod1 * twos
+
+IRs:
+TMP_420(uint256) = prod1 * twos
+prod0(uint256) = prod0 | TMP_420"];
+25->26;
+26[label="Node Type: NEW VARIABLE 26
+"];
+26->27;
+27[label="Node Type: EXPRESSION 27
+
+EXPRESSION:
+inv = (3 * denominator) ^ 2
+
+IRs:
+TMP_421(uint256) = 3 * denominator
+TMP_422(uint256) = TMP_421 ^ 2
+inv(uint256) := TMP_422(uint256)"];
+27->28;
+28[label="Node Type: EXPRESSION 28
+
+EXPRESSION:
+inv *= 2 - denominator * inv
+
+IRs:
+TMP_423(uint256) = denominator * inv
+TMP_424(uint256) = 2 - TMP_423
+inv(uint256) = inv * TMP_424"];
+28->29;
+29[label="Node Type: EXPRESSION 29
+
+EXPRESSION:
+inv *= 2 - denominator * inv
+
+IRs:
+TMP_425(uint256) = denominator * inv
+TMP_426(uint256) = 2 - TMP_425
+inv(uint256) = inv * TMP_426"];
+29->30;
+30[label="Node Type: EXPRESSION 30
+
+EXPRESSION:
+inv *= 2 - denominator * inv
+
+IRs:
+TMP_427(uint256) = denominator * inv
+TMP_428(uint256) = 2 - TMP_427
+inv(uint256) = inv * TMP_428"];
+30->31;
+31[label="Node Type: EXPRESSION 31
+
+EXPRESSION:
+inv *= 2 - denominator * inv
+
+IRs:
+TMP_429(uint256) = denominator * inv
+TMP_430(uint256) = 2 - TMP_429
+inv(uint256) = inv * TMP_430"];
+31->32;
+32[label="Node Type: EXPRESSION 32
+
+EXPRESSION:
+inv *= 2 - denominator * inv
+
+IRs:
+TMP_431(uint256) = denominator * inv
+TMP_432(uint256) = 2 - TMP_431
+inv(uint256) = inv * TMP_432"];
+32->33;
+33[label="Node Type: EXPRESSION 33
+
+EXPRESSION:
+inv *= 2 - denominator * inv
+
+IRs:
+TMP_433(uint256) = denominator * inv
+TMP_434(uint256) = 2 - TMP_433
+inv(uint256) = inv * TMP_434"];
+33->34;
+34[label="Node Type: EXPRESSION 34
+
+EXPRESSION:
+result = prod0 * inv
+
+IRs:
+TMP_435(uint256) = prod0 * inv
+result(uint256) := TMP_435(uint256)"];
+34->35;
+35[label="Node Type: RETURN 35
+
+EXPRESSION:
+result
+
+IRs:
+RETURN result"];
+}

@@ -1,0 +1,49 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+payloadLength = payload.length
+
+IRs:
+REF_646 -> LENGTH payload
+payloadLength(uint256) := REF_646(uint256)"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+
+EXPRESSION:
+consoleAddress = CONSOLE_ADDRESS
+
+IRs:
+consoleAddress(address) := CONSOLE_ADDRESS(address)"];
+2->3;
+3[label="Node Type: INLINE ASM 3
+"];
+3->4;
+4[label="Node Type: NEW VARIABLE 4
+"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+payloadStart__sendLogPayload_asm_0 = payload + 32
+
+IRs:
+TMP_1638(bytes) = payload + 32
+payloadStart__sendLogPayload_asm_0(uint256) := TMP_1638(bytes)"];
+5->6;
+6[label="Node Type: NEW VARIABLE 6
+"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+r__sendLogPayload_asm_0 = staticcall(uint256,uint256,uint256,uint256,uint256,uint256)(gas()(),consoleAddress,payloadStart__sendLogPayload_asm_0,payloadLength,0,0)
+
+IRs:
+TMP_1639(uint256) = SOLIDITY_CALL gas()()
+TMP_1640(uint256) = SOLIDITY_CALL staticcall(uint256,uint256,uint256,uint256,uint256,uint256)(TMP_1639,consoleAddress,payloadStart__sendLogPayload_asm_0,payloadLength,0,0)
+r__sendLogPayload_asm_0(uint256) := TMP_1640(uint256)"];
+}

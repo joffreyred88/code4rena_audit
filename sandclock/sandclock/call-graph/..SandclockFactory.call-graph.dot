@@ -1,0 +1,32 @@
+strict digraph {
+subgraph cluster_2560_Trust {
+label = "Trust"
+"2560_setIsTrusted" [label="setIsTrusted"]
+"2560_constructor" [label="constructor"]
+"2560_setIsTrusted" -> "2560_requiresTrust"
+}subgraph cluster_2651_SandclockFactory {
+label = "SandclockFactory"
+"2651_deployDCA" [label="deployDCA"]
+"2651_constructor" [label="constructor"]
+"2651_deployVault" [label="deployVault"]
+"2651_deploy" [label="deploy"]
+"2651_constructor" -> "2651__msgSender"
+"2651_constructor" -> "2651_constructor"
+"2651_deployVault" -> "2651_requiresTrust"
+"2651_deployDCA" -> "2651_requiresTrust"
+"2651_deployDCA" -> "2651_deploy"
+"2651_deployVault" -> "2651_deploy"
+}subgraph cluster_2183_Context {
+label = "Context"
+"2183__msgData" [label="_msgData"]
+"2183__msgSender" [label="_msgSender"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"create2(uint256,uint256,uint256,uint256)" 
+"revert(uint256,uint256)" 
+"mload(uint256)" 
+"2651_deploy" -> "mload(uint256)"
+"2651_deploy" -> "revert(uint256,uint256)"
+"2651_deploy" -> "create2(uint256,uint256,uint256,uint256)"
+}
+}

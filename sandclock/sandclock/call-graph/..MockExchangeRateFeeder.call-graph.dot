@@ -1,0 +1,12 @@
+strict digraph {
+subgraph cluster_4785_MockExchangeRateFeeder {
+label = "MockExchangeRateFeeder"
+"4785_setExchangeRate" [label="setExchangeRate"]
+"4785_exchangeRateOf" [label="exchangeRateOf"]
+}subgraph cluster_5959_IExchangeRateFeeder {
+label = "IExchangeRateFeeder"
+"5959_exchangeRateOf" [label="exchangeRateOf"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

@@ -1,0 +1,36 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(_exists(tokenId),ERC721: operator query for nonexistent token)
+
+IRs:
+TMP_1569(bool) = INTERNAL_CALL, ERC721._exists(uint256)(tokenId)
+TMP_1570(None) = SOLIDITY_CALL require(bool,string)(TMP_1569,ERC721: operator query for nonexistent token)"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+
+EXPRESSION:
+owner = ERC721.ownerOf(tokenId)
+
+IRs:
+TMP_1571(address) = INTERNAL_CALL, ERC721.ownerOf(uint256)(tokenId)
+owner(address) := TMP_1571(address)"];
+2->3;
+3[label="Node Type: RETURN 3
+
+EXPRESSION:
+(spender == owner || getApproved(tokenId) == spender || isApprovedForAll(owner,spender))
+
+IRs:
+TMP_1572(bool) = spender == owner
+TMP_1573(address) = INTERNAL_CALL, ERC721.getApproved(uint256)(tokenId)
+TMP_1574(bool) = TMP_1573 == spender
+TMP_1575(bool) = TMP_1572 || TMP_1574
+TMP_1576(bool) = INTERNAL_CALL, ERC721.isApprovedForAll(address,address)(owner,spender)
+TMP_1577(bool) = TMP_1575 || TMP_1576
+RETURN TMP_1577"];
+}

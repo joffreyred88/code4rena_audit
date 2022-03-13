@@ -1,0 +1,91 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+amount = _amount.percOf(_claim.pct)
+
+IRs:
+REF_139(uint16) -> _claim.pct
+TMP_431(uint256) = LIBRARY_CALL, dest:PercentMath, function:PercentMath.percOf(uint256,uint256), arguments:['_amount', 'REF_139'] 
+amount(uint256) := TMP_431(uint256)"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+
+EXPRESSION:
+newShares = _computeShares(amount,_localTotalShares,_localTotalPrincipal)
+
+IRs:
+TMP_432(uint256) = INTERNAL_CALL, Vault._computeShares(uint256,uint256,uint256)(amount,_localTotalShares,_localTotalPrincipal)
+newShares(uint256) := TMP_432(uint256)"];
+2->3;
+3[label="Node Type: NEW VARIABLE 3
+
+EXPRESSION:
+claimerId = claimers.mint(_claim.beneficiary,amount,newShares)
+
+IRs:
+REF_141(address) -> _claim.beneficiary
+TMP_433(uint256) = HIGH_LEVEL_CALL, dest:claimers(Claimers), function:mint, arguments:['REF_141', 'amount', 'newShares']  
+claimerId(uint256) := TMP_433(uint256)"];
+3->4;
+4[label="Node Type: NEW VARIABLE 4
+
+EXPRESSION:
+tokenId = depositors.mint(_msgSender(),amount,claimerId,_lockedUntil)
+
+IRs:
+TMP_434(address) = INTERNAL_CALL, Context._msgSender()()
+TMP_435(uint256) = HIGH_LEVEL_CALL, dest:depositors(Depositors), function:mint, arguments:['TMP_434', 'amount', 'claimerId', '_lockedUntil']  
+tokenId(uint256) := TMP_435(uint256)"];
+4->5;
+5[label="Node Type: IF 5
+
+EXPRESSION:
+_isIntegration(_claim.beneficiary)
+
+IRs:
+REF_143(address) -> _claim.beneficiary
+TMP_436(bool) = INTERNAL_CALL, Vault._isIntegration(address)(REF_143)
+CONDITION TMP_436"];
+5->6[label="True"];
+5->8[label="False"];
+6[label="Node Type: NEW VARIABLE 6
+
+EXPRESSION:
+ret = IIntegration(_claim.beneficiary).onDepositMinted(tokenId,newShares,_claim.data)
+
+IRs:
+REF_144(address) -> _claim.beneficiary
+TMP_437 = CONVERT REF_144 to IIntegration
+REF_146(bytes) -> _claim.data
+TMP_438(bytes4) = HIGH_LEVEL_CALL, dest:TMP_437(IIntegration), function:onDepositMinted, arguments:['tokenId', 'newShares', 'REF_146']  
+ret(bytes4) := TMP_438(bytes4)"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+require(bool)(ret == IIntegration(_claim.beneficiary).onDepositMinted.selector)
+
+IRs:
+REF_147(address) -> _claim.beneficiary
+TMP_439 = CONVERT REF_147 to IIntegration
+REF_149 (->None) := 715685758(uint256)
+TMP_440(bool) = ret == REF_149
+TMP_441(None) = SOLIDITY_CALL require(bool)(TMP_440)"];
+7->8;
+8[label="Node Type: END_IF 8
+"];
+8->9;
+9[label="Node Type: EXPRESSION 9
+
+EXPRESSION:
+DepositMinted(tokenId,_depositGroupId,amount,newShares,_msgSender(),_claim.beneficiary,claimerId,_lockedUntil)
+
+IRs:
+TMP_442(address) = INTERNAL_CALL, Context._msgSender()()
+REF_150(address) -> _claim.beneficiary
+Emit DepositMinted(tokenId._depositGroupId.amount.newShares.TMP_442.REF_150.claimerId._lockedUntil)"];
+}

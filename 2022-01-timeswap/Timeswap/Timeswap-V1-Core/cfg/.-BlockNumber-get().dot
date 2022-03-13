@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+blockNumber = block.number.modUint32()
+
+IRs:
+TMP_326(uint32) = LIBRARY_CALL, dest:SafeCast, function:SafeCast.modUint32(uint256), arguments:['block.number'] 
+blockNumber(uint32) := TMP_326(uint32)"];
+}

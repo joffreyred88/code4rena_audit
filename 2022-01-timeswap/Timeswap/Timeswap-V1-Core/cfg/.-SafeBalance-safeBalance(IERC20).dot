@@ -1,0 +1,26 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+data = address(token).functionStaticCall(abi.encodeWithSelector(IERC20.balanceOf.selector,address(this)),balanceOf Call to IERC20 token not successful)
+
+IRs:
+TMP_479 = CONVERT token to address
+REF_410 (->None) := 1889567281(uint256)
+TMP_480 = CONVERT this to address
+TMP_481(bytes) = SOLIDITY_CALL abi.encodeWithSelector()(REF_410,TMP_480)
+TMP_482(bytes) = LIBRARY_CALL, dest:Address, function:Address.functionStaticCall(address,bytes,string), arguments:['TMP_479', 'TMP_481', 'balanceOf Call to IERC20 token not successful'] 
+data(bytes) := TMP_482(bytes)"];
+1->2;
+2[label="Node Type: RETURN 2
+
+EXPRESSION:
+abi.decode(data,(uint256))
+
+IRs:
+TMP_483(uint256) = SOLIDITY_CALL abi.decode()(data,uint256)
+RETURN TMP_483"];
+}

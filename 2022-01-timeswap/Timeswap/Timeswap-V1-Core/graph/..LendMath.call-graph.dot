@@ -1,0 +1,14 @@
+strict digraph {
+subgraph cluster_4875_LendMath {
+label = "LendMath"
+"4875_adjust" [label="adjust"]
+"4875_getBond" [label="getBond"]
+"4875_getInsurance" [label="getInsurance"]
+"4875_check" [label="check"]
+"4875_check" -> "4875_adjust"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"require(bool,string)" 
+"4875_check" -> "require(bool,string)"
+}
+}

@@ -1,0 +1,16 @@
+strict digraph {
+subgraph cluster_4377_Callback {
+label = "Callback"
+"4377_lend" [label="lend"]
+"4377_mint" [label="mint"]
+"4377_borrow" [label="borrow"]
+"4377_pay" [label="pay"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"require(bool,string)" 
+"4377_mint" -> "require(bool,string)"
+"4377_lend" -> "require(bool,string)"
+"4377_borrow" -> "require(bool,string)"
+"4377_pay" -> "require(bool,string)"
+}
+}

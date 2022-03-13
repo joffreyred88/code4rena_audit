@@ -1,0 +1,76 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->8;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(PercentMath.validPerc(_investPerc),Vault: invalid investPerc)
+
+IRs:
+TMP_284(bool) = LIBRARY_CALL, dest:PercentMath, function:PercentMath.validPerc(uint256), arguments:['_investPerc'] 
+TMP_285(None) = SOLIDITY_CALL require(bool,string)(TMP_284,Vault: invalid investPerc)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(address(_underlying) != address(0x0),VaultContext: underlying cannot be 0x0)
+
+IRs:
+TMP_286 = CONVERT _underlying to address
+TMP_287 = CONVERT 0 to address
+TMP_288(bool) = TMP_286 != TMP_287
+TMP_289(None) = SOLIDITY_CALL require(bool,string)(TMP_288,VaultContext: underlying cannot be 0x0)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+investPerc = _investPerc
+
+IRs:
+investPerc(uint256) := _investPerc(uint256)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+underlying = _underlying
+
+IRs:
+underlying(IERC20) := _underlying(IERC20)"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+minLockPeriod = _minLockPeriod
+
+IRs:
+minLockPeriod(uint256) := _minLockPeriod(uint256)"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+depositors = new Depositors(address(this),depositors,p)
+
+IRs:
+TMP_291 = CONVERT this to address
+TMP_292 = new Depositors(TMP_291,depositors,p) 
+depositors(Depositors) := TMP_292(Depositors)"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+claimers = new Claimers(address(this))
+
+IRs:
+TMP_294 = CONVERT this to address
+TMP_295 = new Claimers(TMP_294) 
+claimers(Claimers) := TMP_295(Claimers)"];
+8[label="Node Type: EXPRESSION 8
+
+EXPRESSION:
+Trust(_owner)
+
+IRs:
+INTERNAL_CALL, Trust.constructor(address)(_owner)"];
+8->1;
+}

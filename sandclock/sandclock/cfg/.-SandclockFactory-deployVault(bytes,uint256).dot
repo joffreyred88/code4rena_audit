@@ -1,0 +1,29 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->3;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+addr = deploy(code,salt)
+
+IRs:
+TMP_267(address) = INTERNAL_CALL, SandclockFactory.deploy(bytes,uint256)(code,salt)
+addr(address) := TMP_267(address)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+NewVault(addr,salt)
+
+IRs:
+Emit NewVault(addr.salt)"];
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+requiresTrust()
+
+IRs:
+MODIFIER_CALL, Trust.requiresTrust()()"];
+3->1;
+}

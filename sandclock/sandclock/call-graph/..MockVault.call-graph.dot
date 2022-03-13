@@ -1,0 +1,136 @@
+strict digraph {
+subgraph cluster_2560_Trust {
+label = "Trust"
+"2560_setIsTrusted" [label="setIsTrusted"]
+"2560_constructor" [label="constructor"]
+"2560_setIsTrusted" -> "2560_requiresTrust"
+}subgraph cluster_2496_IERC165 {
+label = "IERC165"
+"2496_supportsInterface" [label="supportsInterface"]
+}subgraph cluster_2183_Context {
+label = "Context"
+"2183__msgData" [label="_msgData"]
+"2183__msgSender" [label="_msgSender"]
+}subgraph cluster_4018_Vault {
+label = "Vault"
+"4018_sponsor" [label="sponsor"]
+"4018_forceUnsponsor" [label="forceUnsponsor"]
+"4018_updateInvested" [label="updateInvested"]
+"4018__withdraw" [label="_withdraw"]
+"4018_totalShares" [label="totalShares"]
+"4018__createClaim" [label="_createClaim"]
+"4018__blockTimestamp" [label="_blockTimestamp"]
+"4018_constructor" [label="constructor"]
+"4018__unsponsor" [label="_unsponsor"]
+"4018__createDeposit" [label="_createDeposit"]
+"4018_setInvestPerc" [label="setInvestPerc"]
+"4018_withdraw" [label="withdraw"]
+"4018_setStrategy" [label="setStrategy"]
+"4018__transferAndCheckUnderlying" [label="_transferAndCheckUnderlying"]
+"4018__withdrawDeposit" [label="_withdrawDeposit"]
+"4018__computeShares" [label="_computeShares"]
+"4018_deposit" [label="deposit"]
+"4018_totalUnderlying" [label="totalUnderlying"]
+"4018_unsponsor" [label="unsponsor"]
+"4018_supportsInterface" [label="supportsInterface"]
+"4018_forceWithdraw" [label="forceWithdraw"]
+"4018_yieldFor" [label="yieldFor"]
+"4018_claimYield" [label="claimYield"]
+"4018_investableAmount" [label="investableAmount"]
+"4018__isIntegration" [label="_isIntegration"]
+"4018_totalUnderlyingMinusSponsored" [label="totalUnderlyingMinusSponsored"]
+"4018__computeAmount" [label="_computeAmount"]
+"4018_setStrategy" -> "4018_requiresTrust"
+"4018__createClaim" -> "4018__computeShares"
+"4018__transferAndCheckUnderlying" -> "4018_totalUnderlying"
+"4018_forceUnsponsor" -> "4018__unsponsor"
+"4018_withdraw" -> "4018__withdraw"
+"4018_claimYield" -> "4018__computeShares"
+"4018__unsponsor" -> "4018_totalUnderlying"
+"4018__createDeposit" -> "4018_totalShares"
+"4018__createClaim" -> "4018__msgSender"
+"4018_setInvestPerc" -> "4018_requiresTrust"
+"4018_constructor" -> "4018_constructor"
+"4018__createClaim" -> "4018__isIntegration"
+"4018_investableAmount" -> "4018_totalUnderlying"
+"4018_claimYield" -> "4018__msgSender"
+"4018__withdrawDeposit" -> "4018__computeShares"
+"4018_yieldFor" -> "4018_totalShares"
+"4018_claimYield" -> "4018_totalUnderlyingMinusSponsored"
+"4018__withdrawDeposit" -> "4018__msgSender"
+"4018_claimYield" -> "4018_totalShares"
+"4018__withdraw" -> "4018__withdrawDeposit"
+"4018__withdrawDeposit" -> "4018__computeAmount"
+"4018__withdraw" -> "4018_totalUnderlyingMinusSponsored"
+"4018__withdrawDeposit" -> "4018__isIntegration"
+"4018__withdraw" -> "4018_totalShares"
+"4018_updateInvested" -> "4018_investableAmount"
+"4018__createDeposit" -> "4018__createClaim"
+"4018_forceWithdraw" -> "4018__withdraw"
+"4018_yieldFor" -> "4018__computeAmount"
+"4018_sponsor" -> "4018__transferAndCheckUnderlying"
+"4018_deposit" -> "4018__msgSender"
+"4018_deposit" -> "4018__createDeposit"
+"4018__unsponsor" -> "4018__msgSender"
+"4018_supportsInterface" -> "4018_supportsInterface"
+"4018_totalUnderlyingMinusSponsored" -> "4018_totalUnderlying"
+"4018_deposit" -> "4018__transferAndCheckUnderlying"
+"4018_yieldFor" -> "4018_totalUnderlyingMinusSponsored"
+"4018_claimYield" -> "4018_yieldFor"
+"4018__createDeposit" -> "4018_totalUnderlyingMinusSponsored"
+"4018_unsponsor" -> "4018__unsponsor"
+"4018_claimYield" -> "4018__computeAmount"
+"4018_updateInvested" -> "4018_requiresTrust"
+"4018_sponsor" -> "4018__msgSender"
+}subgraph cluster_6675_IVaultSponsoring {
+label = "IVaultSponsoring"
+"6675_sponsor" [label="sponsor"]
+"6675_totalSponsored" [label="totalSponsored"]
+"6675_forceUnsponsor" [label="forceUnsponsor"]
+"6675_unsponsor" [label="unsponsor"]
+}subgraph cluster_2484_ERC165 {
+label = "ERC165"
+"2484_supportsInterface" [label="supportsInterface"]
+}subgraph cluster_6622_IVault {
+label = "IVault"
+"6622_investableAmount" [label="investableAmount"]
+"6622_yieldFor" [label="yieldFor"]
+"6622_withdraw" [label="withdraw"]
+"6622_totalUnderlying" [label="totalUnderlying"]
+"6622_updateInvested" [label="updateInvested"]
+"6622_minLockPeriod" [label="minLockPeriod"]
+"6622_deposit" [label="deposit"]
+"6622_claimYield" [label="claimYield"]
+"6622_investPerc" [label="investPerc"]
+"6622_forceWithdraw" [label="forceWithdraw"]
+"6622_setInvestPerc" [label="setInvestPerc"]
+"6622_setStrategy" [label="setStrategy"]
+"6622_underlying" [label="underlying"]
+"6622_totalShares" [label="totalShares"]
+}subgraph cluster_4863_MockVault {
+label = "MockVault"
+"4863_slitherConstructorConstantVariables" [label="slitherConstructorConstantVariables"]
+"4863_constructor" [label="constructor"]
+"4863_constructor" -> "4863_constructor"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"require(bool)" 
+"type()" 
+"require(bool,string)" 
+"4018_supportsInterface" -> "type()"
+"4018__unsponsor" -> "require(bool,string)"
+"4018_updateInvested" -> "require(bool,string)"
+"4018_constructor" -> "require(bool,string)"
+"4018_sponsor" -> "require(bool,string)"
+"4018__computeShares" -> "require(bool,string)"
+"4018__isIntegration" -> "type()"
+"4018__createClaim" -> "require(bool)"
+"4018_setInvestPerc" -> "require(bool,string)"
+"4018__withdrawDeposit" -> "require(bool)"
+"4018__createDeposit" -> "require(bool,string)"
+"4018__withdrawDeposit" -> "require(bool,string)"
+"4018_setStrategy" -> "require(bool,string)"
+"4018__transferAndCheckUnderlying" -> "require(bool,string)"
+"2484_supportsInterface" -> "type()"
+}
+}

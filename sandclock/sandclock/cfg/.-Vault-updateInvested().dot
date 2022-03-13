@@ -1,0 +1,70 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->8;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(address(strategy) != address(0),Vault: strategy is not set)
+
+IRs:
+TMP_358 = CONVERT strategy to address
+TMP_359 = CONVERT 0 to address
+TMP_360(bool) = TMP_358 != TMP_359
+TMP_361(None) = SOLIDITY_CALL require(bool,string)(TMP_360,Vault: strategy is not set)"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+
+EXPRESSION:
+_investable = investableAmount()
+
+IRs:
+TMP_362(uint256) = INTERNAL_CALL, Vault.investableAmount()()
+_investable(uint256) := TMP_362(uint256)"];
+2->3;
+3[label="Node Type: IF 3
+
+EXPRESSION:
+_investable > 0
+
+IRs:
+TMP_363(bool) = _investable > 0
+CONDITION TMP_363"];
+3->4[label="True"];
+3->6[label="False"];
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+underlying.safeTransfer(address(strategy),_investable)
+
+IRs:
+TMP_364 = CONVERT strategy to address
+LIBRARY_CALL, dest:SafeERC20, function:SafeERC20.safeTransfer(IERC20,address,uint256), arguments:['underlying', 'TMP_364', '_investable'] "];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+Invested(_investable)
+
+IRs:
+Emit Invested(_investable)"];
+5->6;
+6[label="Node Type: END_IF 6
+"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+strategy.doHardWork()
+
+IRs:
+HIGH_LEVEL_CALL, dest:strategy(IStrategy), function:doHardWork, arguments:[]  "];
+8[label="Node Type: EXPRESSION 8
+
+EXPRESSION:
+requiresTrust()
+
+IRs:
+MODIFIER_CALL, Trust.requiresTrust()()"];
+8->1;
+}

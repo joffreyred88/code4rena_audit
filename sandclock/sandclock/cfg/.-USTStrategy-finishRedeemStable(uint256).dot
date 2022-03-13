@@ -1,0 +1,188 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(redeemOperations.length > idx,not running)
+
+IRs:
+REF_505 -> LENGTH redeemOperations
+TMP_1270(bool) = REF_505 > idx
+TMP_1271(None) = SOLIDITY_CALL require(bool,string)(TMP_1270,not running)"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+
+EXPRESSION:
+operation = redeemOperations[idx]
+
+IRs:
+REF_506(BaseStrategy.Operation) -> redeemOperations[idx]
+operation(BaseStrategy.Operation) := REF_506(BaseStrategy.Operation)"];
+2->3;
+3[label="Node Type: NEW VARIABLE 3
+
+EXPRESSION:
+aUstBalance = _getAUstBalance() + pendingRedeems
+
+IRs:
+TMP_1272(uint256) = INTERNAL_CALL, BaseStrategy._getAUstBalance()()
+TMP_1273(uint256) = TMP_1272 (c)+ pendingRedeems
+aUstBalance(uint256) := TMP_1273(uint256)"];
+3->4;
+4[label="Node Type: NEW VARIABLE 4
+
+EXPRESSION:
+originalUst = (convertedUst * operation.amount) / aUstBalance
+
+IRs:
+REF_507(uint256) -> operation.amount
+TMP_1274(uint256) = convertedUst (c)* REF_507
+TMP_1275(uint256) = TMP_1274 (c)/ aUstBalance
+originalUst(uint256) := TMP_1275(uint256)"];
+4->5;
+5[label="Node Type: NEW VARIABLE 5
+
+EXPRESSION:
+ustBalanceBefore = _getUstBalance()
+
+IRs:
+TMP_1276(uint256) = INTERNAL_CALL, BaseStrategy._getUstBalance()()
+ustBalanceBefore(uint256) := TMP_1276(uint256)"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+ethAnchorRouter.finishRedeemStable(operation.operator)
+
+IRs:
+REF_509(address) -> operation.operator
+HIGH_LEVEL_CALL, dest:ethAnchorRouter(IEthAnchorRouter), function:finishRedeemStable, arguments:['REF_509']  "];
+6->7;
+7[label="Node Type: NEW VARIABLE 7
+
+EXPRESSION:
+redeemedAmount = _getUstBalance() - ustBalanceBefore
+
+IRs:
+TMP_1278(uint256) = INTERNAL_CALL, BaseStrategy._getUstBalance()()
+TMP_1279(uint256) = TMP_1278 (c)- ustBalanceBefore
+redeemedAmount(uint256) := TMP_1279(uint256)"];
+7->18;
+9[label="Node Type: IF 9
+
+EXPRESSION:
+perfFee > 0
+
+IRs:
+TMP_1280(bool) = perfFee > 0
+CONDITION TMP_1280"];
+9->10[label="True"];
+9->12[label="False"];
+10[label="Node Type: EXPRESSION 10
+
+EXPRESSION:
+ustToken.safeTransfer(treasury,perfFee)
+
+IRs:
+LIBRARY_CALL, dest:SafeERC20, function:SafeERC20.safeTransfer(IERC20,address,uint256), arguments:['ustToken', 'treasury', 'perfFee'] "];
+10->11;
+11[label="Node Type: EXPRESSION 11
+
+EXPRESSION:
+PerfFeeClaimed(perfFee)
+
+IRs:
+Emit PerfFeeClaimed(perfFee)"];
+11->12;
+12[label="Node Type: END_IF 12
+"];
+12->13;
+13[label="Node Type: EXPRESSION 13
+
+EXPRESSION:
+convertedUst -= originalUst
+
+IRs:
+convertedUst(uint256) = convertedUst (c)- originalUst"];
+13->14;
+14[label="Node Type: EXPRESSION 14
+
+EXPRESSION:
+pendingRedeems -= operation.amount
+
+IRs:
+REF_511(uint256) -> operation.amount
+pendingRedeems(uint256) = pendingRedeems (c)- REF_511"];
+14->15;
+15[label="Node Type: EXPRESSION 15
+
+EXPRESSION:
+operation.operator = redeemOperations[redeemOperations.length - 1].operator
+
+IRs:
+REF_512(address) -> operation.operator
+REF_513 -> LENGTH redeemOperations
+TMP_1283(uint256) = REF_513 (c)- 1
+REF_514(BaseStrategy.Operation) -> redeemOperations[TMP_1283]
+REF_515(address) -> REF_514.operator
+REF_512 (->operation) := REF_515(address)"];
+15->16;
+16[label="Node Type: EXPRESSION 16
+
+EXPRESSION:
+operation.amount = redeemOperations[redeemOperations.length - 1].amount
+
+IRs:
+REF_516(uint256) -> operation.amount
+REF_517 -> LENGTH redeemOperations
+TMP_1284(uint256) = REF_517 (c)- 1
+REF_518(BaseStrategy.Operation) -> redeemOperations[TMP_1284]
+REF_519(uint256) -> REF_518.amount
+REF_516 (->operation) := REF_519(uint256)"];
+16->17;
+17[label="Node Type: EXPRESSION 17
+
+EXPRESSION:
+redeemOperations.pop()
+
+IRs:
+REF_521 -> LENGTH redeemOperations
+TMP_1286(uint256) = REF_521 (c)- 1
+REF_522(uint256) -> redeemOperations[TMP_1286]
+redeemOperations = delete REF_522 
+REF_523 -> LENGTH redeemOperations
+REF_523 (->redeemOperations) := TMP_1286(uint256)"];
+18[label="Node Type: IF 18
+
+EXPRESSION:
+redeemedAmount > originalUst
+
+IRs:
+TMP_1287(bool) = redeemedAmount > originalUst
+CONDITION TMP_1287"];
+18->19[label="True"];
+18->20[label="False"];
+19[label="Node Type: EXPRESSION 19
+
+EXPRESSION:
+perfFee = (redeemedAmount - originalUst).percOf(perfFeePct)
+
+IRs:
+TMP_1288(uint256) = redeemedAmount (c)- originalUst
+TMP_1289(uint256) = LIBRARY_CALL, dest:PercentMath, function:PercentMath.percOf(uint256,uint256), arguments:['TMP_1288', 'perfFeePct'] 
+perfFee(uint256) := TMP_1289(uint256)"];
+19->21;
+20[label="Node Type: EXPRESSION 20
+
+EXPRESSION:
+perfFee = 0
+
+IRs:
+perfFee(uint256) := 0(uint256)"];
+20->21;
+21[label="Node Type: END_IF 21
+"];
+21->9;
+}

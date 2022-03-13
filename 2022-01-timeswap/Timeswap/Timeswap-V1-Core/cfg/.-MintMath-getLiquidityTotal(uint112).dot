@@ -1,0 +1,20 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+liquidityTotal = xIncrease
+
+IRs:
+liquidityTotal(uint256) := xIncrease(uint112)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+liquidityTotal <<= 16
+
+IRs:
+liquidityTotal(uint256) = liquidityTotal << 16"];
+}

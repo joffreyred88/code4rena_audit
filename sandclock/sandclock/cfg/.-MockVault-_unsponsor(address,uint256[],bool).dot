@@ -1,0 +1,194 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+"];
+1->4;
+2[label="Node Type: BEGIN_LOOP 2
+"];
+2->5;
+3[label="Node Type: END_LOOP 3
+"];
+3->18;
+4[label="Node Type: NEW VARIABLE 4
+
+EXPRESSION:
+i = 0
+
+IRs:
+i(uint8) := 0(uint256)"];
+4->2;
+5[label="Node Type: IF_LOOP 5
+
+EXPRESSION:
+i < _ids.length
+
+IRs:
+REF_302 -> LENGTH _ids
+TMP_854(bool) = i < REF_302
+CONDITION TMP_854"];
+5->6[label="True"];
+5->3[label="False"];
+6[label="Node Type: NEW VARIABLE 6
+
+EXPRESSION:
+tokenId = _ids[i]
+
+IRs:
+REF_303(uint256) -> _ids[i]
+tokenId(uint256) := REF_303(uint256)"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+require(bool,string)(depositors.ownerOf(tokenId) == _msgSender(),Vault: you are not the owner of a sponsor)
+
+IRs:
+TMP_855(address) = HIGH_LEVEL_CALL, dest:depositors(Depositors), function:ownerOf, arguments:['tokenId']  
+TMP_856(address) = INTERNAL_CALL, Context._msgSender()()
+TMP_857(bool) = TMP_855 == TMP_856
+TMP_858(None) = SOLIDITY_CALL require(bool,string)(TMP_857,Vault: you are not the owner of a sponsor)"];
+7->8;
+8[label="Node Type: NEW VARIABLE 8
+"];
+8->9;
+9[label="Node Type: NEW VARIABLE 9
+"];
+9->10;
+10[label="Node Type: NEW VARIABLE 10
+"];
+10->11;
+11[label="Node Type: EXPRESSION 11
+
+EXPRESSION:
+(depositAmount,claimerId,lockedUntil) = depositors.deposits(tokenId)
+
+IRs:
+TUPLE_9(uint256,uint256,uint256) = HIGH_LEVEL_CALL, dest:depositors(Depositors), function:deposits, arguments:['tokenId']  
+depositAmount(uint256)= UNPACK TUPLE_9 index: 0 
+claimerId(uint256)= UNPACK TUPLE_9 index: 1 
+lockedUntil(uint256)= UNPACK TUPLE_9 index: 2 "];
+11->12;
+12[label="Node Type: EXPRESSION 12
+
+EXPRESSION:
+require(bool,string)(lockedUntil <= block.timestamp,Vault: amount is locked)
+
+IRs:
+TMP_859(bool) = lockedUntil <= block.timestamp
+TMP_860(None) = SOLIDITY_CALL require(bool,string)(TMP_859,Vault: amount is locked)"];
+12->13;
+13[label="Node Type: EXPRESSION 13
+
+EXPRESSION:
+require(bool,string)(claimerId == 0,Vault: token id is not a sponsor)
+
+IRs:
+TMP_861(bool) = claimerId == 0
+TMP_862(None) = SOLIDITY_CALL require(bool,string)(TMP_861,Vault: token id is not a sponsor)"];
+13->14;
+14[label="Node Type: EXPRESSION 14
+
+EXPRESSION:
+depositors.burn(tokenId)
+
+IRs:
+HIGH_LEVEL_CALL, dest:depositors(Depositors), function:burn, arguments:['tokenId']  "];
+14->15;
+15[label="Node Type: EXPRESSION 15
+
+EXPRESSION:
+Unsponsored(tokenId)
+
+IRs:
+Emit Unsponsored(tokenId)"];
+15->16;
+16[label="Node Type: EXPRESSION 16
+
+EXPRESSION:
+sponsorAmount += depositAmount
+
+IRs:
+sponsorAmount(uint256) = sponsorAmount (c)+ depositAmount"];
+16->17;
+17[label="Node Type: EXPRESSION 17
+
+EXPRESSION:
+i ++
+
+IRs:
+TMP_865(uint8) := i(uint8)
+i(uint8) = i (c)+ 1"];
+17->5;
+18[label="Node Type: NEW VARIABLE 18
+
+EXPRESSION:
+sponsorToTransfer = sponsorAmount
+
+IRs:
+sponsorToTransfer(uint256) := sponsorAmount(uint256)"];
+18->19;
+19[label="Node Type: IF 19
+
+EXPRESSION:
+_force && sponsorAmount > totalUnderlying()
+
+IRs:
+TMP_866(uint256) = INTERNAL_CALL, Vault.totalUnderlying()()
+TMP_867(bool) = sponsorAmount > TMP_866
+TMP_868(bool) = _force && TMP_867
+CONDITION TMP_868"];
+19->20[label="True"];
+19->21[label="False"];
+20[label="Node Type: EXPRESSION 20
+
+EXPRESSION:
+sponsorToTransfer = totalUnderlying()
+
+IRs:
+TMP_869(uint256) = INTERNAL_CALL, Vault.totalUnderlying()()
+sponsorToTransfer(uint256) := TMP_869(uint256)"];
+20->24;
+21[label="Node Type: IF 21
+
+EXPRESSION:
+! _force
+
+IRs:
+TMP_870 = ! _force 
+CONDITION TMP_870"];
+21->22[label="True"];
+21->23[label="False"];
+22[label="Node Type: EXPRESSION 22
+
+EXPRESSION:
+require(bool,string)(sponsorToTransfer <= totalUnderlying(),Vault: not enough funds to unsponsor)
+
+IRs:
+TMP_871(uint256) = INTERNAL_CALL, Vault.totalUnderlying()()
+TMP_872(bool) = sponsorToTransfer <= TMP_871
+TMP_873(None) = SOLIDITY_CALL require(bool,string)(TMP_872,Vault: not enough funds to unsponsor)"];
+22->23;
+23[label="Node Type: END_IF 23
+"];
+23->24;
+24[label="Node Type: END_IF 24
+"];
+24->25;
+25[label="Node Type: EXPRESSION 25
+
+EXPRESSION:
+totalSponsored -= sponsorAmount
+
+IRs:
+totalSponsored(uint256) = totalSponsored (c)- sponsorAmount"];
+25->26;
+26[label="Node Type: EXPRESSION 26
+
+EXPRESSION:
+underlying.safeTransfer(_to,sponsorToTransfer)
+
+IRs:
+LIBRARY_CALL, dest:SafeERC20, function:SafeERC20.safeTransfer(IERC20,address,uint256), arguments:['underlying', '_to', 'sponsorToTransfer'] "];
+}

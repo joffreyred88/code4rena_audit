@@ -1,0 +1,12 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+Vault(_underlying,_minLockPeriod,_investPerc,msg.sender)
+
+IRs:
+INTERNAL_CALL, Vault.constructor(IERC20,uint256,uint256,address)(_underlying,_minLockPeriod,_investPerc,msg.sender)"];
+}

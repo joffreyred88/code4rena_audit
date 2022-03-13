@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+functionDelegateCall(target,data,Address: low-level delegate call failed)
+
+IRs:
+TMP_215(bytes) = INTERNAL_CALL, Address.functionDelegateCall(address,bytes,string)(target,data,Address: low-level delegate call failed)
+RETURN TMP_215"];
+}

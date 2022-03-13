@@ -1,0 +1,57 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->6;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+localTokenId = addressToTokenID[_owner]
+
+IRs:
+REF_587(uint256) -> addressToTokenID[_owner]
+localTokenId(uint256) := REF_587(uint256)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+claimers[localTokenId].totalShares -= _shares
+
+IRs:
+REF_588(Claimers.Claimer) -> claimers[localTokenId]
+REF_589(uint256) -> REF_588.totalShares
+REF_589(-> claimers) = REF_589 (c)- _shares"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+claimers[localTokenId].totalClaimed += _amount
+
+IRs:
+REF_590(Claimers.Claimer) -> claimers[localTokenId]
+REF_591(uint256) -> REF_590.totalClaimed
+REF_591(-> claimers) = REF_591 (c)+ _amount"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+totalShares -= _shares
+
+IRs:
+totalShares(uint256) = totalShares (c)- _shares"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+YieldClaimed(localTokenId,_to,_amount,_shares)
+
+IRs:
+Emit YieldClaimed(localTokenId._to._amount._shares)"];
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+onlyVault()
+
+IRs:
+MODIFIER_CALL, Claimers.onlyVault()()"];
+6->1;
+}

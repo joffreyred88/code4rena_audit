@@ -1,0 +1,9 @@
+strict digraph {
+subgraph cluster_4160_BurnMath {
+label = "BurnMath"
+"4160_getAsset" [label="getAsset"]
+"4160_getCollateral" [label="getCollateral"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

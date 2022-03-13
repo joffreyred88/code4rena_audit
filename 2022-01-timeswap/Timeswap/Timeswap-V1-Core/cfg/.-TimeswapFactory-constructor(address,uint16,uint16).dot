@@ -1,0 +1,38 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(_owner != address(0),E101)
+
+IRs:
+TMP_117 = CONVERT 0 to address
+TMP_118(bool) = _owner != TMP_117
+TMP_119(None) = SOLIDITY_CALL require(bool,string)(TMP_118,E101)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+owner = _owner
+
+IRs:
+owner(address) := _owner(address)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+fee = _fee
+
+IRs:
+fee(uint16) := _fee(uint16)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+protocolFee = _protocolFee
+
+IRs:
+protocolFee(uint16) := _protocolFee(uint16)"];
+}

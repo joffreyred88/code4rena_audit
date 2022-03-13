@@ -1,0 +1,57 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->5;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(_strategy != address(0),Vault: strategy 0x)
+
+IRs:
+TMP_297 = CONVERT 0 to address
+TMP_298(bool) = _strategy != TMP_297
+TMP_299(None) = SOLIDITY_CALL require(bool,string)(TMP_298,Vault: strategy 0x)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(IStrategy(_strategy).vault() == address(this),Vault: invalid vault)
+
+IRs:
+TMP_300 = CONVERT _strategy to IStrategy
+TMP_301(address) = HIGH_LEVEL_CALL, dest:TMP_300(IStrategy), function:vault, arguments:[]  
+TMP_302 = CONVERT this to address
+TMP_303(bool) = TMP_301 == TMP_302
+TMP_304(None) = SOLIDITY_CALL require(bool,string)(TMP_303,Vault: invalid vault)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+require(bool,string)(address(strategy) == address(0) || strategy.investedAssets() == 0,Vault: strategy has invested funds)
+
+IRs:
+TMP_305 = CONVERT strategy to address
+TMP_306 = CONVERT 0 to address
+TMP_307(bool) = TMP_305 == TMP_306
+TMP_308(uint256) = HIGH_LEVEL_CALL, dest:strategy(IStrategy), function:investedAssets, arguments:[]  
+TMP_309(bool) = TMP_308 == 0
+TMP_310(bool) = TMP_307 || TMP_309
+TMP_311(None) = SOLIDITY_CALL require(bool,string)(TMP_310,Vault: strategy has invested funds)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+strategy = IStrategy(_strategy)
+
+IRs:
+TMP_312 = CONVERT _strategy to IStrategy
+strategy(IStrategy) := TMP_312(IStrategy)"];
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+requiresTrust()
+
+IRs:
+MODIFIER_CALL, Trust.requiresTrust()()"];
+5->1;
+}

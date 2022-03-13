@@ -1,0 +1,12 @@
+strict digraph {
+subgraph cluster_6815_MintMathTest {
+label = "MintMathTest"
+"6815_getDebt" [label="getDebt"]
+"6815_getLiquidityTotal2" [label="getLiquidityTotal2"]
+"6815_getCollateral" [label="getCollateral"]
+"6815_getLiquidityTotal1" [label="getLiquidityTotal1"]
+"6815_getLiquidity" [label="getLiquidity"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

@@ -1,0 +1,8 @@
+strict digraph {
+subgraph cluster_5379_SafeTransfer {
+label = "SafeTransfer"
+"5379_safeTransfer" [label="safeTransfer"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

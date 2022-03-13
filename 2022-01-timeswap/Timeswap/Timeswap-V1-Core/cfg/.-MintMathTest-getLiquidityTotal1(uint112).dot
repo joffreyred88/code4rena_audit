@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+MintMath.getLiquidityTotal(xIncrease)
+
+IRs:
+TMP_643(uint256) = LIBRARY_CALL, dest:MintMath, function:MintMath.getLiquidityTotal(uint112), arguments:['xIncrease'] 
+RETURN TMP_643"];
+}

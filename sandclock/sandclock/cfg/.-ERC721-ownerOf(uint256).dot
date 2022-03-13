@@ -1,0 +1,31 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+owner = _owners[tokenId]
+
+IRs:
+REF_42(address) -> _owners[tokenId]
+owner(address) := REF_42(address)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(owner != address(0),ERC721: owner query for nonexistent token)
+
+IRs:
+TMP_102 = CONVERT 0 to address
+TMP_103(bool) = owner != TMP_102
+TMP_104(None) = SOLIDITY_CALL require(bool,string)(TMP_103,ERC721: owner query for nonexistent token)"];
+2->3;
+3[label="Node Type: RETURN 3
+
+EXPRESSION:
+owner
+
+IRs:
+RETURN owner"];
+}

@@ -1,0 +1,441 @@
+{
+  "id": "852eb3591f5befa36703eaff82bbebb2",
+  "_format": "hh-sol-build-info-1",
+  "solcVersion": "0.8.10",
+  "solcLongVersion": "0.8.10+commit.fc410830",
+  "input": {
+    "language": "Solidity",
+    "sources": {
+      "contracts/test/PayableFail.sol": {
+        "content": "// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity 0.8.10;\n\n/******************************************************************************\\\n* Author: Evert Kors <dev@sherlock.xyz> (https://twitter.com/evert0x)\n* Sherlock Protocol: https://sherlock.xyz\n/******************************************************************************/\n\ncontract PayableFail {\n  receive() external payable {\n    require(false, 'PAYABLE_FAIL');\n  }\n}\n"
+      }
+    },
+    "settings": {
+      "optimizer": {
+        "enabled": true,
+        "runs": 20000
+      },
+      "outputSelection": {
+        "*": {
+          "*": [
+            "abi",
+            "evm.bytecode",
+            "evm.deployedBytecode",
+            "evm.methodIdentifiers",
+            "metadata"
+          ],
+          "": [
+            "ast"
+          ]
+        }
+      }
+    }
+  },
+  "output": {
+    "contracts": {
+      "contracts/test/PayableFail.sol": {
+        "PayableFail": {
+          "abi": [
+            {
+              "stateMutability": "payable",
+              "type": "receive"
+            }
+          ],
+          "evm": {
+            "bytecode": {
+              "functionDebugData": {},
+              "generatedSources": [],
+              "linkReferences": {},
+              "object": "6080604052348015600f57600080fd5b5060a98061001e6000396000f3fe608060405236606e576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152600c60248201527f50415941424c455f4641494c0000000000000000000000000000000000000000604482015260640160405180910390fd5b600080fdfea2646970667358221220d7c0506d2a307aede2c45155574880d4a930c08e99a4ee343cff511b0d01ca1d64736f6c634300080a0033",
+              "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH1 0xF JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0xA9 DUP1 PUSH2 0x1E PUSH1 0x0 CODECOPY PUSH1 0x0 RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE CALLDATASIZE PUSH1 0x6E JUMPI PUSH1 0x40 MLOAD PUSH32 0x8C379A000000000000000000000000000000000000000000000000000000000 DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0xC PUSH1 0x24 DUP3 ADD MSTORE PUSH32 0x50415941424C455F4641494C0000000000000000000000000000000000000000 PUSH1 0x44 DUP3 ADD MSTORE PUSH1 0x64 ADD PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 REVERT JUMPDEST PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xD7 0xC0 POP PUSH14 0x2A307AEDE2C45155574880D4A930 0xC0 DUP15 SWAP10 LOG4 0xEE CALLVALUE EXTCODECOPY SELFDESTRUCT MLOAD SHL 0xD ADD 0xCA SAR PUSH5 0x736F6C6343 STOP ADDMOD EXP STOP CALLER ",
+              "sourceMap": "345:95:0:-:0;;;;;;;;;;;;;;;;;;;"
+            },
+            "deployedBytecode": {
+              "functionDebugData": {
+                "@_10": {
+                  "entryPoint": null,
+                  "id": 10,
+                  "parameterSlots": 0,
+                  "returnSlots": 0
+                },
+                "abi_encode_tuple_t_stringliteral_d855e90d3d0c53dc56904b07db323ef6207ec3ca62e32e9277b6824c69db8229__to_t_string_memory_ptr__fromStack_reversed": {
+                  "entryPoint": null,
+                  "id": null,
+                  "parameterSlots": 1,
+                  "returnSlots": 1
+                }
+              },
+              "generatedSources": [
+                {
+                  "ast": {
+                    "nodeType": "YulBlock",
+                    "src": "0:352:1",
+                    "statements": [
+                      {
+                        "nodeType": "YulBlock",
+                        "src": "6:3:1",
+                        "statements": []
+                      },
+                      {
+                        "body": {
+                          "nodeType": "YulBlock",
+                          "src": "188:162:1",
+                          "statements": [
+                            {
+                              "expression": {
+                                "arguments": [
+                                  {
+                                    "name": "headStart",
+                                    "nodeType": "YulIdentifier",
+                                    "src": "205:9:1"
+                                  },
+                                  {
+                                    "kind": "number",
+                                    "nodeType": "YulLiteral",
+                                    "src": "216:2:1",
+                                    "type": "",
+                                    "value": "32"
+                                  }
+                                ],
+                                "functionName": {
+                                  "name": "mstore",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "198:6:1"
+                                },
+                                "nodeType": "YulFunctionCall",
+                                "src": "198:21:1"
+                              },
+                              "nodeType": "YulExpressionStatement",
+                              "src": "198:21:1"
+                            },
+                            {
+                              "expression": {
+                                "arguments": [
+                                  {
+                                    "arguments": [
+                                      {
+                                        "name": "headStart",
+                                        "nodeType": "YulIdentifier",
+                                        "src": "239:9:1"
+                                      },
+                                      {
+                                        "kind": "number",
+                                        "nodeType": "YulLiteral",
+                                        "src": "250:2:1",
+                                        "type": "",
+                                        "value": "32"
+                                      }
+                                    ],
+                                    "functionName": {
+                                      "name": "add",
+                                      "nodeType": "YulIdentifier",
+                                      "src": "235:3:1"
+                                    },
+                                    "nodeType": "YulFunctionCall",
+                                    "src": "235:18:1"
+                                  },
+                                  {
+                                    "kind": "number",
+                                    "nodeType": "YulLiteral",
+                                    "src": "255:2:1",
+                                    "type": "",
+                                    "value": "12"
+                                  }
+                                ],
+                                "functionName": {
+                                  "name": "mstore",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "228:6:1"
+                                },
+                                "nodeType": "YulFunctionCall",
+                                "src": "228:30:1"
+                              },
+                              "nodeType": "YulExpressionStatement",
+                              "src": "228:30:1"
+                            },
+                            {
+                              "expression": {
+                                "arguments": [
+                                  {
+                                    "arguments": [
+                                      {
+                                        "name": "headStart",
+                                        "nodeType": "YulIdentifier",
+                                        "src": "278:9:1"
+                                      },
+                                      {
+                                        "kind": "number",
+                                        "nodeType": "YulLiteral",
+                                        "src": "289:2:1",
+                                        "type": "",
+                                        "value": "64"
+                                      }
+                                    ],
+                                    "functionName": {
+                                      "name": "add",
+                                      "nodeType": "YulIdentifier",
+                                      "src": "274:3:1"
+                                    },
+                                    "nodeType": "YulFunctionCall",
+                                    "src": "274:18:1"
+                                  },
+                                  {
+                                    "hexValue": "50415941424c455f4641494c",
+                                    "kind": "string",
+                                    "nodeType": "YulLiteral",
+                                    "src": "294:14:1",
+                                    "type": "",
+                                    "value": "PAYABLE_FAIL"
+                                  }
+                                ],
+                                "functionName": {
+                                  "name": "mstore",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "267:6:1"
+                                },
+                                "nodeType": "YulFunctionCall",
+                                "src": "267:42:1"
+                              },
+                              "nodeType": "YulExpressionStatement",
+                              "src": "267:42:1"
+                            },
+                            {
+                              "nodeType": "YulAssignment",
+                              "src": "318:26:1",
+                              "value": {
+                                "arguments": [
+                                  {
+                                    "name": "headStart",
+                                    "nodeType": "YulIdentifier",
+                                    "src": "330:9:1"
+                                  },
+                                  {
+                                    "kind": "number",
+                                    "nodeType": "YulLiteral",
+                                    "src": "341:2:1",
+                                    "type": "",
+                                    "value": "96"
+                                  }
+                                ],
+                                "functionName": {
+                                  "name": "add",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "326:3:1"
+                                },
+                                "nodeType": "YulFunctionCall",
+                                "src": "326:18:1"
+                              },
+                              "variableNames": [
+                                {
+                                  "name": "tail",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "318:4:1"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "name": "abi_encode_tuple_t_stringliteral_d855e90d3d0c53dc56904b07db323ef6207ec3ca62e32e9277b6824c69db8229__to_t_string_memory_ptr__fromStack_reversed",
+                        "nodeType": "YulFunctionDefinition",
+                        "parameters": [
+                          {
+                            "name": "headStart",
+                            "nodeType": "YulTypedName",
+                            "src": "165:9:1",
+                            "type": ""
+                          }
+                        ],
+                        "returnVariables": [
+                          {
+                            "name": "tail",
+                            "nodeType": "YulTypedName",
+                            "src": "179:4:1",
+                            "type": ""
+                          }
+                        ],
+                        "src": "14:336:1"
+                      }
+                    ]
+                  },
+                  "contents": "{\n    { }\n    function abi_encode_tuple_t_stringliteral_d855e90d3d0c53dc56904b07db323ef6207ec3ca62e32e9277b6824c69db8229__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 12)\n        mstore(add(headStart, 64), \"PAYABLE_FAIL\")\n        tail := add(headStart, 96)\n    }\n}",
+                  "id": 1,
+                  "language": "Yul",
+                  "name": "#utility.yul"
+                }
+              ],
+              "immutableReferences": {},
+              "linkReferences": {},
+              "object": "608060405236606e576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152600c60248201527f50415941424c455f4641494c0000000000000000000000000000000000000000604482015260640160405180910390fd5b600080fdfea2646970667358221220d7c0506d2a307aede2c45155574880d4a930c08e99a4ee343cff511b0d01ca1d64736f6c634300080a0033",
+              "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLDATASIZE PUSH1 0x6E JUMPI PUSH1 0x40 MLOAD PUSH32 0x8C379A000000000000000000000000000000000000000000000000000000000 DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0xC PUSH1 0x24 DUP3 ADD MSTORE PUSH32 0x50415941424C455F4641494C0000000000000000000000000000000000000000 PUSH1 0x44 DUP3 ADD MSTORE PUSH1 0x64 ADD PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 REVERT JUMPDEST PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xD7 0xC0 POP PUSH14 0x2A307AEDE2C45155574880D4A930 0xC0 DUP15 SWAP10 LOG4 0xEE CALLVALUE EXTCODECOPY SELFDESTRUCT MLOAD SHL 0xD ADD 0xCA SAR PUSH5 0x736F6C6343 STOP ADDMOD EXP STOP CALLER ",
+              "sourceMap": "345:95:0:-:0;;;;;;403:30;;;;;216:2:1;403:30:0;;;198:21:1;255:2;235:18;;;228:30;294:14;274:18;;;267:42;326:18;;403:30:0;;;;;;;345:95;;;"
+            },
+            "methodIdentifiers": {}
+          },
+          "metadata": "{\"compiler\":{\"version\":\"0.8.10+commit.fc410830\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/test/PayableFail.sol\":\"PayableFail\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":20000},\"remappings\":[]},\"sources\":{\"contracts/test/PayableFail.sol\":{\"keccak256\":\"0x9caa521d5f432c0512fdca9b1767d4f3c93ac85803fcd713b69a80e6ed16d2e6\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://fe45267b1cf4d5f16fdd07429fc481a7f079ddb298053ceb626c12327de3acc9\",\"dweb:/ipfs/QmQG6LszmVRF8Vr7DCx6qyQ8f5TB7ckuMzEUutNeCv2sar\"]}},\"version\":1}"
+        }
+      }
+    },
+    "sources": {
+      "contracts/test/PayableFail.sol": {
+        "ast": {
+          "absolutePath": "contracts/test/PayableFail.sol",
+          "exportedSymbols": {
+            "PayableFail": [
+              11
+            ]
+          },
+          "id": 12,
+          "license": "GPL-2.0-or-later",
+          "nodeType": "SourceUnit",
+          "nodes": [
+            {
+              "id": 1,
+              "literals": [
+                "solidity",
+                "0.8",
+                ".10"
+              ],
+              "nodeType": "PragmaDirective",
+              "src": "45:23:0"
+            },
+            {
+              "abstract": false,
+              "baseContracts": [],
+              "canonicalName": "PayableFail",
+              "contractDependencies": [],
+              "contractKind": "contract",
+              "fullyImplemented": true,
+              "id": 11,
+              "linearizedBaseContracts": [
+                11
+              ],
+              "name": "PayableFail",
+              "nameLocation": "354:11:0",
+              "nodeType": "ContractDefinition",
+              "nodes": [
+                {
+                  "body": {
+                    "id": 9,
+                    "nodeType": "Block",
+                    "src": "397:41:0",
+                    "statements": [
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "hexValue": "66616c7365",
+                              "id": 5,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "bool",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "411:5:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              "value": "false"
+                            },
+                            {
+                              "hexValue": "50415941424c455f4641494c",
+                              "id": 6,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "string",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "418:14:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_stringliteral_d855e90d3d0c53dc56904b07db323ef6207ec3ca62e32e9277b6824c69db8229",
+                                "typeString": "literal_string \"PAYABLE_FAIL\""
+                              },
+                              "value": "PAYABLE_FAIL"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              {
+                                "typeIdentifier": "t_stringliteral_d855e90d3d0c53dc56904b07db323ef6207ec3ca62e32e9277b6824c69db8229",
+                                "typeString": "literal_string \"PAYABLE_FAIL\""
+                              }
+                            ],
+                            "id": 4,
+                            "name": "require",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [
+                              -18,
+                              -18
+                            ],
+                            "referencedDeclaration": -18,
+                            "src": "403:7:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                              "typeString": "function (bool,string memory) pure"
+                            }
+                          },
+                          "id": 7,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "403:30:0",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 8,
+                        "nodeType": "ExpressionStatement",
+                        "src": "403:30:0"
+                      }
+                    ]
+                  },
+                  "id": 10,
+                  "implemented": true,
+                  "kind": "receive",
+                  "modifiers": [],
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "FunctionDefinition",
+                  "parameters": {
+                    "id": 2,
+                    "nodeType": "ParameterList",
+                    "parameters": [],
+                    "src": "377:2:0"
+                  },
+                  "returnParameters": {
+                    "id": 3,
+                    "nodeType": "ParameterList",
+                    "parameters": [],
+                    "src": "397:0:0"
+                  },
+                  "scope": 11,
+                  "src": "370:68:0",
+                  "stateMutability": "payable",
+                  "virtual": false,
+                  "visibility": "external"
+                }
+              ],
+              "scope": 12,
+              "src": "345:95:0",
+              "usedErrors": []
+            }
+          ],
+          "src": "45:396:0"
+        },
+        "id": 0
+      }
+    }
+  }
+}

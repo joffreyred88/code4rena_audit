@@ -1,0 +1,11 @@
+strict digraph {
+subgraph cluster_6340_CallbackTest {
+label = "CallbackTest"
+"6340_pay" [label="pay"]
+"6340_borrow" [label="borrow"]
+"6340_mint" [label="mint"]
+"6340_lend" [label="lend"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

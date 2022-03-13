@@ -1,0 +1,52 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+"];
+2->3;
+3[label="Node Type: NEW VARIABLE 3
+"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+(asset,collateral,from) = abi.decode(data,(IERC20,IERC20,address))
+
+IRs:
+TUPLE_12(IERC20,IERC20,address) = SOLIDITY_CALL abi.decode()(data(IERC20,IERC20,address))
+asset(IERC20)= UNPACK TUPLE_12 index: 0 
+collateral(IERC20)= UNPACK TUPLE_12 index: 1 
+from(address)= UNPACK TUPLE_12 index: 2 "];
+4->5;
+5[label="Node Type: NEW VARIABLE 5
+
+EXPRESSION:
+pair = factoryContract.getPair(asset,collateral)
+
+IRs:
+TMP_603(IPair) = HIGH_LEVEL_CALL, dest:factoryContract(IFactory), function:getPair, arguments:['asset', 'collateral']  
+pair(IPair) := TMP_603(IPair)"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+require(bool,string)(msg.sender == address(pair),Invalid sender)
+
+IRs:
+TMP_604 = CONVERT pair to address
+TMP_605(bool) = msg.sender == TMP_604
+TMP_606(None) = SOLIDITY_CALL require(bool,string)(TMP_605,Invalid sender)"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+collateral.transferFrom(from,address(pair),collateralIn)
+
+IRs:
+TMP_607 = CONVERT pair to address
+TMP_608(bool) = HIGH_LEVEL_CALL, dest:collateral(IERC20), function:transferFrom, arguments:['from', 'TMP_607', 'collateralIn']  "];
+}

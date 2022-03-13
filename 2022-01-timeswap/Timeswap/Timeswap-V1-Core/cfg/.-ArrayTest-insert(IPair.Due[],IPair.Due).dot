@@ -1,0 +1,93 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->3;
+1[label="Node Type: BEGIN_LOOP 1
+"];
+1->4;
+2[label="Node Type: END_LOOP 2
+"];
+2->9;
+3[label="Node Type: NEW VARIABLE 3
+"];
+3->1;
+4[label="Node Type: IF_LOOP 4
+
+EXPRESSION:
+i < duesStorage.length
+
+IRs:
+REF_485 -> LENGTH duesStorage
+TMP_612(bool) = i < REF_485
+CONDITION TMP_612"];
+4->5[label="True"];
+4->2[label="False"];
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+duesStorage.pop
+
+IRs:
+REF_486(None) -> duesStorage.pop"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+i ++
+
+IRs:
+TMP_613(uint256) := i(uint256)
+i(uint256) = i (c)+ 1"];
+6->4;
+7[label="Node Type: BEGIN_LOOP 7
+"];
+7->10;
+8[label="Node Type: END_LOOP 8
+"];
+8->13;
+9[label="Node Type: NEW VARIABLE 9
+"];
+9->7;
+10[label="Node Type: IF_LOOP 10
+
+EXPRESSION:
+i_scope_0 < dues.length
+
+IRs:
+REF_487 -> LENGTH dues
+TMP_614(bool) = i_scope_0 < REF_487
+CONDITION TMP_614"];
+10->11[label="True"];
+10->8[label="False"];
+11[label="Node Type: EXPRESSION 11
+
+EXPRESSION:
+duesStorage.push(dues[i_scope_0])
+
+IRs:
+REF_489(IPair.Due) -> dues[i_scope_0]
+REF_490 -> LENGTH duesStorage
+TMP_616(uint256) := REF_490(uint256)
+TMP_617(uint256) = TMP_616 (c)+ 1
+REF_490 (->duesStorage) := TMP_617(uint256)
+REF_491(IPair.Due) -> duesStorage[TMP_616]
+REF_491 (->duesStorage) := REF_489(IPair.Due)"];
+11->12;
+12[label="Node Type: EXPRESSION 12
+
+EXPRESSION:
+i_scope_0 ++
+
+IRs:
+TMP_618(uint256) := i_scope_0(uint256)
+i_scope_0(uint256) = i_scope_0 (c)+ 1"];
+12->10;
+13[label="Node Type: RETURN 13
+
+EXPRESSION:
+duesStorage.insert(dueOut)
+
+IRs:
+TMP_619(uint256) = LIBRARY_CALL, dest:Array, function:Array.insert(IPair.Due[],IPair.Due), arguments:['duesStorage', 'dueOut'] 
+RETURN TMP_619"];
+}

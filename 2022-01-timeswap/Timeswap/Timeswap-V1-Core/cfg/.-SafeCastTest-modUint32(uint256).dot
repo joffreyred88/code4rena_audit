@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+SafeCast.modUint32(x)
+
+IRs:
+TMP_650(uint32) = LIBRARY_CALL, dest:SafeCast, function:SafeCast.modUint32(uint256), arguments:['x'] 
+RETURN TMP_650"];
+}

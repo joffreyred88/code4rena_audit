@@ -1,0 +1,10 @@
+strict digraph {
+subgraph cluster_6681_LendMathTest {
+label = "LendMathTest"
+"6681_getBond" [label="getBond"]
+"6681_check" [label="check"]
+"6681_getInsurance" [label="getInsurance"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

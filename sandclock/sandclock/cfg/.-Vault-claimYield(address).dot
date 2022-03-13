@@ -1,0 +1,68 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+yield = yieldFor(_msgSender())
+
+IRs:
+TMP_335(address) = INTERNAL_CALL, Context._msgSender()()
+TMP_336(uint256) = INTERNAL_CALL, Vault.yieldFor(address)(TMP_335)
+yield(uint256) := TMP_336(uint256)"];
+1->2;
+2[label="Node Type: IF 2
+
+EXPRESSION:
+yield == 0
+
+IRs:
+TMP_337(bool) = yield == 0
+CONDITION TMP_337"];
+2->3[label="True"];
+2->4[label="False"];
+3[label="Node Type: RETURN 3
+"];
+4[label="Node Type: END_IF 4
+"];
+4->5;
+5[label="Node Type: NEW VARIABLE 5
+
+EXPRESSION:
+shares = _computeShares(yield,totalShares(),totalUnderlyingMinusSponsored())
+
+IRs:
+TMP_338(uint256) = INTERNAL_CALL, Vault.totalShares()()
+TMP_339(uint256) = INTERNAL_CALL, Vault.totalUnderlyingMinusSponsored()()
+TMP_340(uint256) = INTERNAL_CALL, Vault._computeShares(uint256,uint256,uint256)(yield,TMP_338,TMP_339)
+shares(uint256) := TMP_340(uint256)"];
+5->6;
+6[label="Node Type: NEW VARIABLE 6
+
+EXPRESSION:
+sharesAmount = _computeAmount(shares,totalShares(),totalUnderlyingMinusSponsored())
+
+IRs:
+TMP_341(uint256) = INTERNAL_CALL, Vault.totalShares()()
+TMP_342(uint256) = INTERNAL_CALL, Vault.totalUnderlyingMinusSponsored()()
+TMP_343(uint256) = INTERNAL_CALL, Vault._computeAmount(uint256,uint256,uint256)(shares,TMP_341,TMP_342)
+sharesAmount(uint256) := TMP_343(uint256)"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+claimers.claimYield(_msgSender(),_to,sharesAmount,shares)
+
+IRs:
+TMP_344(address) = INTERNAL_CALL, Context._msgSender()()
+HIGH_LEVEL_CALL, dest:claimers(Claimers), function:claimYield, arguments:['TMP_344', '_to', 'sharesAmount', 'shares']  "];
+7->8;
+8[label="Node Type: EXPRESSION 8
+
+EXPRESSION:
+underlying.safeTransfer(_to,sharesAmount)
+
+IRs:
+LIBRARY_CALL, dest:SafeERC20, function:SafeERC20.safeTransfer(IERC20,address,uint256), arguments:['underlying', '_to', 'sharesAmount'] "];
+}

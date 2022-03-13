@@ -1,0 +1,14 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+claimers[_tokenId].totalPrincipal
+
+IRs:
+REF_603(Claimers.Claimer) -> claimers[_tokenId]
+REF_604(uint256) -> REF_603.totalPrincipal
+RETURN REF_604"];
+}

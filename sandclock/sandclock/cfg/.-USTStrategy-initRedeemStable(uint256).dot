@@ -1,0 +1,70 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->7;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+aUstBalance = _getAUstBalance()
+
+IRs:
+TMP_1259(uint256) = INTERNAL_CALL, BaseStrategy._getAUstBalance()()
+aUstBalance(uint256) := TMP_1259(uint256)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(amount > 0,amount 0)
+
+IRs:
+TMP_1260(bool) = amount > 0
+TMP_1261(None) = SOLIDITY_CALL require(bool,string)(TMP_1260,amount 0)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+require(bool,string)(aUstBalance >= amount,insufficient)
+
+IRs:
+TMP_1262(bool) = aUstBalance >= amount
+TMP_1263(None) = SOLIDITY_CALL require(bool,string)(TMP_1262,insufficient)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+pendingRedeems += amount
+
+IRs:
+pendingRedeems(uint256) = pendingRedeems (c)+ amount"];
+4->5;
+5[label="Node Type: NEW VARIABLE 5
+
+EXPRESSION:
+_operator = ethAnchorRouter.initRedeemStable(amount)
+
+IRs:
+TMP_1264(address) = HIGH_LEVEL_CALL, dest:ethAnchorRouter(IEthAnchorRouter), function:initRedeemStable, arguments:['amount']  
+_operator(address) := TMP_1264(address)"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+redeemOperations.push(Operation(_operator,amount))
+
+IRs:
+TMP_1265 = new Operation(_operator,amount)
+REF_503 -> LENGTH redeemOperations
+TMP_1267(uint256) := REF_503(uint256)
+TMP_1268(uint256) = TMP_1267 (c)+ 1
+REF_503 (->redeemOperations) := TMP_1268(uint256)
+REF_504(BaseStrategy.Operation) -> redeemOperations[TMP_1267]
+REF_504 (->redeemOperations) := TMP_1265(BaseStrategy.Operation)"];
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+restricted()
+
+IRs:
+MODIFIER_CALL, BaseStrategy.restricted()()"];
+7->1;
+}

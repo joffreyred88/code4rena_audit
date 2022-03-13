@@ -1,0 +1,16 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+data = abi.encode(PairCalleeInfo(pairContract.asset(),pairContract.collateral(),from))
+
+IRs:
+TMP_575(IERC20) = HIGH_LEVEL_CALL, dest:pairContract(IPair), function:asset, arguments:[]  
+TMP_576(IERC20) = HIGH_LEVEL_CALL, dest:pairContract(IPair), function:collateral, arguments:[]  
+TMP_577 = new PairCalleeInfo(TMP_575,TMP_576,from)
+TMP_578(bytes) = SOLIDITY_CALL abi.encode()(TMP_577)
+data(bytes) := TMP_578(bytes)"];
+}

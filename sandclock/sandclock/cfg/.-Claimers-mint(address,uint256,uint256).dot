@@ -1,0 +1,95 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->11;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+localTokenId = addressToTokenID[_to]
+
+IRs:
+REF_592(uint256) -> addressToTokenID[_to]
+localTokenId(uint256) := REF_592(uint256)"];
+1->2;
+2[label="Node Type: IF 2
+
+EXPRESSION:
+localTokenId == 0
+
+IRs:
+TMP_1504(bool) = localTokenId == 0
+CONDITION TMP_1504"];
+2->3[label="True"];
+2->6[label="False"];
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+_tokenIds.increment()
+
+IRs:
+LIBRARY_CALL, dest:Counters, function:Counters.increment(Counters.Counter), arguments:['_tokenIds'] "];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+localTokenId = _tokenIds.current()
+
+IRs:
+TMP_1506(uint256) = LIBRARY_CALL, dest:Counters, function:Counters.current(Counters.Counter), arguments:['_tokenIds'] 
+localTokenId(uint256) := TMP_1506(uint256)"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+_mint(_to,localTokenId)
+
+IRs:
+INTERNAL_CALL, ERC721._mint(address,uint256)(_to,localTokenId)"];
+5->6;
+6[label="Node Type: END_IF 6
+"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+claimers[localTokenId].totalShares += _shares
+
+IRs:
+REF_595(Claimers.Claimer) -> claimers[localTokenId]
+REF_596(uint256) -> REF_595.totalShares
+REF_596(-> claimers) = REF_596 (c)+ _shares"];
+7->8;
+8[label="Node Type: EXPRESSION 8
+
+EXPRESSION:
+claimers[localTokenId].totalPrincipal += _principal
+
+IRs:
+REF_597(Claimers.Claimer) -> claimers[localTokenId]
+REF_598(uint256) -> REF_597.totalPrincipal
+REF_598(-> claimers) = REF_598 (c)+ _principal"];
+8->9;
+9[label="Node Type: EXPRESSION 9
+
+EXPRESSION:
+totalShares += _shares
+
+IRs:
+totalShares(uint256) = totalShares (c)+ _shares"];
+9->10;
+10[label="Node Type: RETURN 10
+
+EXPRESSION:
+localTokenId
+
+IRs:
+RETURN localTokenId"];
+11[label="Node Type: EXPRESSION 11
+
+EXPRESSION:
+onlyVault()
+
+IRs:
+MODIFIER_CALL, Claimers.onlyVault()()"];
+11->1;
+}

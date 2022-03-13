@@ -1,0 +1,29 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->3;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+isTrusted[user] = trusted
+
+IRs:
+REF_535(bool) -> isTrusted[user]
+REF_535 (->isTrusted) := trusted(bool)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+UserTrustUpdated(user,trusted)
+
+IRs:
+Emit UserTrustUpdated(user.trusted)"];
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+requiresTrust()
+
+IRs:
+MODIFIER_CALL, Trust.requiresTrust()()"];
+3->1;
+}

@@ -1,0 +1,15 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+pairContract.mint(maturity,liquidityTo,address(this),xIncrease,yIncrease,zIncrease,getDataMint(msg.sender))
+
+IRs:
+TMP_583 = CONVERT this to address
+TMP_584(bytes) = INTERNAL_CALL, TimeswapPairCallee.getDataMint(address)(msg.sender)
+TUPLE_7(uint256,uint256,IPair.Due) = HIGH_LEVEL_CALL, dest:pairContract(IPair), function:mint, arguments:['maturity', 'liquidityTo', 'TMP_583', 'xIncrease', 'yIncrease', 'zIncrease', 'TMP_584']  
+RETURN TUPLE_7"];
+}

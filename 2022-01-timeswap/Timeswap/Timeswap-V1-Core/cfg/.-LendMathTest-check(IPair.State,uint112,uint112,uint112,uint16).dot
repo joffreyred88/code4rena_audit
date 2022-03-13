@@ -1,0 +1,20 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+state.check(xIncrease,yDecrease,zDecrease,fee)
+
+IRs:
+LIBRARY_CALL, dest:LendMath, function:LendMath.check(IPair.State,uint112,uint112,uint112,uint16), arguments:['state', 'xIncrease', 'yDecrease', 'zDecrease', 'fee'] "];
+1->2;
+2[label="Node Type: RETURN 2
+
+EXPRESSION:
+true
+
+IRs:
+RETURN True"];
+}

@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+BlockNumber.get()
+
+IRs:
+TMP_620(uint32) = LIBRARY_CALL, dest:BlockNumber, function:BlockNumber.get(), arguments:[] 
+RETURN TMP_620"];
+}

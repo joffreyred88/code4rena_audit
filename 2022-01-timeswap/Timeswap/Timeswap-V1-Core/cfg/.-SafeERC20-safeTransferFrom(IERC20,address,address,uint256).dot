@@ -1,0 +1,14 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+_callOptionalReturn(token,abi.encodeWithSelector(token.transferFrom.selector,from,to,value))
+
+IRs:
+REF_22 (->None) := 599290589(uint256)
+TMP_63(bytes) = SOLIDITY_CALL abi.encodeWithSelector()(REF_22,from,to,value)
+INTERNAL_CALL, SafeERC20._callOptionalReturn(IERC20,bytes)(token,TMP_63)"];
+}

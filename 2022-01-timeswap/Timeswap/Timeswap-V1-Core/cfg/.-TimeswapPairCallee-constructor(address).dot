@@ -1,0 +1,23 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+pairContract = IPair(pair)
+
+IRs:
+TMP_572 = CONVERT pair to IPair
+pairContract(IPair) := TMP_572(IPair)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+factoryContract = IPair(pair).factory()
+
+IRs:
+TMP_573 = CONVERT pair to IPair
+TMP_574(IFactory) = HIGH_LEVEL_CALL, dest:TMP_573(IPair), function:factory, arguments:[]  
+factoryContract(IFactory) := TMP_574(IFactory)"];
+}

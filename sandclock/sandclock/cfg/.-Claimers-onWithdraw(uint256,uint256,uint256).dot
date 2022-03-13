@@ -1,0 +1,40 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->4;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+claimers[_tokenId].totalShares -= _shares
+
+IRs:
+REF_599(Claimers.Claimer) -> claimers[_tokenId]
+REF_600(uint256) -> REF_599.totalShares
+REF_600(-> claimers) = REF_600 (c)- _shares"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+claimers[_tokenId].totalPrincipal -= _principal
+
+IRs:
+REF_601(Claimers.Claimer) -> claimers[_tokenId]
+REF_602(uint256) -> REF_601.totalPrincipal
+REF_602(-> claimers) = REF_602 (c)- _principal"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+totalShares -= _shares
+
+IRs:
+totalShares(uint256) = totalShares (c)- _shares"];
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+onlyVault()
+
+IRs:
+MODIFIER_CALL, Claimers.onlyVault()()"];
+4->1;
+}

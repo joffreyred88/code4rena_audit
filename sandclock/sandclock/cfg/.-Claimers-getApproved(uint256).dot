@@ -1,0 +1,22 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(_exists(tokenId),ERC721: approved query for nonexistent token)
+
+IRs:
+TMP_1425(bool) = INTERNAL_CALL, ERC721._exists(uint256)(tokenId)
+TMP_1426(None) = SOLIDITY_CALL require(bool,string)(TMP_1425,ERC721: approved query for nonexistent token)"];
+1->2;
+2[label="Node Type: RETURN 2
+
+EXPRESSION:
+_tokenApprovals[tokenId]
+
+IRs:
+REF_563(address) -> _tokenApprovals[tokenId]
+RETURN REF_563"];
+}

@@ -1,0 +1,14 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+totalUnderlying() - totalSponsored
+
+IRs:
+TMP_382(uint256) = INTERNAL_CALL, Vault.totalUnderlying()()
+TMP_383(uint256) = TMP_382 (c)- totalSponsored
+RETURN TMP_383"];
+}

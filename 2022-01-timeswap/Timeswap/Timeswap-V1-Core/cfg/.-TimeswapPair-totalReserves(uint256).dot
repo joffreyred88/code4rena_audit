@@ -1,0 +1,15 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+pools[maturity].state.reserves
+
+IRs:
+REF_56(IPair.Pool) -> pools[maturity]
+REF_57(IPair.State) -> REF_56.state
+REF_58(IPair.Tokens) -> REF_57.reserves
+RETURN REF_58"];
+}

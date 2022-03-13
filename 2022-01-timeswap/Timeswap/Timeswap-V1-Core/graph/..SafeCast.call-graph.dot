@@ -1,0 +1,14 @@
+strict digraph {
+subgraph cluster_5347_SafeCast {
+label = "SafeCast"
+"5347_modUint32" [label="modUint32"]
+"5347_toUint128" [label="toUint128"]
+"5347_truncateUint112" [label="truncateUint112"]
+"5347_toUint112" [label="toUint112"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"require(bool)" 
+"5347_toUint112" -> "require(bool)"
+"5347_toUint128" -> "require(bool)"
+}
+}

@@ -1,0 +1,60 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(to != address(0),ERC721: mint to the zero address)
+
+IRs:
+TMP_155 = CONVERT 0 to address
+TMP_156(bool) = to != TMP_155
+TMP_157(None) = SOLIDITY_CALL require(bool,string)(TMP_156,ERC721: mint to the zero address)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(! _exists(tokenId),ERC721: token already minted)
+
+IRs:
+TMP_158(bool) = INTERNAL_CALL, ERC721._exists(uint256)(tokenId)
+TMP_159 = ! TMP_158 
+TMP_160(None) = SOLIDITY_CALL require(bool,string)(TMP_159,ERC721: token already minted)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+_beforeTokenTransfer(address(0),to,tokenId)
+
+IRs:
+TMP_161 = CONVERT 0 to address
+INTERNAL_CALL, ERC721._beforeTokenTransfer(address,address,uint256)(TMP_161,to,tokenId)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+_balances[to] += 1
+
+IRs:
+REF_52(uint256) -> _balances[to]
+REF_52(-> _balances) = REF_52 (c)+ 1"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+_owners[tokenId] = to
+
+IRs:
+REF_53(address) -> _owners[tokenId]
+REF_53 (->_owners) := to(address)"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+Transfer(address(0),to,tokenId)
+
+IRs:
+TMP_163 = CONVERT 0 to address
+Emit Transfer(TMP_163.to.tokenId)"];
+}

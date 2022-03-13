@@ -1,0 +1,58 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: IF 1
+
+EXPRESSION:
+x <= y && x <= z
+
+IRs:
+TMP_463(bool) = x <= y
+TMP_464(bool) = x <= z
+TMP_465(bool) = TMP_463 && TMP_464
+CONDITION TMP_465"];
+1->2[label="True"];
+1->3[label="False"];
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+w = x
+
+IRs:
+w(uint256) := x(uint256)"];
+2->7;
+3[label="Node Type: IF 3
+
+EXPRESSION:
+y <= x && y <= z
+
+IRs:
+TMP_466(bool) = y <= x
+TMP_467(bool) = y <= z
+TMP_468(bool) = TMP_466 && TMP_467
+CONDITION TMP_468"];
+3->4[label="True"];
+3->5[label="False"];
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+w = y
+
+IRs:
+w(uint256) := y(uint256)"];
+4->6;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+w = z
+
+IRs:
+w(uint256) := z(uint256)"];
+5->6;
+6[label="Node Type: END_IF 6
+"];
+6->7;
+7[label="Node Type: END_IF 7
+"];
+}

@@ -1,0 +1,31 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(owner != operator,ERC721: approve to caller)
+
+IRs:
+TMP_1486(bool) = owner != operator
+TMP_1487(None) = SOLIDITY_CALL require(bool,string)(TMP_1486,ERC721: approve to caller)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+_operatorApprovals[owner][operator] = approved
+
+IRs:
+REF_579(mapping(address => bool)) -> _operatorApprovals[owner]
+REF_580(bool) -> REF_579[operator]
+REF_580 (->_operatorApprovals) := approved(bool)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+ApprovalForAll(owner,operator,approved)
+
+IRs:
+Emit ApprovalForAll(owner.operator.approved)"];
+}

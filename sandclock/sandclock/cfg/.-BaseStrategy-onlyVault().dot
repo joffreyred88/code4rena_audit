@@ -1,0 +1,16 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(msg.sender == vault,only vault)
+
+IRs:
+TMP_1067(bool) = msg.sender == vault
+TMP_1068(None) = SOLIDITY_CALL require(bool,string)(TMP_1067,only vault)"];
+1->2;
+2[label="Node Type: _ 2
+"];
+}

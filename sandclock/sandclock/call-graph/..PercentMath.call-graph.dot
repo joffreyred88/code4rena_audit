@@ -1,0 +1,13 @@
+strict digraph {
+subgraph cluster_4243_PercentMath {
+label = "PercentMath"
+"4243_validPerc" [label="validPerc"]
+"4243_percOf" [label="percOf"]
+"4243_percPoints" [label="percPoints"]
+"4243_is100Perc" [label="is100Perc"]
+"4243_slitherConstructorConstantVariables" [label="slitherConstructorConstantVariables"]
+"4243_percOf" -> "4243_percPoints"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

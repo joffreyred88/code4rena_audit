@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+BurnMath.getAsset(state,liquidityIn)
+
+IRs:
+TMP_624(uint128) = LIBRARY_CALL, dest:BurnMath, function:BurnMath.getAsset(IPair.State,uint256), arguments:['state', 'liquidityIn'] 
+RETURN TMP_624"];
+}

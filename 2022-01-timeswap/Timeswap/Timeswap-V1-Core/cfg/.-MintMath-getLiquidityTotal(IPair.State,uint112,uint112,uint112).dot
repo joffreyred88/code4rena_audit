@@ -1,0 +1,22 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+liquidityTotal = min(state.totalLiquidity.mulDiv(xIncrease,state.x),state.totalLiquidity.mulDiv(yIncrease,state.y),state.totalLiquidity.mulDiv(zIncrease,state.z))
+
+IRs:
+REF_391(uint256) -> state.totalLiquidity
+REF_393(uint112) -> state.x
+TMP_458(uint256) = LIBRARY_CALL, dest:FullMath, function:FullMath.mulDiv(uint256,uint256,uint256), arguments:['REF_391', 'xIncrease', 'REF_393'] 
+REF_394(uint256) -> state.totalLiquidity
+REF_396(uint112) -> state.y
+TMP_459(uint256) = LIBRARY_CALL, dest:FullMath, function:FullMath.mulDiv(uint256,uint256,uint256), arguments:['REF_394', 'yIncrease', 'REF_396'] 
+REF_397(uint256) -> state.totalLiquidity
+REF_399(uint112) -> state.z
+TMP_460(uint256) = LIBRARY_CALL, dest:FullMath, function:FullMath.mulDiv(uint256,uint256,uint256), arguments:['REF_397', 'zIncrease', 'REF_399'] 
+TMP_461(uint256) = INTERNAL_CALL, MintMath.min(uint256,uint256,uint256)(TMP_458,TMP_459,TMP_460)
+liquidityTotal(uint256) := TMP_461(uint256)"];
+}

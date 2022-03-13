@@ -1,0 +1,8 @@
+node_modules
+package-lock.json
+artifacts
+cache/solidity-files-cache.json
+coverage
+coverage.json
+.secrets.json
+.DS_Store

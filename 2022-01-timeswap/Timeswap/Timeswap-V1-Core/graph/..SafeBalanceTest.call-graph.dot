@@ -1,0 +1,8 @@
+strict digraph {
+subgraph cluster_6866_SafeBalanceTest {
+label = "SafeBalanceTest"
+"6866_safeBalance" [label="safeBalance"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

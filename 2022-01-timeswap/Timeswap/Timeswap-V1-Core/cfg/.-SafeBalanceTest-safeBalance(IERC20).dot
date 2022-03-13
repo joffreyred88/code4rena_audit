@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+SafeBalance.safeBalance(token)
+
+IRs:
+TMP_649(uint256) = LIBRARY_CALL, dest:SafeBalance, function:SafeBalance.safeBalance(IERC20), arguments:['token'] 
+RETURN TMP_649"];
+}

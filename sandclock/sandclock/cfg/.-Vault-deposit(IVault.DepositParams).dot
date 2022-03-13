@@ -1,0 +1,25 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+_createDeposit(_params.amount,_params.lockedUntil,_params.claims)
+
+IRs:
+REF_109(uint256) -> _params.amount
+REF_110(uint256) -> _params.lockedUntil
+REF_111(IVault.ClaimParams[]) -> _params.claims
+INTERNAL_CALL, Vault._createDeposit(uint256,uint256,IVault.ClaimParams[])(REF_109,REF_110,REF_111)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+_transferAndCheckUnderlying(_msgSender(),_params.amount)
+
+IRs:
+TMP_333(address) = INTERNAL_CALL, Context._msgSender()()
+REF_112(uint256) -> _params.amount
+INTERNAL_CALL, Vault._transferAndCheckUnderlying(address,uint256)(TMP_333,REF_112)"];
+}

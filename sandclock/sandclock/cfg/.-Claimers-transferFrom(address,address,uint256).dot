@@ -1,0 +1,22 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(_isApprovedOrOwner(_msgSender(),tokenId),ERC721: transfer caller is not owner nor approved)
+
+IRs:
+TMP_1429(address) = INTERNAL_CALL, Context._msgSender()()
+TMP_1430(bool) = INTERNAL_CALL, ERC721._isApprovedOrOwner(address,uint256)(TMP_1429,tokenId)
+TMP_1431(None) = SOLIDITY_CALL require(bool,string)(TMP_1430,ERC721: transfer caller is not owner nor approved)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+_transfer(from,to,tokenId)
+
+IRs:
+INTERNAL_CALL, ERC721._transfer(address,address,uint256)(from,to,tokenId)"];
+}

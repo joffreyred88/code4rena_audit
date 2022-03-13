@@ -1,0 +1,149 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->16;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(_ethAnchorRouter != address(0),0x addr)
+
+IRs:
+TMP_627 = CONVERT 0 to address
+TMP_628(bool) = _ethAnchorRouter != TMP_627
+TMP_629(None) = SOLIDITY_CALL require(bool,string)(TMP_628,0x addr)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(_exchangeRateFeeder != address(0),0x addr)
+
+IRs:
+TMP_630 = CONVERT 0 to address
+TMP_631(bool) = _exchangeRateFeeder != TMP_630
+TMP_632(None) = SOLIDITY_CALL require(bool,string)(TMP_631,0x addr)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+require(bool,string)(address(_ustToken) != address(0),0x addr)
+
+IRs:
+TMP_633 = CONVERT _ustToken to address
+TMP_634 = CONVERT 0 to address
+TMP_635(bool) = TMP_633 != TMP_634
+TMP_636(None) = SOLIDITY_CALL require(bool,string)(TMP_635,0x addr)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+require(bool,string)(address(_aUstToken) != address(0),0x addr)
+
+IRs:
+TMP_637 = CONVERT _aUstToken to address
+TMP_638 = CONVERT 0 to address
+TMP_639(bool) = TMP_637 != TMP_638
+TMP_640(None) = SOLIDITY_CALL require(bool,string)(TMP_639,0x addr)"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+require(bool,string)(PercentMath.validPerc(_perfFeePct),invalid pct)
+
+IRs:
+TMP_641(bool) = LIBRARY_CALL, dest:PercentMath, function:PercentMath.validPerc(uint256), arguments:['_perfFeePct'] 
+TMP_642(None) = SOLIDITY_CALL require(bool,string)(TMP_641,invalid pct)"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+treasury = _treasury
+
+IRs:
+treasury(address) := _treasury(address)"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+vault = _vault
+
+IRs:
+vault(address) := _vault(address)"];
+7->8;
+8[label="Node Type: EXPRESSION 8
+
+EXPRESSION:
+underlying = IVault(_vault).underlying()
+
+IRs:
+TMP_643 = CONVERT _vault to IVault
+TMP_644(IERC20) = HIGH_LEVEL_CALL, dest:TMP_643(IVault), function:underlying, arguments:[]  
+underlying(IERC20) := TMP_644(IERC20)"];
+8->9;
+9[label="Node Type: EXPRESSION 9
+
+EXPRESSION:
+ethAnchorRouter = IEthAnchorRouter(_ethAnchorRouter)
+
+IRs:
+TMP_645 = CONVERT _ethAnchorRouter to IEthAnchorRouter
+ethAnchorRouter(IEthAnchorRouter) := TMP_645(IEthAnchorRouter)"];
+9->10;
+10[label="Node Type: EXPRESSION 10
+
+EXPRESSION:
+exchangeRateFeeder = IExchangeRateFeeder(_exchangeRateFeeder)
+
+IRs:
+TMP_646 = CONVERT _exchangeRateFeeder to IExchangeRateFeeder
+exchangeRateFeeder(IExchangeRateFeeder) := TMP_646(IExchangeRateFeeder)"];
+10->11;
+11[label="Node Type: EXPRESSION 11
+
+EXPRESSION:
+ustToken = _ustToken
+
+IRs:
+ustToken(IERC20) := _ustToken(IERC20)"];
+11->12;
+12[label="Node Type: EXPRESSION 12
+
+EXPRESSION:
+aUstToken = _aUstToken
+
+IRs:
+aUstToken(IERC20) := _aUstToken(IERC20)"];
+12->13;
+13[label="Node Type: EXPRESSION 13
+
+EXPRESSION:
+perfFeePct = _perfFeePct
+
+IRs:
+perfFeePct(uint16) := _perfFeePct(uint16)"];
+13->14;
+14[label="Node Type: EXPRESSION 14
+
+EXPRESSION:
+ustToken.safeApprove(_ethAnchorRouter,type()(uint256).max)
+
+IRs:
+TMP_648(uint256) := 115792089237316195423570985008687907853269984665640564039457584007913129639935(uint256)
+LIBRARY_CALL, dest:SafeERC20, function:SafeERC20.safeApprove(IERC20,address,uint256), arguments:['ustToken', '_ethAnchorRouter', 'TMP_648'] "];
+14->15;
+15[label="Node Type: EXPRESSION 15
+
+EXPRESSION:
+aUstToken.safeApprove(_ethAnchorRouter,type()(uint256).max)
+
+IRs:
+TMP_651(uint256) := 115792089237316195423570985008687907853269984665640564039457584007913129639935(uint256)
+LIBRARY_CALL, dest:SafeERC20, function:SafeERC20.safeApprove(IERC20,address,uint256), arguments:['aUstToken', '_ethAnchorRouter', 'TMP_651'] "];
+16[label="Node Type: EXPRESSION 16
+
+EXPRESSION:
+Trust(_owner)
+
+IRs:
+INTERNAL_CALL, Trust.constructor(address)(_owner)"];
+16->1;
+}

@@ -1,0 +1,34 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+ustBalance = _getUstBalance()
+
+IRs:
+TMP_1194(uint256) = INTERNAL_CALL, BaseStrategy._getUstBalance()()
+ustBalance(uint256) := TMP_1194(uint256)"];
+1->2;
+2[label="Node Type: IF 2
+
+EXPRESSION:
+ustBalance > 0
+
+IRs:
+TMP_1195(bool) = ustBalance > 0
+CONDITION TMP_1195"];
+2->3[label="True"];
+2->4[label="False"];
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+curvePool.exchange_underlying(ustI,underlyingI,ustBalance,0)
+
+IRs:
+TMP_1196(uint256) = HIGH_LEVEL_CALL, dest:curvePool(ICurve), function:exchange_underlying, arguments:['ustI', 'underlyingI', 'ustBalance', '0']  "];
+3->4;
+4[label="Node Type: END_IF 4
+"];
+}

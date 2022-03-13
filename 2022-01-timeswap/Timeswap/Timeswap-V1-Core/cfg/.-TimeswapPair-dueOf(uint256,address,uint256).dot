@@ -1,0 +1,16 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+pools[maturity].dues[owner][id]
+
+IRs:
+REF_74(IPair.Pool) -> pools[maturity]
+REF_75(mapping(address => IPair.Due[])) -> REF_74.dues
+REF_76(IPair.Due[]) -> REF_75[owner]
+REF_77(IPair.Due) -> REF_76[id]
+RETURN REF_77"];
+}

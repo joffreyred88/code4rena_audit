@@ -1,0 +1,10 @@
+digraph{
+0[label="Node Type: OTHER_ENTRYPOINT 0
+
+EXPRESSION:
+vault = address(0)
+
+IRs:
+TMP_1517 = CONVERT 0 to address
+vault(address) := TMP_1517(address)"];
+}

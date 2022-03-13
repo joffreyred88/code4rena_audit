@@ -1,0 +1,142 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: IF 1
+
+EXPRESSION:
+state.reserves.asset >= state.totalClaims.bond
+
+IRs:
+REF_422(IPair.Tokens) -> state.reserves
+REF_423(uint128) -> REF_422.asset
+REF_424(IPair.Claims) -> state.totalClaims
+REF_425(uint128) -> REF_424.bond
+TMP_502(bool) = REF_423 >= REF_425
+CONDITION TMP_502"];
+1->2[label="True"];
+1->3[label="False"];
+2[label="Node Type: RETURN 2
+
+EXPRESSION:
+collateralOut
+
+IRs:
+RETURN collateralOut"];
+3[label="Node Type: END_IF 3
+"];
+3->4;
+4[label="Node Type: NEW VARIABLE 4
+
+EXPRESSION:
+deficit = state.totalClaims.bond
+
+IRs:
+REF_426(IPair.Claims) -> state.totalClaims
+REF_427(uint128) -> REF_426.bond
+deficit(uint256) := REF_427(uint128)"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+deficit -= state.reserves.asset
+
+IRs:
+REF_428(IPair.Tokens) -> state.reserves
+REF_429(uint128) -> REF_428.asset
+deficit(uint256) = deficit (c)- REF_429"];
+5->6;
+6[label="Node Type: IF 6
+
+EXPRESSION:
+uint256(state.reserves.collateral) * state.totalClaims.bond >= deficit * state.totalClaims.insurance
+
+IRs:
+REF_430(IPair.Tokens) -> state.reserves
+REF_431(uint128) -> REF_430.collateral
+TMP_503 = CONVERT REF_431 to uint256
+REF_432(IPair.Claims) -> state.totalClaims
+REF_433(uint128) -> REF_432.bond
+TMP_504(uint256) = TMP_503 (c)* REF_433
+REF_434(IPair.Claims) -> state.totalClaims
+REF_435(uint128) -> REF_434.insurance
+TMP_505(uint256) = deficit (c)* REF_435
+TMP_506(bool) = TMP_504 >= TMP_505
+CONDITION TMP_506"];
+6->7[label="True"];
+6->11[label="False"];
+7[label="Node Type: NEW VARIABLE 7
+
+EXPRESSION:
+_collateralOut = deficit
+
+IRs:
+_collateralOut(uint256) := deficit(uint256)"];
+7->8;
+8[label="Node Type: EXPRESSION 8
+
+EXPRESSION:
+_collateralOut *= insuranceIn
+
+IRs:
+_collateralOut(uint256) = _collateralOut (c)* insuranceIn"];
+8->9;
+9[label="Node Type: EXPRESSION 9
+
+EXPRESSION:
+_collateralOut /= state.totalClaims.bond
+
+IRs:
+REF_436(IPair.Claims) -> state.totalClaims
+REF_437(uint128) -> REF_436.bond
+_collateralOut(uint256) = _collateralOut (c)/ REF_437"];
+9->10;
+10[label="Node Type: RETURN 10
+
+EXPRESSION:
+collateralOut = _collateralOut.toUint128()
+
+IRs:
+TMP_507(uint128) = LIBRARY_CALL, dest:SafeCast, function:SafeCast.toUint128(uint256), arguments:['_collateralOut'] 
+collateralOut(uint128) := TMP_507(uint128)
+RETURN collateralOut"];
+11[label="Node Type: END_IF 11
+"];
+11->12;
+12[label="Node Type: NEW VARIABLE 12
+
+EXPRESSION:
+__collateralOut = state.reserves.collateral
+
+IRs:
+REF_439(IPair.Tokens) -> state.reserves
+REF_440(uint128) -> REF_439.collateral
+__collateralOut(uint256) := REF_440(uint128)"];
+12->13;
+13[label="Node Type: EXPRESSION 13
+
+EXPRESSION:
+__collateralOut *= insuranceIn
+
+IRs:
+__collateralOut(uint256) = __collateralOut (c)* insuranceIn"];
+13->14;
+14[label="Node Type: EXPRESSION 14
+
+EXPRESSION:
+__collateralOut /= state.totalClaims.insurance
+
+IRs:
+REF_441(IPair.Claims) -> state.totalClaims
+REF_442(uint128) -> REF_441.insurance
+__collateralOut(uint256) = __collateralOut (c)/ REF_442"];
+14->15;
+15[label="Node Type: EXPRESSION 15
+
+EXPRESSION:
+collateralOut = __collateralOut.toUint128()
+
+IRs:
+TMP_508(uint128) = LIBRARY_CALL, dest:SafeCast, function:SafeCast.toUint128(uint256), arguments:['__collateralOut'] 
+collateralOut(uint128) := TMP_508(uint128)"];
+}

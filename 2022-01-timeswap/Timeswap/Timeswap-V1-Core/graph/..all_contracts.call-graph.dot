@@ -1,0 +1,648 @@
+strict digraph {
+subgraph cluster_5379_SafeTransfer {
+label = "SafeTransfer"
+"5379_safeTransfer" [label="safeTransfer"]
+}subgraph cluster_3207_IFactory {
+label = "IFactory"
+"3207_protocolFee" [label="protocolFee"]
+"3207_acceptOwner" [label="acceptOwner"]
+"3207_setOwner" [label="setOwner"]
+"3207_fee" [label="fee"]
+"3207_getPair" [label="getPair"]
+"3207_pendingOwner" [label="pendingOwner"]
+"3207_owner" [label="owner"]
+"3207_createPair" [label="createPair"]
+}subgraph cluster_648_IERC20Metadata {
+label = "IERC20Metadata"
+"648_symbol" [label="symbol"]
+"648_name" [label="name"]
+"648_decimals" [label="decimals"]
+}subgraph cluster_5256_SafeBalance {
+label = "SafeBalance"
+"5256_safeBalance" [label="safeBalance"]
+}subgraph cluster_1415_TimeswapFactory {
+label = "TimeswapFactory"
+"1415_constructor" [label="constructor"]
+"1415_acceptOwner" [label="acceptOwner"]
+"1415_setOwner" [label="setOwner"]
+"1415_createPair" [label="createPair"]
+}subgraph cluster_6923_SafeCastTest {
+label = "SafeCastTest"
+"6923_truncateUint112" [label="truncateUint112"]
+"6923_toUint112" [label="toUint112"]
+"6923_modUint32" [label="modUint32"]
+"6923_toUint128" [label="toUint128"]
+}subgraph cluster_6539_ConstantProductTest {
+label = "ConstantProductTest"
+"6539_checkConstantProduct" [label="checkConstantProduct"]
+}subgraph cluster_3979_BorrowMath {
+label = "BorrowMath"
+"3979_getDebt" [label="getDebt"]
+"3979_adjust" [label="adjust"]
+"3979_check" [label="check"]
+"3979_getCollateral" [label="getCollateral"]
+"3979_check" -> "3979_adjust"
+}subgraph cluster_4875_LendMath {
+label = "LendMath"
+"4875_adjust" [label="adjust"]
+"4875_getBond" [label="getBond"]
+"4875_getInsurance" [label="getInsurance"]
+"4875_check" [label="check"]
+"4875_check" -> "4875_adjust"
+}subgraph cluster_3726_BlockNumber {
+label = "BlockNumber"
+"3726_get" [label="get"]
+}subgraph cluster_1169_Address {
+label = "Address"
+"1169_verifyCallResult" [label="verifyCallResult"]
+"1169_functionCallWithValue" [label="functionCallWithValue"]
+"1169_isContract" [label="isContract"]
+"1169_functionStaticCall" [label="functionStaticCall"]
+"1169_functionCall" [label="functionCall"]
+"1169_functionDelegateCall" [label="functionDelegateCall"]
+"1169_sendValue" [label="sendValue"]
+"1169_functionStaticCall" -> "1169_verifyCallResult"
+"1169_functionCallWithValue" -> "1169_verifyCallResult"
+"1169_functionStaticCall" -> "1169_functionStaticCall"
+"1169_functionStaticCall" -> "1169_isContract"
+"1169_functionCallWithValue" -> "1169_isContract"
+"1169_functionDelegateCall" -> "1169_functionDelegateCall"
+"1169_functionCallWithValue" -> "1169_functionCallWithValue"
+"1169_functionCall" -> "1169_functionCallWithValue"
+"1169_functionCall" -> "1169_functionCall"
+"1169_functionDelegateCall" -> "1169_verifyCallResult"
+"1169_functionDelegateCall" -> "1169_isContract"
+}subgraph cluster_6681_LendMathTest {
+label = "LendMathTest"
+"6681_getBond" [label="getBond"]
+"6681_check" [label="check"]
+"6681_getInsurance" [label="getInsurance"]
+}subgraph cluster_4377_Callback {
+label = "Callback"
+"4377_lend" [label="lend"]
+"4377_mint" [label="mint"]
+"4377_borrow" [label="borrow"]
+"4377_pay" [label="pay"]
+}subgraph cluster_5530_WithdrawMath {
+label = "WithdrawMath"
+"5530_getCollateral" [label="getCollateral"]
+"5530_getAsset" [label="getAsset"]
+}subgraph cluster_6044_TimeswapPairCallee {
+label = "TimeswapPairCallee"
+"6044_lend" [label="lend"]
+"6044_timeswapMintCallback" [label="timeswapMintCallback"]
+"6044_timeswapLendCallback" [label="timeswapLendCallback"]
+"6044_constructor" [label="constructor"]
+"6044_borrow" [label="borrow"]
+"6044_mint" [label="mint"]
+"6044_timeswapBorrowCallback" [label="timeswapBorrowCallback"]
+"6044_pay" [label="pay"]
+"6044_timeswapPayCallback" [label="timeswapPayCallback"]
+"6044_getData" [label="getData"]
+"6044_getDataMint" [label="getDataMint"]
+"6044_pay" -> "6044_getData"
+"6044_mint" -> "6044_getDataMint"
+"6044_lend" -> "6044_getData"
+"6044_borrow" -> "6044_getData"
+}subgraph cluster_6815_MintMathTest {
+label = "MintMathTest"
+"6815_getDebt" [label="getDebt"]
+"6815_getLiquidityTotal2" [label="getLiquidityTotal2"]
+"6815_getCollateral" [label="getCollateral"]
+"6815_getLiquidityTotal1" [label="getLiquidityTotal1"]
+"6815_getLiquidity" [label="getLiquidity"]
+}subgraph cluster_4639_FullMath {
+label = "FullMath"
+"4639_mulDivUp" [label="mulDivUp"]
+"4639_mul512" [label="mul512"]
+"4639_mulDiv" [label="mulDiv"]
+"4639_mulDiv" -> "4639_mul512"
+"4639_mulDivUp" -> "4639_mulDiv"
+}subgraph cluster_545_ERC20 {
+label = "ERC20"
+"545_transfer" [label="transfer"]
+"545_transferFrom" [label="transferFrom"]
+"545_decreaseAllowance" [label="decreaseAllowance"]
+"545__transfer" [label="_transfer"]
+"545__beforeTokenTransfer" [label="_beforeTokenTransfer"]
+"545_name" [label="name"]
+"545_increaseAllowance" [label="increaseAllowance"]
+"545_approve" [label="approve"]
+"545_symbol" [label="symbol"]
+"545__burn" [label="_burn"]
+"545_totalSupply" [label="totalSupply"]
+"545__approve" [label="_approve"]
+"545_allowance" [label="allowance"]
+"545_constructor" [label="constructor"]
+"545_decimals" [label="decimals"]
+"545__mint" [label="_mint"]
+"545_balanceOf" [label="balanceOf"]
+"545__afterTokenTransfer" [label="_afterTokenTransfer"]
+"545_increaseAllowance" -> "545__msgSender"
+"545_decreaseAllowance" -> "545__approve"
+"545__mint" -> "545__beforeTokenTransfer"
+"545_transfer" -> "545__transfer"
+"545__burn" -> "545__beforeTokenTransfer"
+"545_approve" -> "545__approve"
+"545_transferFrom" -> "545__approve"
+"545_transfer" -> "545__msgSender"
+"545_transferFrom" -> "545__msgSender"
+"545_decreaseAllowance" -> "545__msgSender"
+"545_transferFrom" -> "545__transfer"
+"545__transfer" -> "545__afterTokenTransfer"
+"545__burn" -> "545__afterTokenTransfer"
+"545__mint" -> "545__afterTokenTransfer"
+"545_approve" -> "545__msgSender"
+"545__transfer" -> "545__beforeTokenTransfer"
+"545_increaseAllowance" -> "545__approve"
+}subgraph cluster_1191_Context {
+label = "Context"
+"1191__msgData" [label="_msgData"]
+"1191__msgSender" [label="_msgSender"]
+}subgraph cluster_3626_IPair {
+label = "IPair"
+"3626_factory" [label="factory"]
+"3626_totalClaims" [label="totalClaims"]
+"3626_lend" [label="lend"]
+"3626_liquidityOf" [label="liquidityOf"]
+"3626_fee" [label="fee"]
+"3626_totalReserves" [label="totalReserves"]
+"3626_totalDebtCreated" [label="totalDebtCreated"]
+"3626_claimsOf" [label="claimsOf"]
+"3626_pay" [label="pay"]
+"3626_constantProduct" [label="constantProduct"]
+"3626_totalLiquidity" [label="totalLiquidity"]
+"3626_dueOf" [label="dueOf"]
+"3626_mint" [label="mint"]
+"3626_borrow" [label="borrow"]
+"3626_collateral" [label="collateral"]
+"3626_protocolFee" [label="protocolFee"]
+"3626_burn" [label="burn"]
+"3626_asset" [label="asset"]
+"3626_withdraw" [label="withdraw"]
+}subgraph cluster_6955_SafeTransferTest {
+label = "SafeTransferTest"
+"6955_safeTransfer" [label="safeTransfer"]
+}subgraph cluster_3118_TimeswapPair {
+label = "TimeswapPair"
+"3118_totalDebtCreated" [label="totalDebtCreated"]
+"3118_lend" [label="lend"]
+"3118_borrow" [label="borrow"]
+"3118_totalClaims" [label="totalClaims"]
+"3118_claimsOf" [label="claimsOf"]
+"3118_constructor" [label="constructor"]
+"3118_mint" [label="mint"]
+"3118_dueOf" [label="dueOf"]
+"3118_burn" [label="burn"]
+"3118_withdraw" [label="withdraw"]
+"3118_totalReserves" [label="totalReserves"]
+"3118_pay" [label="pay"]
+"3118_constantProduct" [label="constantProduct"]
+"3118_liquidityOf" [label="liquidityOf"]
+"3118_totalLiquidity" [label="totalLiquidity"]
+"3118_mint" -> "3118_lock"
+"3118_borrow" -> "3118_lock"
+"3118_burn" -> "3118_lock"
+"3118_withdraw" -> "3118_lock"
+"3118_pay" -> "3118_lock"
+"3118_lend" -> "3118_lock"
+}subgraph cluster_5556_TestToken {
+label = "TestToken"
+"5556_constructor" [label="constructor"]
+"5556_constructor" -> "5556_constructor"
+"5556_constructor" -> "5556__mint"
+}subgraph cluster_5174_MintMath {
+label = "MintMath"
+"5174_getLiquidityTotal" [label="getLiquidityTotal"]
+"5174_min" [label="min"]
+"5174_getDebt" [label="getDebt"]
+"5174_getCollateral" [label="getCollateral"]
+"5174_getLiquidity" [label="getLiquidity"]
+"5174_getLiquidityTotal" -> "5174_min"
+}subgraph cluster_3638_ITimeswapBorrowCallback {
+label = "ITimeswapBorrowCallback"
+"3638_timeswapBorrowCallback" [label="timeswapBorrowCallback"]
+}subgraph cluster_6845_PayMathTest {
+label = "PayMathTest"
+"6845_checkProportional" [label="checkProportional"]
+}subgraph cluster_6718_MathTest {
+label = "MathTest"
+"6718_divUp" [label="divUp"]
+"6718_shiftRightUp" [label="shiftRightUp"]
+}subgraph cluster_4160_BurnMath {
+label = "BurnMath"
+"4160_getAsset" [label="getAsset"]
+"4160_getCollateral" [label="getCollateral"]
+}subgraph cluster_4928_Math {
+label = "Math"
+"4928_shiftRightUp" [label="shiftRightUp"]
+"4928_divUp" [label="divUp"]
+}subgraph cluster_6209_BorrowMathTest {
+label = "BorrowMathTest"
+"6209_check" [label="check"]
+"6209_getDebt" [label="getDebt"]
+"6209_getCollateral" [label="getCollateral"]
+}subgraph cluster_3650_ITimeswapLendCallback {
+label = "ITimeswapLendCallback"
+"3650_timeswapLendCallback" [label="timeswapLendCallback"]
+}subgraph cluster_6340_CallbackTest {
+label = "CallbackTest"
+"6340_pay" [label="pay"]
+"6340_borrow" [label="borrow"]
+"6340_mint" [label="mint"]
+"6340_lend" [label="lend"]
+}subgraph cluster_6600_FullMathTest {
+label = "FullMathTest"
+"6600_mul512" [label="mul512"]
+"6600_mulDiv" [label="mulDiv"]
+"6600_mulDivUp" [label="mulDivUp"]
+}subgraph cluster_3664_ITimeswapMintCallback {
+label = "ITimeswapMintCallback"
+"3664_timeswapMintCallback" [label="timeswapMintCallback"]
+}subgraph cluster_6866_SafeBalanceTest {
+label = "SafeBalanceTest"
+"6866_safeBalance" [label="safeBalance"]
+}subgraph cluster_15060_console {
+label = "console"
+"15060_logBytes29" [label="logBytes29"]
+"15060_logUint" [label="logUint"]
+"15060_logBytes16" [label="logBytes16"]
+"15060_logBytes6" [label="logBytes6"]
+"15060_logBytes31" [label="logBytes31"]
+"15060_logBytes25" [label="logBytes25"]
+"15060_logBytes9" [label="logBytes9"]
+"15060_logBytes18" [label="logBytes18"]
+"15060_logBytes14" [label="logBytes14"]
+"15060_logBytes30" [label="logBytes30"]
+"15060_logBytes11" [label="logBytes11"]
+"15060_logBytes12" [label="logBytes12"]
+"15060_logBytes20" [label="logBytes20"]
+"15060_logBytes15" [label="logBytes15"]
+"15060_logBytes19" [label="logBytes19"]
+"15060_logBool" [label="logBool"]
+"15060_logAddress" [label="logAddress"]
+"15060_logBytes13" [label="logBytes13"]
+"15060_logBytes5" [label="logBytes5"]
+"15060_log" [label="log"]
+"15060_logString" [label="logString"]
+"15060_logBytes4" [label="logBytes4"]
+"15060_logBytes10" [label="logBytes10"]
+"15060_logBytes27" [label="logBytes27"]
+"15060_logInt" [label="logInt"]
+"15060_logBytes32" [label="logBytes32"]
+"15060_logBytes8" [label="logBytes8"]
+"15060_logBytes21" [label="logBytes21"]
+"15060_logBytes3" [label="logBytes3"]
+"15060_logBytes2" [label="logBytes2"]
+"15060_logBytes7" [label="logBytes7"]
+"15060_logBytes24" [label="logBytes24"]
+"15060_logBytes17" [label="logBytes17"]
+"15060_logBytes26" [label="logBytes26"]
+"15060_logBytes" [label="logBytes"]
+"15060__sendLogPayload" [label="_sendLogPayload"]
+"15060_logBytes1" [label="logBytes1"]
+"15060_logBytes23" [label="logBytes23"]
+"15060_logBytes22" [label="logBytes22"]
+"15060_logBytes28" [label="logBytes28"]
+"15060_logUint" -> "15060__sendLogPayload"
+"15060_logBytes20" -> "15060__sendLogPayload"
+"15060_logBytes30" -> "15060__sendLogPayload"
+"15060_logBytes15" -> "15060__sendLogPayload"
+"15060_logBytes3" -> "15060__sendLogPayload"
+"15060_logBytes12" -> "15060__sendLogPayload"
+"15060_logBytes17" -> "15060__sendLogPayload"
+"15060_logBytes32" -> "15060__sendLogPayload"
+"15060_logBytes18" -> "15060__sendLogPayload"
+"15060_logBytes5" -> "15060__sendLogPayload"
+"15060_logBytes28" -> "15060__sendLogPayload"
+"15060_logBytes10" -> "15060__sendLogPayload"
+"15060_logBytes16" -> "15060__sendLogPayload"
+"15060_logBytes29" -> "15060__sendLogPayload"
+"15060_logBytes31" -> "15060__sendLogPayload"
+"15060_logAddress" -> "15060__sendLogPayload"
+"15060_logBytes" -> "15060__sendLogPayload"
+"15060_logBytes19" -> "15060__sendLogPayload"
+"15060_logBytes2" -> "15060__sendLogPayload"
+"15060_log" -> "15060__sendLogPayload"
+"15060_logBytes27" -> "15060__sendLogPayload"
+"15060_logBytes21" -> "15060__sendLogPayload"
+"15060_logBytes13" -> "15060__sendLogPayload"
+"15060_logBytes11" -> "15060__sendLogPayload"
+"15060_logBytes25" -> "15060__sendLogPayload"
+"15060_logBytes9" -> "15060__sendLogPayload"
+"15060_logBytes24" -> "15060__sendLogPayload"
+"15060_logBytes26" -> "15060__sendLogPayload"
+"15060_logBytes4" -> "15060__sendLogPayload"
+"15060_logBytes14" -> "15060__sendLogPayload"
+"15060_logBytes22" -> "15060__sendLogPayload"
+"15060_logInt" -> "15060__sendLogPayload"
+"15060_logBytes8" -> "15060__sendLogPayload"
+"15060_logBytes23" -> "15060__sendLogPayload"
+"15060_logBytes1" -> "15060__sendLogPayload"
+"15060_logString" -> "15060__sendLogPayload"
+"15060_logBytes7" -> "15060__sendLogPayload"
+"15060_logBytes6" -> "15060__sendLogPayload"
+"15060_logBool" -> "15060__sendLogPayload"
+}subgraph cluster_6996_WithdrawMathTest {
+label = "WithdrawMathTest"
+"6996_getCollateral" [label="getCollateral"]
+"6996_getAsset" [label="getAsset"]
+}subgraph cluster_5209_PayMath {
+label = "PayMath"
+"5209_checkProportional" [label="checkProportional"]
+}subgraph cluster_3676_ITimeswapPayCallback {
+label = "ITimeswapPayCallback"
+"3676_timeswapPayCallback" [label="timeswapPayCallback"]
+}subgraph cluster_6113_ArrayTest {
+label = "ArrayTest"
+"6113_insert" [label="insert"]
+}subgraph cluster_5347_SafeCast {
+label = "SafeCast"
+"5347_toUint112" [label="toUint112"]
+"5347_modUint32" [label="modUint32"]
+"5347_truncateUint112" [label="truncateUint112"]
+"5347_toUint128" [label="toUint128"]
+}subgraph cluster_4454_ConstantProduct {
+label = "ConstantProduct"
+"4454_checkConstantProduct" [label="checkConstantProduct"]
+}subgraph cluster_6503_CallbackTestCallee {
+label = "CallbackTestCallee"
+"6503_borrow" [label="borrow"]
+"6503_timeswapBorrowCallback" [label="timeswapBorrowCallback"]
+"6503_mint" [label="mint"]
+"6503_timeswapPayCallback" [label="timeswapPayCallback"]
+"6503_timeswapMintCallback" [label="timeswapMintCallback"]
+"6503_lend" [label="lend"]
+"6503_timeswapLendCallback" [label="timeswapLendCallback"]
+"6503_pay" [label="pay"]
+"6503_constructor" [label="constructor"]
+}subgraph cluster_872_SafeERC20 {
+label = "SafeERC20"
+"872_safeDecreaseAllowance" [label="safeDecreaseAllowance"]
+"872__callOptionalReturn" [label="_callOptionalReturn"]
+"872_safeApprove" [label="safeApprove"]
+"872_safeTransfer" [label="safeTransfer"]
+"872_safeIncreaseAllowance" [label="safeIncreaseAllowance"]
+"872_safeTransferFrom" [label="safeTransferFrom"]
+"872_safeApprove" -> "872__callOptionalReturn"
+"872_safeTransfer" -> "872__callOptionalReturn"
+"872_safeTransferFrom" -> "872__callOptionalReturn"
+"872_safeIncreaseAllowance" -> "872__callOptionalReturn"
+"872_safeDecreaseAllowance" -> "872__callOptionalReturn"
+}subgraph cluster_6250_BurnMathTest {
+label = "BurnMathTest"
+"6250_getCollateral" [label="getCollateral"]
+"6250_getAsset" [label="getAsset"]
+}subgraph cluster_623_IERC20 {
+label = "IERC20"
+"623_transfer" [label="transfer"]
+"623_transferFrom" [label="transferFrom"]
+"623_balanceOf" [label="balanceOf"]
+"623_approve" [label="approve"]
+"623_allowance" [label="allowance"]
+"623_totalSupply" [label="totalSupply"]
+}subgraph cluster_6128_BlockNumberTest {
+label = "BlockNumberTest"
+"6128_get" [label="get"]
+}subgraph cluster_3705_Array {
+label = "Array"
+"3705_insert" [label="insert"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"require(bool,string)" 
+"require(bool)" 
+"revert(string)" 
+"abi.encodeWithSignature()" 
+"abi.encode()" 
+"keccak256(bytes)" 
+"staticcall(uint256,uint256,uint256,uint256,uint256,uint256)" 
+"revert(uint256,uint256)" 
+"mulmod(uint256,uint256,uint256)" 
+"abi.decode()" 
+"gas()" 
+"mload(uint256)" 
+"abi.encodeWithSelector()" 
+"15060_logBytes18" -> "abi.encodeWithSignature()"
+"15060_logBytes24" -> "abi.encodeWithSignature()"
+"1415_constructor" -> "require(bool,string)"
+"3118_burn" -> "require(bool,string)"
+"545_transferFrom" -> "require(bool,string)"
+"4377_lend" -> "require(bool,string)"
+"3118_pay" -> "require(bool,string)"
+"15060_logBytes10" -> "abi.encodeWithSignature()"
+"6044_getData" -> "abi.encode()"
+"1415_createPair" -> "keccak256(bytes)"
+"5256_safeBalance" -> "abi.encodeWithSelector()"
+"15060_logBytes25" -> "abi.encodeWithSignature()"
+"4639_mulDiv" -> "mulmod(uint256,uint256,uint256)"
+"15060_logBytes22" -> "abi.encodeWithSignature()"
+"545__mint" -> "require(bool,string)"
+"15060_logUint" -> "abi.encodeWithSignature()"
+"15060__sendLogPayload" -> "gas()"
+"15060_logInt" -> "abi.encodeWithSignature()"
+"1169_sendValue" -> "require(bool,string)"
+"1415_createPair" -> "require(bool,string)"
+"15060_logBytes8" -> "abi.encodeWithSignature()"
+"4639_mul512" -> "mulmod(uint256,uint256,uint256)"
+"1415_acceptOwner" -> "require(bool,string)"
+"872_safeDecreaseAllowance" -> "require(bool,string)"
+"872__callOptionalReturn" -> "require(bool,string)"
+"872_safeIncreaseAllowance" -> "abi.encodeWithSelector()"
+"15060_logBytes11" -> "abi.encodeWithSignature()"
+"3118_mint" -> "require(bool,string)"
+"15060_logBytes1" -> "abi.encodeWithSignature()"
+"15060_logBytes19" -> "abi.encodeWithSignature()"
+"15060_logBytes29" -> "abi.encodeWithSignature()"
+"1169_functionCallWithValue" -> "require(bool,string)"
+"15060_logBytes30" -> "abi.encodeWithSignature()"
+"15060_logBytes5" -> "abi.encodeWithSignature()"
+"15060_logBytes28" -> "abi.encodeWithSignature()"
+"15060_logBool" -> "abi.encodeWithSignature()"
+"4875_check" -> "require(bool,string)"
+"6044_timeswapBorrowCallback" -> "abi.decode()"
+"1415_createPair" -> "abi.encode()"
+"545_decreaseAllowance" -> "require(bool,string)"
+"1415_setOwner" -> "require(bool,string)"
+"6044_timeswapLendCallback" -> "abi.decode()"
+"15060_logBytes" -> "abi.encodeWithSignature()"
+"5256_safeBalance" -> "abi.decode()"
+"545__approve" -> "require(bool,string)"
+"6044_timeswapMintCallback" -> "require(bool,string)"
+"4377_borrow" -> "require(bool,string)"
+"15060_logBytes9" -> "abi.encodeWithSignature()"
+"15060_logBytes27" -> "abi.encodeWithSignature()"
+"15060_logBytes13" -> "abi.encodeWithSignature()"
+"15060_logBytes20" -> "abi.encodeWithSignature()"
+"15060_logBytes2" -> "abi.encodeWithSignature()"
+"872__callOptionalReturn" -> "abi.decode()"
+"872_safeTransferFrom" -> "abi.encodeWithSelector()"
+"545__transfer" -> "require(bool,string)"
+"15060_logBytes6" -> "abi.encodeWithSignature()"
+"15060__sendLogPayload" -> "staticcall(uint256,uint256,uint256,uint256,uint256,uint256)"
+"3118_borrow" -> "require(bool,string)"
+"15060_logBytes31" -> "abi.encodeWithSignature()"
+"15060_logBytes15" -> "abi.encodeWithSignature()"
+"15060_logBytes12" -> "abi.encodeWithSignature()"
+"3118_lend" -> "require(bool,string)"
+"6044_timeswapLendCallback" -> "require(bool,string)"
+"15060_logBytes17" -> "abi.encodeWithSignature()"
+"4454_checkConstantProduct" -> "require(bool,string)"
+"872_safeTransfer" -> "abi.encodeWithSelector()"
+"15060_log" -> "abi.encodeWithSignature()"
+"872_safeDecreaseAllowance" -> "abi.encodeWithSelector()"
+"6044_timeswapBorrowCallback" -> "require(bool,string)"
+"1169_verifyCallResult" -> "mload(uint256)"
+"3118_withdraw" -> "require(bool,string)"
+"4639_mulDivUp" -> "mulmod(uint256,uint256,uint256)"
+"872_safeApprove" -> "require(bool,string)"
+"5209_checkProportional" -> "require(bool,string)"
+"5347_toUint128" -> "require(bool)"
+"15060_logBytes14" -> "abi.encodeWithSignature()"
+"15060_logBytes16" -> "abi.encodeWithSignature()"
+"15060_logBytes23" -> "abi.encodeWithSignature()"
+"6044_getDataMint" -> "abi.encode()"
+"4377_pay" -> "require(bool,string)"
+"545__burn" -> "require(bool,string)"
+"15060_logBytes4" -> "abi.encodeWithSignature()"
+"1169_verifyCallResult" -> "revert(string)"
+"1169_verifyCallResult" -> "revert(uint256,uint256)"
+"15060_logString" -> "abi.encodeWithSignature()"
+"5347_toUint112" -> "require(bool)"
+"4377_mint" -> "require(bool,string)"
+"15060_logBytes32" -> "abi.encodeWithSignature()"
+"15060_logBytes7" -> "abi.encodeWithSignature()"
+"15060_logAddress" -> "abi.encodeWithSignature()"
+"872_safeApprove" -> "abi.encodeWithSelector()"
+"4639_mulDiv" -> "require(bool)"
+"6044_timeswapPayCallback" -> "abi.decode()"
+"6044_timeswapMintCallback" -> "abi.decode()"
+"3979_check" -> "require(bool,string)"
+"15060_logBytes21" -> "abi.encodeWithSignature()"
+"1169_functionStaticCall" -> "require(bool,string)"
+"15060_logBytes3" -> "abi.encodeWithSignature()"
+"1169_functionDelegateCall" -> "require(bool,string)"
+"15060_logBytes26" -> "abi.encodeWithSignature()"
+}"3118_mint" -> "3207_owner"
+"6503_mint" -> "6340_mint"
+"3118_mint" -> "3705_insert"
+"5256_safeBalance" -> "1169_functionStaticCall"
+"6044_constructor" -> "3626_factory"
+"6923_truncateUint112" -> "5347_truncateUint112"
+"6250_getAsset" -> "4160_getAsset"
+"6128_get" -> "3726_get"
+"4377_mint" -> "5256_safeBalance"
+"3118_mint" -> "3726_get"
+"4875_getInsurance" -> "5347_toUint128"
+"6681_check" -> "4875_check"
+"4377_mint" -> "3664_timeswapMintCallback"
+"3118_borrow" -> "3705_insert"
+"6815_getLiquidityTotal1" -> "5174_getLiquidityTotal"
+"5530_getAsset" -> "5347_toUint128"
+"3118_mint" -> "5174_getDebt"
+"6044_timeswapPayCallback" -> "3207_getPair"
+"6923_modUint32" -> "5347_modUint32"
+"6044_timeswapLendCallback" -> "3207_getPair"
+"3979_getCollateral" -> "5347_toUint112"
+"5174_getLiquidity" -> "4639_mulDiv"
+"6044_timeswapBorrowCallback" -> "3207_getPair"
+"6044_timeswapMintCallback" -> "3207_getPair"
+"3118_borrow" -> "3726_get"
+"6681_getInsurance" -> "4875_getInsurance"
+"6044_pay" -> "3626_pay"
+"6044_lend" -> "3626_lend"
+"4377_pay" -> "3676_timeswapPayCallback"
+"6044_getData" -> "3626_asset"
+"6923_toUint112" -> "5347_toUint112"
+"4377_lend" -> "3650_timeswapLendCallback"
+"3118_lend" -> "4875_check"
+"872__callOptionalReturn" -> "1169_functionCall"
+"3118_borrow" -> "3979_getCollateral"
+"3118_borrow" -> "4377_borrow"
+"4160_getCollateral" -> "4928_divUp"
+"6815_getLiquidity" -> "5174_getLiquidity"
+"6044_timeswapPayCallback" -> "623_transferFrom"
+"872_safeDecreaseAllowance" -> "623_allowance"
+"6718_shiftRightUp" -> "4928_shiftRightUp"
+"3118_burn" -> "4160_getAsset"
+"4377_borrow" -> "3638_timeswapBorrowCallback"
+"6340_lend" -> "4377_lend"
+"3979_getDebt" -> "5347_toUint112"
+"6209_getCollateral" -> "3979_getCollateral"
+"6209_check" -> "3979_check"
+"3118_mint" -> "5174_getLiquidityTotal"
+"3118_lend" -> "4875_getInsurance"
+"6955_safeTransfer" -> "5379_safeTransfer"
+"3979_check" -> "4928_divUp"
+"3726_get" -> "5347_modUint32"
+"6815_getCollateral" -> "5174_getCollateral"
+"6600_mulDivUp" -> "4639_mulDivUp"
+"4377_pay" -> "5256_safeBalance"
+"3118_burn" -> "4160_getCollateral"
+"872_safeApprove" -> "623_allowance"
+"6044_timeswapBorrowCallback" -> "623_transferFrom"
+"6044_timeswapLendCallback" -> "623_transferFrom"
+"5174_getDebt" -> "5347_toUint112"
+"4875_check" -> "4454_checkConstantProduct"
+"3118_withdraw" -> "5379_safeTransfer"
+"3118_burn" -> "5379_safeTransfer"
+"6503_borrow" -> "6340_borrow"
+"6044_getDataMint" -> "3626_asset"
+"5174_getDebt" -> "4928_shiftRightUp"
+"6815_getDebt" -> "5174_getDebt"
+"4377_lend" -> "5256_safeBalance"
+"6996_getCollateral" -> "5530_getCollateral"
+"6815_getLiquidityTotal2" -> "5174_getLiquidityTotal"
+"3118_withdraw" -> "5530_getAsset"
+"6600_mulDiv" -> "4639_mulDiv"
+"6044_getData" -> "3626_collateral"
+"6539_checkConstantProduct" -> "4454_checkConstantProduct"
+"6340_borrow" -> "4377_borrow"
+"3979_getDebt" -> "4928_shiftRightUp"
+"3979_check" -> "4454_checkConstantProduct"
+"6845_checkProportional" -> "5209_checkProportional"
+"4377_borrow" -> "5256_safeBalance"
+"3118_borrow" -> "3979_getDebt"
+"5530_getCollateral" -> "5347_toUint128"
+"6718_divUp" -> "4928_divUp"
+"872_safeIncreaseAllowance" -> "623_allowance"
+"4160_getAsset" -> "5347_toUint128"
+"3118_withdraw" -> "5530_getCollateral"
+"6209_getDebt" -> "3979_getDebt"
+"6923_toUint128" -> "5347_toUint128"
+"6044_getDataMint" -> "3626_collateral"
+"6681_getBond" -> "4875_getBond"
+"3118_pay" -> "5209_checkProportional"
+"3118_pay" -> "3726_get"
+"6340_mint" -> "4377_mint"
+"6503_pay" -> "6340_pay"
+"3979_getCollateral" -> "4928_divUp"
+"4160_getCollateral" -> "4639_mulDiv"
+"5174_getCollateral" -> "4928_shiftRightUp"
+"6503_lend" -> "6340_lend"
+"4160_getCollateral" -> "5347_toUint128"
+"5174_getCollateral" -> "5347_toUint112"
+"3118_mint" -> "5174_getLiquidity"
+"6250_getCollateral" -> "4160_getCollateral"
+"4454_checkConstantProduct" -> "4639_mul512"
+"6044_borrow" -> "3626_borrow"
+"5379_safeTransfer" -> "872_safeTransfer"
+"6044_mint" -> "3626_mint"
+"4160_getAsset" -> "4639_mulDiv"
+"3118_borrow" -> "5379_safeTransfer"
+"3118_mint" -> "5174_getCollateral"
+"3118_lend" -> "4377_lend"
+"4875_getBond" -> "5347_toUint128"
+"3118_mint" -> "4377_mint"
+"3118_borrow" -> "3979_check"
+"5174_getLiquidityTotal" -> "4639_mulDiv"
+"3118_pay" -> "5379_safeTransfer"
+"6600_mul512" -> "4639_mul512"
+"6044_timeswapMintCallback" -> "623_transferFrom"
+"6996_getAsset" -> "5530_getAsset"
+"6866_safeBalance" -> "5256_safeBalance"
+"3118_pay" -> "4377_pay"
+"6340_pay" -> "4377_pay"
+"3979_getCollateral" -> "4928_shiftRightUp"
+"6113_insert" -> "3705_insert"
+"3118_lend" -> "4875_getBond"
+}

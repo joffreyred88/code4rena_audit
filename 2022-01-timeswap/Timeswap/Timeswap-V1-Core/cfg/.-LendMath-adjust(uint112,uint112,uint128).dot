@@ -1,0 +1,29 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+adjusted = reserve
+
+IRs:
+adjusted(uint128) := reserve(uint112)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+adjusted <<= 16
+
+IRs:
+adjusted(uint128) = adjusted << 16"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+adjusted -= feeBase * decrease
+
+IRs:
+TMP_447(uint128) = feeBase (c)* decrease
+adjusted(uint128) = adjusted (c)- TMP_447"];
+}

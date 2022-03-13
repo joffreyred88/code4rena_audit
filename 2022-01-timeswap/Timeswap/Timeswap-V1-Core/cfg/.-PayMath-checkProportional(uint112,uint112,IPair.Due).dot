@@ -1,0 +1,19 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(uint256(assetIn) * due.collateral >= uint256(collateralOut) * due.debt,E303)
+
+IRs:
+TMP_473 = CONVERT assetIn to uint256
+REF_405(uint112) -> due.collateral
+TMP_474(uint256) = TMP_473 (c)* REF_405
+TMP_475 = CONVERT collateralOut to uint256
+REF_406(uint112) -> due.debt
+TMP_476(uint256) = TMP_475 (c)* REF_406
+TMP_477(bool) = TMP_474 >= TMP_476
+TMP_478(None) = SOLIDITY_CALL require(bool,string)(TMP_477,E303)"];
+}

@@ -1,0 +1,155 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+_collateralOut = state.reserves.collateral
+
+IRs:
+REF_336(IPair.Tokens) -> state.reserves
+REF_337(uint128) -> REF_336.collateral
+_collateralOut(uint256) := REF_337(uint128)"];
+1->2;
+2[label="Node Type: IF 2
+
+EXPRESSION:
+state.reserves.asset >= state.totalClaims.bond
+
+IRs:
+REF_338(IPair.Tokens) -> state.reserves
+REF_339(uint128) -> REF_338.asset
+REF_340(IPair.Claims) -> state.totalClaims
+REF_341(uint128) -> REF_340.bond
+TMP_344(bool) = REF_339 >= REF_341
+CONDITION TMP_344"];
+2->3[label="True"];
+2->5[label="False"];
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+_collateralOut = _collateralOut.mulDiv(liquidityIn,state.totalLiquidity)
+
+IRs:
+REF_343(uint256) -> state.totalLiquidity
+TMP_345(uint256) = LIBRARY_CALL, dest:FullMath, function:FullMath.mulDiv(uint256,uint256,uint256), arguments:['_collateralOut', 'liquidityIn', 'REF_343'] 
+_collateralOut(uint256) := TMP_345(uint256)"];
+3->4;
+4[label="Node Type: RETURN 4
+
+EXPRESSION:
+collateralOut = _collateralOut.toUint128()
+
+IRs:
+TMP_346(uint128) = LIBRARY_CALL, dest:SafeCast, function:SafeCast.toUint128(uint256), arguments:['_collateralOut'] 
+collateralOut(uint128) := TMP_346(uint128)
+RETURN collateralOut"];
+5[label="Node Type: END_IF 5
+"];
+5->6;
+6[label="Node Type: NEW VARIABLE 6
+
+EXPRESSION:
+deficit = state.totalClaims.bond
+
+IRs:
+REF_345(IPair.Claims) -> state.totalClaims
+REF_346(uint128) -> REF_345.bond
+deficit(uint256) := REF_346(uint128)"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+deficit -= state.reserves.asset
+
+IRs:
+REF_347(IPair.Tokens) -> state.reserves
+REF_348(uint128) -> REF_347.asset
+deficit(uint256) = deficit (c)- REF_348"];
+7->8;
+8[label="Node Type: IF 8
+
+EXPRESSION:
+uint256(state.reserves.collateral) * state.totalClaims.bond <= deficit * state.totalClaims.insurance
+
+IRs:
+REF_349(IPair.Tokens) -> state.reserves
+REF_350(uint128) -> REF_349.collateral
+TMP_347 = CONVERT REF_350 to uint256
+REF_351(IPair.Claims) -> state.totalClaims
+REF_352(uint128) -> REF_351.bond
+TMP_348(uint256) = TMP_347 (c)* REF_352
+REF_353(IPair.Claims) -> state.totalClaims
+REF_354(uint128) -> REF_353.insurance
+TMP_349(uint256) = deficit (c)* REF_354
+TMP_350(bool) = TMP_348 <= TMP_349
+CONDITION TMP_350"];
+8->9[label="True"];
+8->10[label="False"];
+9[label="Node Type: RETURN 9
+
+EXPRESSION:
+collateralOut
+
+IRs:
+RETURN collateralOut"];
+10[label="Node Type: END_IF 10
+"];
+10->11;
+11[label="Node Type: NEW VARIABLE 11
+
+EXPRESSION:
+subtrahend = deficit
+
+IRs:
+subtrahend(uint256) := deficit(uint256)"];
+11->12;
+12[label="Node Type: EXPRESSION 12
+
+EXPRESSION:
+subtrahend *= state.totalClaims.insurance
+
+IRs:
+REF_355(IPair.Claims) -> state.totalClaims
+REF_356(uint128) -> REF_355.insurance
+subtrahend(uint256) = subtrahend (c)* REF_356"];
+12->13;
+13[label="Node Type: EXPRESSION 13
+
+EXPRESSION:
+subtrahend = subtrahend.divUp(state.totalClaims.bond)
+
+IRs:
+REF_358(IPair.Claims) -> state.totalClaims
+REF_359(uint128) -> REF_358.bond
+TMP_351(uint256) = LIBRARY_CALL, dest:Math, function:Math.divUp(uint256,uint256), arguments:['subtrahend', 'REF_359'] 
+subtrahend(uint256) := TMP_351(uint256)"];
+13->14;
+14[label="Node Type: EXPRESSION 14
+
+EXPRESSION:
+_collateralOut -= subtrahend
+
+IRs:
+_collateralOut(uint256) = _collateralOut (c)- subtrahend"];
+14->15;
+15[label="Node Type: EXPRESSION 15
+
+EXPRESSION:
+_collateralOut = _collateralOut.mulDiv(liquidityIn,state.totalLiquidity)
+
+IRs:
+REF_361(uint256) -> state.totalLiquidity
+TMP_352(uint256) = LIBRARY_CALL, dest:FullMath, function:FullMath.mulDiv(uint256,uint256,uint256), arguments:['_collateralOut', 'liquidityIn', 'REF_361'] 
+_collateralOut(uint256) := TMP_352(uint256)"];
+15->16;
+16[label="Node Type: EXPRESSION 16
+
+EXPRESSION:
+collateralOut = _collateralOut.toUint128()
+
+IRs:
+TMP_353(uint128) = LIBRARY_CALL, dest:SafeCast, function:SafeCast.toUint128(uint256), arguments:['_collateralOut'] 
+collateralOut(uint128) := TMP_353(uint128)"];
+}

@@ -1,0 +1,35 @@
+{
+  "name": "xdefi-distribution",
+  "version": "1.0.0",
+  "description": "## Description This contract provides a mechanisms for users to lock XDEFI, resulting in non-fungible locked positions, since each position is only un-lockable in its entirety after a certain time from locking. Locked positions have a right to withdraw at least the respective amount of XDEFI deposited, as well as a portion of XDEFI that was airdropped to this contract, and thus dispersed to all locked positions. This portion is based on the relative portion of locked XDEFI in comparison to all locked XDEFI, and the bonus multiplier of the locked position, which is assigned at lock-time based on the lock duration. Further, the locked and unlocked positions exist as NFTs with a score, in which several can be merged/burned to create new NFTs of a larger score.",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "coverage": "hardhat coverage",
+    "deploy:ropsten": "hardhat run scripts/deploy.js --network ropsten",
+    "deploy:rinkeby": "hardhat run scripts/deploy.js --network rinkeby",
+    "deploy:mainnet": "hardhat run scripts/deploy.js --network mainnet",
+    "deploy:ganache": "hardhat run scripts/deploy.js --network ganache",
+    "server": "node ./backend/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.3",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "chai": "^4.3.4",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.5.2",
+    "hardhat": "^2.7.0",
+    "hardhat-gas-reporter": "^1.0.6",
+    "solidity-coverage": "^0.7.17"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.4.1"
+  },
+  "directories": {
+    "test": "test"
+  }
+}

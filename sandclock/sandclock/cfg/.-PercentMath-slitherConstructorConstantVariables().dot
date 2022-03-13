@@ -1,0 +1,9 @@
+digraph{
+0[label="Node Type: OTHER_ENTRYPOINT 0
+
+EXPRESSION:
+PERC_DIVISOR = 10000
+
+IRs:
+PERC_DIVISOR(uint256) := 10000(uint256)"];
+}

@@ -1,0 +1,69 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+assetReserve = asset.safeBalance()
+
+IRs:
+TMP_354(uint256) = LIBRARY_CALL, dest:SafeBalance, function:SafeBalance.safeBalance(IERC20), arguments:['asset'] 
+assetReserve(uint256) := TMP_354(uint256)"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+
+EXPRESSION:
+collateralReserve = collateral.safeBalance()
+
+IRs:
+TMP_355(uint256) = LIBRARY_CALL, dest:SafeBalance, function:SafeBalance.safeBalance(IERC20), arguments:['collateral'] 
+collateralReserve(uint256) := TMP_355(uint256)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+ITimeswapMintCallback(msg.sender).timeswapMintCallback(assetIn,collateralIn,data)
+
+IRs:
+TMP_356 = CONVERT msg.sender to ITimeswapMintCallback
+HIGH_LEVEL_CALL, dest:TMP_356(ITimeswapMintCallback), function:timeswapMintCallback, arguments:['assetIn', 'collateralIn', 'data']  "];
+3->4;
+4[label="Node Type: NEW VARIABLE 4
+
+EXPRESSION:
+_assetReserve = asset.safeBalance()
+
+IRs:
+TMP_358(uint256) = LIBRARY_CALL, dest:SafeBalance, function:SafeBalance.safeBalance(IERC20), arguments:['asset'] 
+_assetReserve(uint256) := TMP_358(uint256)"];
+4->5;
+5[label="Node Type: NEW VARIABLE 5
+
+EXPRESSION:
+_collateralReserve = collateral.safeBalance()
+
+IRs:
+TMP_359(uint256) = LIBRARY_CALL, dest:SafeBalance, function:SafeBalance.safeBalance(IERC20), arguments:['collateral'] 
+_collateralReserve(uint256) := TMP_359(uint256)"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+require(bool,string)(_assetReserve >= assetReserve + assetIn,E304)
+
+IRs:
+TMP_360(uint256) = assetReserve (c)+ assetIn
+TMP_361(bool) = _assetReserve >= TMP_360
+TMP_362(None) = SOLIDITY_CALL require(bool,string)(TMP_361,E304)"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+require(bool,string)(_collateralReserve >= collateralReserve + collateralIn,E305)
+
+IRs:
+TMP_363(uint256) = collateralReserve (c)+ collateralIn
+TMP_364(bool) = _collateralReserve >= TMP_363
+TMP_365(None) = SOLIDITY_CALL require(bool,string)(TMP_364,E305)"];
+}

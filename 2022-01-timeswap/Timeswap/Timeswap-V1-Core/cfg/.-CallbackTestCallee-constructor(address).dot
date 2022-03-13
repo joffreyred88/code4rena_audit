@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+callbackTestContract = CallbackTest(callbackTest)
+
+IRs:
+TMP_630 = CONVERT callbackTest to CallbackTest
+callbackTestContract(CallbackTest) := TMP_630(CallbackTest)"];
+}

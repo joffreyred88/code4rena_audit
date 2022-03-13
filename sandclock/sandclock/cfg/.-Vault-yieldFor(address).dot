@@ -1,0 +1,71 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+tokenId = claimers.addressToTokenID(_to)
+
+IRs:
+TMP_324(uint256) = HIGH_LEVEL_CALL, dest:claimers(Claimers), function:addressToTokenID, arguments:['_to']  
+tokenId(uint256) := TMP_324(uint256)"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+
+EXPRESSION:
+claimerPrincipal = claimers.principalOf(tokenId)
+
+IRs:
+TMP_325(uint256) = HIGH_LEVEL_CALL, dest:claimers(Claimers), function:principalOf, arguments:['tokenId']  
+claimerPrincipal(uint256) := TMP_325(uint256)"];
+2->3;
+3[label="Node Type: NEW VARIABLE 3
+
+EXPRESSION:
+claimerShares = claimers.sharesOf(tokenId)
+
+IRs:
+TMP_326(uint256) = HIGH_LEVEL_CALL, dest:claimers(Claimers), function:sharesOf, arguments:['tokenId']  
+claimerShares(uint256) := TMP_326(uint256)"];
+3->4;
+4[label="Node Type: NEW VARIABLE 4
+
+EXPRESSION:
+currentClaimerPrincipal = _computeAmount(claimerShares,totalShares(),totalUnderlyingMinusSponsored())
+
+IRs:
+TMP_327(uint256) = INTERNAL_CALL, Vault.totalShares()()
+TMP_328(uint256) = INTERNAL_CALL, Vault.totalUnderlyingMinusSponsored()()
+TMP_329(uint256) = INTERNAL_CALL, Vault._computeAmount(uint256,uint256,uint256)(claimerShares,TMP_327,TMP_328)
+currentClaimerPrincipal(uint256) := TMP_329(uint256)"];
+4->5;
+5[label="Node Type: IF 5
+
+EXPRESSION:
+currentClaimerPrincipal <= claimerPrincipal
+
+IRs:
+TMP_330(bool) = currentClaimerPrincipal <= claimerPrincipal
+CONDITION TMP_330"];
+5->6[label="True"];
+5->7[label="False"];
+6[label="Node Type: RETURN 6
+
+EXPRESSION:
+0
+
+IRs:
+RETURN 0"];
+7[label="Node Type: END_IF 7
+"];
+7->8;
+8[label="Node Type: RETURN 8
+
+EXPRESSION:
+currentClaimerPrincipal - claimerPrincipal
+
+IRs:
+TMP_331(uint256) = currentClaimerPrincipal (c)- claimerPrincipal
+RETURN TMP_331"];
+}

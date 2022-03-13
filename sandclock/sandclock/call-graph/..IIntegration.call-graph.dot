@@ -1,0 +1,9 @@
+strict digraph {
+subgraph cluster_4042_IIntegration {
+label = "IIntegration"
+"4042_onDepositMinted" [label="onDepositMinted"]
+"4042_onDepositBurned" [label="onDepositBurned"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

@@ -1,0 +1,14 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+pairContract.lend(maturity,bondTo,insuranceTo,xIncrease,yDecrease,zDecrease,getData(msg.sender))
+
+IRs:
+TMP_585(bytes) = INTERNAL_CALL, TimeswapPairCallee.getData(address)(msg.sender)
+TMP_586(IPair.Claims) = HIGH_LEVEL_CALL, dest:pairContract(IPair), function:lend, arguments:['maturity', 'bondTo', 'insuranceTo', 'xIncrease', 'yDecrease', 'zDecrease', 'TMP_585']  
+RETURN TMP_586"];
+}

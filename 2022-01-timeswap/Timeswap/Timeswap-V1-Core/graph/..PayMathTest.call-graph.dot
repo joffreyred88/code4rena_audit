@@ -1,0 +1,8 @@
+strict digraph {
+subgraph cluster_6845_PayMathTest {
+label = "PayMathTest"
+"6845_checkProportional" [label="checkProportional"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

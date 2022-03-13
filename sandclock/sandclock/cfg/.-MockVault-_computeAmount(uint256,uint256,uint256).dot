@@ -1,0 +1,33 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: IF 1
+
+EXPRESSION:
+_totalShares == 0 || _totalUnderlyingMinusSponsored == 0
+
+IRs:
+TMP_942(bool) = _totalShares == 0
+TMP_943(bool) = _totalUnderlyingMinusSponsored == 0
+TMP_944(bool) = TMP_942 || TMP_943
+CONDITION TMP_944"];
+1->2[label="True"];
+1->3[label="False"];
+2[label="Node Type: RETURN 2
+
+EXPRESSION:
+0
+
+IRs:
+RETURN 0"];
+3[label="Node Type: RETURN 3
+
+EXPRESSION:
+((_totalUnderlyingMinusSponsored * _shares) / _totalShares)
+
+IRs:
+TMP_945(uint256) = _totalUnderlyingMinusSponsored (c)* _shares
+TMP_946(uint256) = TMP_945 (c)/ _totalShares
+RETURN TMP_946"];
+}

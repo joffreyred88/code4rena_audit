@@ -1,0 +1,15 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+addr.doesContractImplementInterface(type()(IIntegration).interfaceId)
+
+IRs:
+TMP_947(type(IIntegration)) = SOLIDITY_CALL type()(IIntegration)
+REF_338 (->None) := 1644387228(bytes4)
+TMP_948(bool) = LIBRARY_CALL, dest:ERC165Query, function:ERC165Query.doesContractImplementInterface(address,bytes4), arguments:['addr', 'REF_338'] 
+RETURN TMP_948"];
+}

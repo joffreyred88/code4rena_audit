@@ -1,0 +1,43 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+owner = ERC721.ownerOf(tokenId)
+
+IRs:
+TMP_1415(address) = INTERNAL_CALL, ERC721.ownerOf(uint256)(tokenId)
+owner(address) := TMP_1415(address)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(to != owner,ERC721: approval to current owner)
+
+IRs:
+TMP_1416(bool) = to != owner
+TMP_1417(None) = SOLIDITY_CALL require(bool,string)(TMP_1416,ERC721: approval to current owner)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+require(bool,string)(_msgSender() == owner || isApprovedForAll(owner,_msgSender()),ERC721: approve caller is not owner nor approved for all)
+
+IRs:
+TMP_1418(address) = INTERNAL_CALL, Context._msgSender()()
+TMP_1419(bool) = TMP_1418 == owner
+TMP_1420(address) = INTERNAL_CALL, Context._msgSender()()
+TMP_1421(bool) = INTERNAL_CALL, ERC721.isApprovedForAll(address,address)(owner,TMP_1420)
+TMP_1422(bool) = TMP_1419 || TMP_1421
+TMP_1423(None) = SOLIDITY_CALL require(bool,string)(TMP_1422,ERC721: approve caller is not owner nor approved for all)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+_approve(to,tokenId)
+
+IRs:
+INTERNAL_CALL, ERC721._approve(address,uint256)(to,tokenId)"];
+}

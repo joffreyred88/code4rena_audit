@@ -1,0 +1,53 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+ustBalance = _getUstBalance()
+
+IRs:
+TMP_1244(uint256) = INTERNAL_CALL, BaseStrategy._getUstBalance()()
+ustBalance(uint256) := TMP_1244(uint256)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(ustBalance > 0,balance 0)
+
+IRs:
+TMP_1245(bool) = ustBalance > 0
+TMP_1246(None) = SOLIDITY_CALL require(bool,string)(TMP_1245,balance 0)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+pendingDeposits += ustBalance
+
+IRs:
+pendingDeposits(uint256) = pendingDeposits (c)+ ustBalance"];
+3->4;
+4[label="Node Type: NEW VARIABLE 4
+
+EXPRESSION:
+_operator = ethAnchorRouter.initDepositStable(ustBalance)
+
+IRs:
+TMP_1247(address) = HIGH_LEVEL_CALL, dest:ethAnchorRouter(IEthAnchorRouter), function:initDepositStable, arguments:['ustBalance']  
+_operator(address) := TMP_1247(address)"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+depositOperations.push(Operation(_operator,ustBalance))
+
+IRs:
+TMP_1248 = new Operation(_operator,ustBalance)
+REF_481 -> LENGTH depositOperations
+TMP_1250(uint256) := REF_481(uint256)
+TMP_1251(uint256) = TMP_1250 (c)+ 1
+REF_481 (->depositOperations) := TMP_1251(uint256)
+REF_482(BaseStrategy.Operation) -> depositOperations[TMP_1250]
+REF_482 (->depositOperations) := TMP_1248(BaseStrategy.Operation)"];
+}

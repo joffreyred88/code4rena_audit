@@ -1,0 +1,21 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+_transfer(from,to,tokenId)
+
+IRs:
+INTERNAL_CALL, ERC721._transfer(address,address,uint256)(from,to,tokenId)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(_checkOnERC721Received(from,to,tokenId,_data),ERC721: transfer to non ERC721Receiver implementer)
+
+IRs:
+TMP_1565(bool) = INTERNAL_CALL, ERC721._checkOnERC721Received(address,address,uint256,bytes)(from,to,tokenId,_data)
+TMP_1566(None) = SOLIDITY_CALL require(bool,string)(TMP_1565,ERC721: transfer to non ERC721Receiver implementer)"];
+}

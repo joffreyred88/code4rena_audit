@@ -1,0 +1,8 @@
+strict digraph {
+subgraph cluster_3726_BlockNumber {
+label = "BlockNumber"
+"3726_get" [label="get"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

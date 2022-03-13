@@ -1,0 +1,14 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+y = uint32(x % 0x100000000)
+
+IRs:
+TMP_484(uint256) = x (c)% 4294967296
+TMP_485 = CONVERT TMP_484 to uint32
+y(uint32) := TMP_485(uint32)"];
+}

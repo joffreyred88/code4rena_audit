@@ -1,0 +1,41 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+assetReserve = asset.safeBalance()
+
+IRs:
+TMP_380(uint256) = LIBRARY_CALL, dest:SafeBalance, function:SafeBalance.safeBalance(IERC20), arguments:['asset'] 
+assetReserve(uint256) := TMP_380(uint256)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+ITimeswapPayCallback(msg.sender).timeswapPayCallback(assetIn,data)
+
+IRs:
+TMP_381 = CONVERT msg.sender to ITimeswapPayCallback
+HIGH_LEVEL_CALL, dest:TMP_381(ITimeswapPayCallback), function:timeswapPayCallback, arguments:['assetIn', 'data']  "];
+2->3;
+3[label="Node Type: NEW VARIABLE 3
+
+EXPRESSION:
+_assetReserve = asset.safeBalance()
+
+IRs:
+TMP_383(uint256) = LIBRARY_CALL, dest:SafeBalance, function:SafeBalance.safeBalance(IERC20), arguments:['asset'] 
+_assetReserve(uint256) := TMP_383(uint256)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+require(bool,string)(_assetReserve >= assetReserve + assetIn,E304)
+
+IRs:
+TMP_384(uint256) = assetReserve (c)+ assetIn
+TMP_385(bool) = _assetReserve >= TMP_384
+TMP_386(None) = SOLIDITY_CALL require(bool,string)(TMP_385,E304)"];
+}

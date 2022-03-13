@@ -1,0 +1,14 @@
+strict digraph {
+subgraph cluster_3979_BorrowMath {
+label = "BorrowMath"
+"3979_getDebt" [label="getDebt"]
+"3979_adjust" [label="adjust"]
+"3979_check" [label="check"]
+"3979_getCollateral" [label="getCollateral"]
+"3979_check" -> "3979_adjust"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"require(bool,string)" 
+"3979_check" -> "require(bool,string)"
+}
+}

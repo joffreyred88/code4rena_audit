@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+BorrowMath.getDebt(maturity,xDecrease,yIncrease)
+
+IRs:
+TMP_622(uint112) = LIBRARY_CALL, dest:BorrowMath, function:BorrowMath.getDebt(uint256,uint112,uint112), arguments:['maturity', 'xDecrease', 'yIncrease'] 
+RETURN TMP_622"];
+}

@@ -1,0 +1,56 @@
+strict digraph {
+subgraph cluster_3626_IPair {
+label = "IPair"
+"3626_factory" [label="factory"]
+"3626_liquidityOf" [label="liquidityOf"]
+"3626_totalReserves" [label="totalReserves"]
+"3626_totalClaims" [label="totalClaims"]
+"3626_fee" [label="fee"]
+"3626_lend" [label="lend"]
+"3626_borrow" [label="borrow"]
+"3626_totalDebtCreated" [label="totalDebtCreated"]
+"3626_claimsOf" [label="claimsOf"]
+"3626_pay" [label="pay"]
+"3626_constantProduct" [label="constantProduct"]
+"3626_collateral" [label="collateral"]
+"3626_protocolFee" [label="protocolFee"]
+"3626_totalLiquidity" [label="totalLiquidity"]
+"3626_dueOf" [label="dueOf"]
+"3626_mint" [label="mint"]
+"3626_burn" [label="burn"]
+"3626_asset" [label="asset"]
+"3626_withdraw" [label="withdraw"]
+}subgraph cluster_3118_TimeswapPair {
+label = "TimeswapPair"
+"3118_totalDebtCreated" [label="totalDebtCreated"]
+"3118_lend" [label="lend"]
+"3118_borrow" [label="borrow"]
+"3118_totalClaims" [label="totalClaims"]
+"3118_claimsOf" [label="claimsOf"]
+"3118_constructor" [label="constructor"]
+"3118_mint" [label="mint"]
+"3118_dueOf" [label="dueOf"]
+"3118_burn" [label="burn"]
+"3118_withdraw" [label="withdraw"]
+"3118_totalReserves" [label="totalReserves"]
+"3118_pay" [label="pay"]
+"3118_constantProduct" [label="constantProduct"]
+"3118_liquidityOf" [label="liquidityOf"]
+"3118_totalLiquidity" [label="totalLiquidity"]
+"3118_mint" -> "3118_lock"
+"3118_borrow" -> "3118_lock"
+"3118_burn" -> "3118_lock"
+"3118_withdraw" -> "3118_lock"
+"3118_pay" -> "3118_lock"
+"3118_lend" -> "3118_lock"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"require(bool,string)" 
+"3118_lend" -> "require(bool,string)"
+"3118_pay" -> "require(bool,string)"
+"3118_mint" -> "require(bool,string)"
+"3118_burn" -> "require(bool,string)"
+"3118_withdraw" -> "require(bool,string)"
+"3118_borrow" -> "require(bool,string)"
+}
+}

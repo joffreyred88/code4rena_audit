@@ -1,0 +1,52 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(_exists(tokenId),ERC721Metadata: URI query for nonexistent token)
+
+IRs:
+TMP_105(bool) = INTERNAL_CALL, ERC721._exists(uint256)(tokenId)
+TMP_106(None) = SOLIDITY_CALL require(bool,string)(TMP_105,ERC721Metadata: URI query for nonexistent token)"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+
+EXPRESSION:
+baseURI = _baseURI()
+
+IRs:
+TMP_107(string) = INTERNAL_CALL, ERC721._baseURI()()
+baseURI(string) := TMP_107(string)"];
+2->4;
+4[label="Node Type: IF 4
+
+EXPRESSION:
+bytes(baseURI).length > 0
+
+IRs:
+TMP_108 = CONVERT baseURI to bytes
+REF_43 -> LENGTH TMP_108
+TMP_109(bool) = REF_43 > 0
+CONDITION TMP_109"];
+4->5[label="True"];
+4->6[label="False"];
+5[label="Node Type: RETURN 5
+
+EXPRESSION:
+string(abi.encodePacked(baseURI,tokenId.toString()))
+
+IRs:
+TMP_110(string) = LIBRARY_CALL, dest:Strings, function:Strings.toString(uint256), arguments:['tokenId'] 
+TMP_111(bytes) = SOLIDITY_CALL abi.encodePacked()(baseURI,TMP_110)
+TMP_112 = CONVERT TMP_111 to string
+RETURN TMP_112"];
+6[label="Node Type: RETURN 6
+
+EXPRESSION:
+
+
+IRs:
+RETURN "];
+}

@@ -1,0 +1,21 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+interfaceId == type()(IERC721).interfaceId || interfaceId == type()(IERC721Metadata).interfaceId || super.supportsInterface(interfaceId)
+
+IRs:
+TMP_92(type(IERC721)) = SOLIDITY_CALL type()(IERC721)
+REF_39 (->None) := 2169737578(bytes4)
+TMP_93(bool) = interfaceId == REF_39
+TMP_94(type(IERC721Metadata)) = SOLIDITY_CALL type()(IERC721Metadata)
+REF_40 (->None) := 3658318581(bytes4)
+TMP_95(bool) = interfaceId == REF_40
+TMP_96(bool) = TMP_93 || TMP_95
+TMP_97(bool) = INTERNAL_CALL, ERC165.supportsInterface(bytes4)(interfaceId)
+TMP_98(bool) = TMP_96 || TMP_97
+RETURN TMP_98"];
+}

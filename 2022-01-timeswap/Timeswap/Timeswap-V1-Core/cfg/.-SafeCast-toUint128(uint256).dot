@@ -1,0 +1,15 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool)((y = uint128(x)) == x)
+
+IRs:
+TMP_489 = CONVERT x to uint128
+y(uint128) := TMP_489(uint128)
+TMP_490(bool) = y == x
+TMP_491(None) = SOLIDITY_CALL require(bool)(TMP_490)"];
+}

@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+claimers.totalShares()
+
+IRs:
+TMP_323(uint256) = HIGH_LEVEL_CALL, dest:claimers(Claimers), function:totalShares, arguments:[]  
+RETURN TMP_323"];
+}

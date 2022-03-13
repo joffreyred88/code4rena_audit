@@ -1,0 +1,114 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+(success,result) = noThrowCall(_contract,ERC165ID)
+
+IRs:
+TUPLE_6(uint256,uint256) = INTERNAL_CALL, ERC165Query.noThrowCall(address,bytes4)(_contract,ERC165ID)
+success(uint256)= UNPACK TUPLE_6 index: 0 
+result(uint256)= UNPACK TUPLE_6 index: 1 "];
+3->4;
+4[label="Node Type: IF 4
+
+EXPRESSION:
+(success == 0) || (result == 0)
+
+IRs:
+TMP_494(bool) = success == 0
+TMP_495(bool) = result == 0
+TMP_496(bool) = TMP_494 || TMP_495
+CONDITION TMP_496"];
+4->5[label="True"];
+4->6[label="False"];
+5[label="Node Type: RETURN 5
+
+EXPRESSION:
+false
+
+IRs:
+RETURN False"];
+6[label="Node Type: END_IF 6
+"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+(success,result) = noThrowCall(_contract,InvalidID)
+
+IRs:
+TUPLE_7(uint256,uint256) = INTERNAL_CALL, ERC165Query.noThrowCall(address,bytes4)(_contract,InvalidID)
+success(uint256)= UNPACK TUPLE_7 index: 0 
+result(uint256)= UNPACK TUPLE_7 index: 1 "];
+7->8;
+8[label="Node Type: IF 8
+
+EXPRESSION:
+(success == 0) || (result != 0)
+
+IRs:
+TMP_497(bool) = success == 0
+TMP_498(bool) = result != 0
+TMP_499(bool) = TMP_497 || TMP_498
+CONDITION TMP_499"];
+8->9[label="True"];
+8->10[label="False"];
+9[label="Node Type: RETURN 9
+
+EXPRESSION:
+false
+
+IRs:
+RETURN False"];
+10[label="Node Type: END_IF 10
+"];
+10->11;
+11[label="Node Type: EXPRESSION 11
+
+EXPRESSION:
+(success,result) = noThrowCall(_contract,_interfaceId)
+
+IRs:
+TUPLE_8(uint256,uint256) = INTERNAL_CALL, ERC165Query.noThrowCall(address,bytes4)(_contract,_interfaceId)
+success(uint256)= UNPACK TUPLE_8 index: 0 
+result(uint256)= UNPACK TUPLE_8 index: 1 "];
+11->12;
+12[label="Node Type: IF 12
+
+EXPRESSION:
+(success == 1) && (result == 1)
+
+IRs:
+TMP_500(bool) = success == 1
+TMP_501(bool) = result == 1
+TMP_502(bool) = TMP_500 && TMP_501
+CONDITION TMP_502"];
+12->13[label="True"];
+12->14[label="False"];
+13[label="Node Type: RETURN 13
+
+EXPRESSION:
+true
+
+IRs:
+RETURN True"];
+14[label="Node Type: END_IF 14
+"];
+14->15;
+15[label="Node Type: RETURN 15
+
+EXPRESSION:
+false
+
+IRs:
+RETURN False"];
+}

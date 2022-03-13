@@ -1,0 +1,14 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+(_fracNum * PERC_DIVISOR) / _fracDenom
+
+IRs:
+TMP_516(uint256) = _fracNum (c)* PERC_DIVISOR
+TMP_517(uint256) = TMP_516 (c)/ _fracDenom
+RETURN TMP_517"];
+}

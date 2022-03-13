@@ -1,0 +1,20 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->2;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+vault = _vault
+
+IRs:
+vault(address) := _vault(address)"];
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+ERC721(_name,_symbol)
+
+IRs:
+INTERNAL_CALL, ERC721.constructor(string,string)(_name,_symbol)"];
+2->1;
+}

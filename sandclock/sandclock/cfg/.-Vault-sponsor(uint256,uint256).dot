@@ -1,0 +1,72 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: IF 1
+
+EXPRESSION:
+_lockedUntil == 0
+
+IRs:
+TMP_369(bool) = _lockedUntil == 0
+CONDITION TMP_369"];
+1->2[label="True"];
+1->3[label="False"];
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+_lockedUntil = block.timestamp + MIN_SPONSOR_LOCK_DURATION
+
+IRs:
+TMP_370(uint256) = block.timestamp (c)+ MIN_SPONSOR_LOCK_DURATION
+_lockedUntil(uint256) := TMP_370(uint256)"];
+2->4;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+require(bool,string)(_lockedUntil >= block.timestamp + MIN_SPONSOR_LOCK_DURATION,Vault: lock time is too small)
+
+IRs:
+TMP_371(uint256) = block.timestamp (c)+ MIN_SPONSOR_LOCK_DURATION
+TMP_372(bool) = _lockedUntil >= TMP_371
+TMP_373(None) = SOLIDITY_CALL require(bool,string)(TMP_372,Vault: lock time is too small)"];
+3->4;
+4[label="Node Type: END_IF 4
+"];
+4->5;
+5[label="Node Type: NEW VARIABLE 5
+
+EXPRESSION:
+tokenId = depositors.mint(_msgSender(),_amount,0,_lockedUntil)
+
+IRs:
+TMP_374(address) = INTERNAL_CALL, Context._msgSender()()
+TMP_375(uint256) = HIGH_LEVEL_CALL, dest:depositors(Depositors), function:mint, arguments:['TMP_374', '_amount', '0', '_lockedUntil']  
+tokenId(uint256) := TMP_375(uint256)"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+Sponsored(tokenId,_amount,_msgSender(),_lockedUntil)
+
+IRs:
+TMP_376(address) = INTERNAL_CALL, Context._msgSender()()
+Emit Sponsored(tokenId._amount.TMP_376._lockedUntil)"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+totalSponsored += _amount
+
+IRs:
+totalSponsored(uint256) = totalSponsored (c)+ _amount"];
+7->8;
+8[label="Node Type: EXPRESSION 8
+
+EXPRESSION:
+_transferAndCheckUnderlying(_msgSender(),_amount)
+
+IRs:
+TMP_378(address) = INTERNAL_CALL, Context._msgSender()()
+INTERNAL_CALL, Vault._transferAndCheckUnderlying(address,uint256)(TMP_378,_amount)"];
+}

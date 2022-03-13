@@ -1,0 +1,21 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->2;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(underlying == _ustToken,invalid underlying)
+
+IRs:
+TMP_1321(bool) = underlying == _ustToken
+TMP_1322(None) = SOLIDITY_CALL require(bool,string)(TMP_1321,invalid underlying)"];
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+BaseStrategy(_vault,_treasury,_ethAnchorRouter,_exchangeRateFeeder,_ustToken,_aUstToken,_perfFeePct,_owner)
+
+IRs:
+INTERNAL_CALL, BaseStrategy.constructor(address,address,address,address,IERC20,IERC20,uint16,address)(_vault,_treasury,_ethAnchorRouter,_exchangeRateFeeder,_ustToken,_aUstToken,_perfFeePct,_owner)"];
+2->1;
+}

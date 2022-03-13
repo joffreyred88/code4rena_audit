@@ -1,0 +1,23 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(owner != address(0),ERC721: balance query for the zero address)
+
+IRs:
+TMP_1401 = CONVERT 0 to address
+TMP_1402(bool) = owner != TMP_1401
+TMP_1403(None) = SOLIDITY_CALL require(bool,string)(TMP_1402,ERC721: balance query for the zero address)"];
+1->2;
+2[label="Node Type: RETURN 2
+
+EXPRESSION:
+_balances[owner]
+
+IRs:
+REF_557(uint256) -> _balances[owner]
+RETURN REF_557"];
+}

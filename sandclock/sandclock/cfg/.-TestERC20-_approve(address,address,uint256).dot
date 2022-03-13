@@ -1,0 +1,42 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(owner != address(0),ERC20: approve from the zero address)
+
+IRs:
+TMP_1384 = CONVERT 0 to address
+TMP_1385(bool) = owner != TMP_1384
+TMP_1386(None) = SOLIDITY_CALL require(bool,string)(TMP_1385,ERC20: approve from the zero address)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(spender != address(0),ERC20: approve to the zero address)
+
+IRs:
+TMP_1387 = CONVERT 0 to address
+TMP_1388(bool) = spender != TMP_1387
+TMP_1389(None) = SOLIDITY_CALL require(bool,string)(TMP_1388,ERC20: approve to the zero address)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+_allowances[owner][spender] = amount
+
+IRs:
+REF_553(mapping(address => uint256)) -> _allowances[owner]
+REF_554(uint256) -> REF_553[spender]
+REF_554 (->_allowances) := amount(uint256)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+Approval(owner,spender,amount)
+
+IRs:
+Emit Approval(owner.spender.amount)"];
+}

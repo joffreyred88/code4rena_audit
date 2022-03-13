@@ -1,0 +1,67 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: IF 1
+
+EXPRESSION:
+state.reserves.asset <= state.totalClaims.bond
+
+IRs:
+REF_325(IPair.Tokens) -> state.reserves
+REF_326(uint128) -> REF_325.asset
+REF_327(IPair.Claims) -> state.totalClaims
+REF_328(uint128) -> REF_327.bond
+TMP_341(bool) = REF_326 <= REF_328
+CONDITION TMP_341"];
+1->2[label="True"];
+1->3[label="False"];
+2[label="Node Type: RETURN 2
+
+EXPRESSION:
+assetOut
+
+IRs:
+RETURN assetOut"];
+3[label="Node Type: END_IF 3
+"];
+3->4;
+4[label="Node Type: NEW VARIABLE 4
+
+EXPRESSION:
+_assetOut = state.reserves.asset
+
+IRs:
+REF_329(IPair.Tokens) -> state.reserves
+REF_330(uint128) -> REF_329.asset
+_assetOut(uint256) := REF_330(uint128)"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+_assetOut -= state.totalClaims.bond
+
+IRs:
+REF_331(IPair.Claims) -> state.totalClaims
+REF_332(uint128) -> REF_331.bond
+_assetOut(uint256) = _assetOut (c)- REF_332"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+_assetOut = _assetOut.mulDiv(liquidityIn,state.totalLiquidity)
+
+IRs:
+REF_334(uint256) -> state.totalLiquidity
+TMP_342(uint256) = LIBRARY_CALL, dest:FullMath, function:FullMath.mulDiv(uint256,uint256,uint256), arguments:['_assetOut', 'liquidityIn', 'REF_334'] 
+_assetOut(uint256) := TMP_342(uint256)"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+assetOut = _assetOut.toUint128()
+
+IRs:
+TMP_343(uint128) = LIBRARY_CALL, dest:SafeCast, function:SafeCast.toUint128(uint256), arguments:['_assetOut'] 
+assetOut(uint128) := TMP_343(uint128)"];
+}

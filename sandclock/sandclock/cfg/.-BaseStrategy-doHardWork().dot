@@ -1,0 +1,20 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->2;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+_initDepositStable()
+
+IRs:
+INTERNAL_CALL, BaseStrategy._initDepositStable()()"];
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+restricted()
+
+IRs:
+MODIFIER_CALL, BaseStrategy.restricted()()"];
+2->1;
+}

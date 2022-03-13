@@ -1,0 +1,15 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+_owners[tokenId] != address(0)
+
+IRs:
+REF_566(address) -> _owners[tokenId]
+TMP_1441 = CONVERT 0 to address
+TMP_1442(bool) = REF_566 != TMP_1441
+RETURN TMP_1442"];
+}

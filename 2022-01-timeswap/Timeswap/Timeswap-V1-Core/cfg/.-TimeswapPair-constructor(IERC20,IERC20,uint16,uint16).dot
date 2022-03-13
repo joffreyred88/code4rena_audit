@@ -1,0 +1,45 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+factory = IFactory(msg.sender)
+
+IRs:
+TMP_148 = CONVERT msg.sender to IFactory
+factory(IFactory) := TMP_148(IFactory)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+asset = _asset
+
+IRs:
+asset(IERC20) := _asset(IERC20)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+collateral = _collateral
+
+IRs:
+collateral(IERC20) := _collateral(IERC20)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+fee = _fee
+
+IRs:
+fee(uint16) := _fee(uint16)"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+protocolFee = _protocolFee
+
+IRs:
+protocolFee(uint16) := _protocolFee(uint16)"];
+}

@@ -1,0 +1,10 @@
+strict digraph {
+subgraph cluster_5209_PayMath {
+label = "PayMath"
+"5209_checkProportional" [label="checkProportional"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"require(bool,string)" 
+"5209_checkProportional" -> "require(bool,string)"
+}
+}

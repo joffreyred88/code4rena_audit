@@ -1,0 +1,65 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(_to != address(0),Claimers: cannot burn this NFT)
+
+IRs:
+TMP_1510 = CONVERT 0 to address
+TMP_1511(bool) = _to != TMP_1510
+TMP_1512(None) = SOLIDITY_CALL require(bool,string)(TMP_1511,Claimers: cannot burn this NFT)"];
+1->2;
+2[label="Node Type: IF 2
+
+EXPRESSION:
+_from == address(0)
+
+IRs:
+TMP_1513 = CONVERT 0 to address
+TMP_1514(bool) = _from == TMP_1513
+CONDITION TMP_1514"];
+2->3[label="True"];
+2->4[label="False"];
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+addressToTokenID[_to] = _tokenId
+
+IRs:
+REF_607(uint256) -> addressToTokenID[_to]
+REF_607 (->addressToTokenID) := _tokenId(uint256)"];
+3->7;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+require(bool,string)(addressToTokenID[_to] == 0,Claimers: destination already has an NFT)
+
+IRs:
+REF_608(uint256) -> addressToTokenID[_to]
+TMP_1515(bool) = REF_608 == 0
+TMP_1516(None) = SOLIDITY_CALL require(bool,string)(TMP_1515,Claimers: destination already has an NFT)"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+addressToTokenID[_from] = 0
+
+IRs:
+REF_609(uint256) -> addressToTokenID[_from]
+REF_609 (->addressToTokenID) := 0(uint256)"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+addressToTokenID[_to] = _tokenId
+
+IRs:
+REF_610(uint256) -> addressToTokenID[_to]
+REF_610 (->addressToTokenID) := _tokenId(uint256)"];
+6->7;
+7[label="Node Type: END_IF 7
+"];
+}

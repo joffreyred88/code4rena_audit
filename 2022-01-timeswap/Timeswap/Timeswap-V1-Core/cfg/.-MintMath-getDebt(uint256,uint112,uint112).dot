@@ -1,0 +1,54 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+_debtIn = maturity
+
+IRs:
+_debtIn(uint256) := maturity(uint256)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+_debtIn -= block.timestamp
+
+IRs:
+_debtIn(uint256) = _debtIn (c)- block.timestamp"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+_debtIn *= yIncrease
+
+IRs:
+_debtIn(uint256) = _debtIn (c)* yIncrease"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+_debtIn = _debtIn.shiftRightUp(32)
+
+IRs:
+TMP_469(uint256) = LIBRARY_CALL, dest:Math, function:Math.shiftRightUp(uint256,uint8), arguments:['_debtIn', '32'] 
+_debtIn(uint256) := TMP_469(uint256)"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+_debtIn += xIncrease
+
+IRs:
+_debtIn(uint256) = _debtIn (c)+ xIncrease"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+debtIn = _debtIn.toUint112()
+
+IRs:
+TMP_470(uint112) = LIBRARY_CALL, dest:SafeCast, function:SafeCast.toUint112(uint256), arguments:['_debtIn'] 
+debtIn(uint112) := TMP_470(uint112)"];
+}

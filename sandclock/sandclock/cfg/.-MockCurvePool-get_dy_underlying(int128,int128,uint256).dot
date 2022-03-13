@@ -1,0 +1,16 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+(dx * 1e18) / rate[i][j]
+
+IRs:
+TMP_525(uint256) = dx (c)* 1000000000000000000
+REF_173(mapping(int128 => uint256)) -> rate[i]
+REF_174(uint256) -> REF_173[j]
+TMP_526(uint256) = TMP_525 (c)/ REF_174
+RETURN TMP_526"];
+}

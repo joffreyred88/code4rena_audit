@@ -1,0 +1,28 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->3;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+_swapUnderlyingToUst()
+
+IRs:
+INTERNAL_CALL, NonUSTStrategy._swapUnderlyingToUst()()"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+_initDepositStable()
+
+IRs:
+INTERNAL_CALL, BaseStrategy._initDepositStable()()"];
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+restricted()
+
+IRs:
+MODIFIER_CALL, BaseStrategy.restricted()()"];
+3->1;
+}

@@ -1,0 +1,139 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: IF 1
+
+EXPRESSION:
+_lockedUntil == 0
+
+IRs:
+TMP_418(bool) = _lockedUntil == 0
+CONDITION TMP_418"];
+1->2[label="True"];
+1->3[label="False"];
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+_lockedUntil = block.timestamp + minLockPeriod
+
+IRs:
+TMP_419(uint256) = block.timestamp (c)+ minLockPeriod
+_lockedUntil(uint256) := TMP_419(uint256)"];
+2->4;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+require(bool,string)(_lockedUntil >= block.timestamp + minLockPeriod,Vault: lock time is too small)
+
+IRs:
+TMP_420(uint256) = block.timestamp (c)+ minLockPeriod
+TMP_421(bool) = _lockedUntil >= TMP_420
+TMP_422(None) = SOLIDITY_CALL require(bool,string)(TMP_421,Vault: lock time is too small)"];
+3->4;
+4[label="Node Type: END_IF 4
+"];
+4->5;
+5[label="Node Type: NEW VARIABLE 5
+
+EXPRESSION:
+localTotalShares = totalShares()
+
+IRs:
+TMP_423(uint256) = INTERNAL_CALL, Vault.totalShares()()
+localTotalShares(uint256) := TMP_423(uint256)"];
+5->6;
+6[label="Node Type: NEW VARIABLE 6
+
+EXPRESSION:
+localTotalUnderlying = totalUnderlyingMinusSponsored()
+
+IRs:
+TMP_424(uint256) = INTERNAL_CALL, Vault.totalUnderlyingMinusSponsored()()
+localTotalUnderlying(uint256) := TMP_424(uint256)"];
+6->7;
+7[label="Node Type: NEW VARIABLE 7
+
+EXPRESSION:
+pct = 0
+
+IRs:
+pct(uint256) := 0(uint256)"];
+7->10;
+8[label="Node Type: BEGIN_LOOP 8
+"];
+8->11;
+9[label="Node Type: END_LOOP 9
+"];
+9->16;
+10[label="Node Type: NEW VARIABLE 10
+
+EXPRESSION:
+i = 0
+
+IRs:
+i(uint256) := 0(uint256)"];
+10->8;
+11[label="Node Type: IF_LOOP 11
+
+EXPRESSION:
+i < claims.length
+
+IRs:
+REF_132 -> LENGTH claims
+TMP_425(bool) = i < REF_132
+CONDITION TMP_425"];
+11->12[label="True"];
+11->9[label="False"];
+12[label="Node Type: NEW VARIABLE 12
+
+EXPRESSION:
+data = claims[i]
+
+IRs:
+REF_133(IVault.ClaimParams) -> claims[i]
+data(IVault.ClaimParams) := REF_133(IVault.ClaimParams)"];
+12->13;
+13[label="Node Type: EXPRESSION 13
+
+EXPRESSION:
+_createClaim(_depositGroupIds.current(),_amount,_lockedUntil,data,localTotalShares,localTotalUnderlying)
+
+IRs:
+TMP_426(uint256) = LIBRARY_CALL, dest:Counters, function:Counters.current(Counters.Counter), arguments:['_depositGroupIds'] 
+INTERNAL_CALL, Vault._createClaim(uint256,uint256,uint256,IVault.ClaimParams,uint256,uint256)(TMP_426,_amount,_lockedUntil,data,localTotalShares,localTotalUnderlying)"];
+13->14;
+14[label="Node Type: EXPRESSION 14
+
+EXPRESSION:
+pct += data.pct
+
+IRs:
+REF_135(uint16) -> data.pct
+pct(uint256) = pct (c)+ REF_135"];
+14->15;
+15[label="Node Type: EXPRESSION 15
+
+EXPRESSION:
+++ i
+
+IRs:
+i(uint256) = i (c)+ 1"];
+15->11;
+16[label="Node Type: EXPRESSION 16
+
+EXPRESSION:
+_depositGroupIds.increment()
+
+IRs:
+LIBRARY_CALL, dest:Counters, function:Counters.increment(Counters.Counter), arguments:['_depositGroupIds'] "];
+16->17;
+17[label="Node Type: EXPRESSION 17
+
+EXPRESSION:
+require(bool,string)(pct.is100Perc(),Vault: claims don't add up to 100%)
+
+IRs:
+TMP_429(bool) = LIBRARY_CALL, dest:PercentMath, function:PercentMath.is100Perc(uint256), arguments:['pct'] 
+TMP_430(None) = SOLIDITY_CALL require(bool,string)(TMP_429,Vault: claims don't add up to 100%)"];
+}

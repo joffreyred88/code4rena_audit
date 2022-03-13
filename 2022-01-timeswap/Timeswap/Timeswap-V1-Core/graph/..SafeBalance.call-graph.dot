@@ -1,0 +1,12 @@
+strict digraph {
+subgraph cluster_5256_SafeBalance {
+label = "SafeBalance"
+"5256_safeBalance" [label="safeBalance"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"abi.decode()" 
+"abi.encodeWithSelector()" 
+"5256_safeBalance" -> "abi.encodeWithSelector()"
+"5256_safeBalance" -> "abi.decode()"
+}
+}

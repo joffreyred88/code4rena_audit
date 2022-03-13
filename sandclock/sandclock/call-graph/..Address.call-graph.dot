@@ -1,0 +1,36 @@
+strict digraph {
+subgraph cluster_2161_Address {
+label = "Address"
+"2161_functionCallWithValue" [label="functionCallWithValue"]
+"2161_functionStaticCall" [label="functionStaticCall"]
+"2161_verifyCallResult" [label="verifyCallResult"]
+"2161_sendValue" [label="sendValue"]
+"2161_isContract" [label="isContract"]
+"2161_functionCall" [label="functionCall"]
+"2161_functionDelegateCall" [label="functionDelegateCall"]
+"2161_functionCallWithValue" -> "2161_functionCallWithValue"
+"2161_functionCall" -> "2161_functionCall"
+"2161_functionDelegateCall" -> "2161_isContract"
+"2161_functionStaticCall" -> "2161_verifyCallResult"
+"2161_functionCallWithValue" -> "2161_isContract"
+"2161_functionCall" -> "2161_functionCallWithValue"
+"2161_functionDelegateCall" -> "2161_functionDelegateCall"
+"2161_functionStaticCall" -> "2161_isContract"
+"2161_functionDelegateCall" -> "2161_verifyCallResult"
+"2161_functionStaticCall" -> "2161_functionStaticCall"
+"2161_functionCallWithValue" -> "2161_verifyCallResult"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"mload(uint256)" 
+"revert(uint256,uint256)" 
+"revert(string)" 
+"require(bool,string)" 
+"2161_verifyCallResult" -> "revert(string)"
+"2161_verifyCallResult" -> "revert(uint256,uint256)"
+"2161_functionStaticCall" -> "require(bool,string)"
+"2161_sendValue" -> "require(bool,string)"
+"2161_functionDelegateCall" -> "require(bool,string)"
+"2161_verifyCallResult" -> "mload(uint256)"
+"2161_functionCallWithValue" -> "require(bool,string)"
+}
+}

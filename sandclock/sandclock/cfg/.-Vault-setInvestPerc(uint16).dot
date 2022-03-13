@@ -1,0 +1,37 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->4;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(PercentMath.validPerc(_investPerc),Vault: invalid investPerc)
+
+IRs:
+TMP_349(bool) = LIBRARY_CALL, dest:PercentMath, function:PercentMath.validPerc(uint256), arguments:['_investPerc'] 
+TMP_350(None) = SOLIDITY_CALL require(bool,string)(TMP_349,Vault: invalid investPerc)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+InvestPercentageUpdated(_investPerc)
+
+IRs:
+Emit InvestPercentageUpdated(_investPerc)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+investPerc = _investPerc
+
+IRs:
+investPerc(uint256) := _investPerc(uint16)"];
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+requiresTrust()
+
+IRs:
+MODIFIER_CALL, Trust.requiresTrust()()"];
+4->1;
+}

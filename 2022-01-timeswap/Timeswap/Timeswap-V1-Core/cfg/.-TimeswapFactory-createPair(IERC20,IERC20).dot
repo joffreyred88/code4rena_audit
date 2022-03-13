@@ -1,0 +1,70 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(asset != collateral,E103)
+
+IRs:
+TMP_120(bool) = asset != collateral
+TMP_121(None) = SOLIDITY_CALL require(bool,string)(TMP_120,E103)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(asset != IERC20(address(0)) && collateral != IERC20(address(0)),E101)
+
+IRs:
+TMP_122 = CONVERT 0 to address
+TMP_123 = CONVERT TMP_122 to IERC20
+TMP_124(bool) = asset != TMP_123
+TMP_125 = CONVERT 0 to address
+TMP_126 = CONVERT TMP_125 to IERC20
+TMP_127(bool) = collateral != TMP_126
+TMP_128(bool) = TMP_124 && TMP_127
+TMP_129(None) = SOLIDITY_CALL require(bool,string)(TMP_128,E101)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+require(bool,string)(getPair[asset][collateral] == IPair(address(0)),E104)
+
+IRs:
+REF_46(mapping(IERC20 => IPair)) -> getPair[asset]
+REF_47(IPair) -> REF_46[collateral]
+TMP_130 = CONVERT 0 to address
+TMP_131 = CONVERT TMP_130 to IPair
+TMP_132(bool) = REF_47 == TMP_131
+TMP_133(None) = SOLIDITY_CALL require(bool,string)(TMP_132,E104)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+pair = new TimeswapPair(asset,collateral,fee,protocolFee)
+
+IRs:
+TMP_135(bytes) = SOLIDITY_CALL abi.encode()(asset,collateral)
+TMP_136(bytes32) = SOLIDITY_CALL keccak256(bytes)(TMP_135)
+TMP_137 = new TimeswapPair(asset,collateral,fee,protocolFee) salt:TMP_136 
+pair(IPair) := TMP_137(TimeswapPair)"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+getPair[asset][collateral] = pair
+
+IRs:
+REF_49(mapping(IERC20 => IPair)) -> getPair[asset]
+REF_50(IPair) -> REF_49[collateral]
+REF_50 (->getPair) := pair(IPair)"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+CreatePair(asset,collateral,pair)
+
+IRs:
+Emit CreatePair(asset.collateral.pair)"];
+}

@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+_exists(_tokenId)
+
+IRs:
+TMP_1635(bool) = INTERNAL_CALL, ERC721._exists(uint256)(_tokenId)
+RETURN TMP_1635"];
+}

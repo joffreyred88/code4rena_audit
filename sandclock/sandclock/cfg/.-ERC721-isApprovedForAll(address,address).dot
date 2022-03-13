@@ -1,0 +1,14 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+_operatorApprovals[owner][operator]
+
+IRs:
+REF_48(mapping(address => bool)) -> _operatorApprovals[owner]
+REF_49(bool) -> REF_48[operator]
+RETURN REF_49"];
+}

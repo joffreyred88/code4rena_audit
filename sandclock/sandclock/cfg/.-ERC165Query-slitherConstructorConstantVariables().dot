@@ -1,0 +1,17 @@
+digraph{
+0[label="Node Type: OTHER_ENTRYPOINT 0
+
+EXPRESSION:
+InvalidID = 0xffffffff
+
+IRs:
+InvalidID(bytes4) := 4294967295(uint256)"];
+0->1;
+1[label="Node Type: OTHER_ENTRYPOINT 1
+
+EXPRESSION:
+ERC165ID = 0x01ffc9a7
+
+IRs:
+ERC165ID(bytes4) := 33540519(uint256)"];
+}

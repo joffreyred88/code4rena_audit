@@ -1,0 +1,42 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+oldAllowance = token.allowance(address(this),spender)
+
+IRs:
+TMP_78 = CONVERT this to address
+TMP_79(uint256) = HIGH_LEVEL_CALL, dest:token(IERC20), function:allowance, arguments:['TMP_78', 'spender']  
+oldAllowance(uint256) := TMP_79(uint256)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(oldAllowance >= value,SafeERC20: decreased allowance below zero)
+
+IRs:
+TMP_80(bool) = oldAllowance >= value
+TMP_81(None) = SOLIDITY_CALL require(bool,string)(TMP_80,SafeERC20: decreased allowance below zero)"];
+2->3;
+3[label="Node Type: NEW VARIABLE 3
+
+EXPRESSION:
+newAllowance = oldAllowance - value
+
+IRs:
+TMP_82(uint256) = oldAllowance - value
+newAllowance(uint256) := TMP_82(uint256)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+_callOptionalReturn(token,abi.encodeWithSelector(token.approve.selector,spender,newAllowance))
+
+IRs:
+REF_34 (->None) := 157198259(uint256)
+TMP_83(bytes) = SOLIDITY_CALL abi.encodeWithSelector()(REF_34,spender,newAllowance)
+INTERNAL_CALL, SafeERC20._callOptionalReturn(IERC20,bytes)(token,TMP_83)"];
+}

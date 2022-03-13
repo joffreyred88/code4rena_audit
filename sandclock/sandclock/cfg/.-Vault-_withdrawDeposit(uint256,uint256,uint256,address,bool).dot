@@ -1,0 +1,191 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(depositors.ownerOf(_tokenId) == _msgSender(),Vault: you are not the owner of a deposit)
+
+IRs:
+TMP_444(address) = HIGH_LEVEL_CALL, dest:depositors(Depositors), function:ownerOf, arguments:['_tokenId']  
+TMP_445(address) = INTERNAL_CALL, Context._msgSender()()
+TMP_446(bool) = TMP_444 == TMP_445
+TMP_447(None) = SOLIDITY_CALL require(bool,string)(TMP_446,Vault: you are not the owner of a deposit)"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+"];
+2->3;
+3[label="Node Type: NEW VARIABLE 3
+"];
+3->4;
+4[label="Node Type: NEW VARIABLE 4
+"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+(depositAmount,claimerId,lockedUntil) = depositors.deposits(_tokenId)
+
+IRs:
+TUPLE_5(uint256,uint256,uint256) = HIGH_LEVEL_CALL, dest:depositors(Depositors), function:deposits, arguments:['_tokenId']  
+depositAmount(uint256)= UNPACK TUPLE_5 index: 0 
+claimerId(uint256)= UNPACK TUPLE_5 index: 1 
+lockedUntil(uint256)= UNPACK TUPLE_5 index: 2 "];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+require(bool,string)(lockedUntil <= block.timestamp,Vault: deposit is locked)
+
+IRs:
+TMP_448(bool) = lockedUntil <= block.timestamp
+TMP_449(None) = SOLIDITY_CALL require(bool,string)(TMP_448,Vault: deposit is locked)"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+require(bool,string)(claimerId != 0,Vault: token id is not a withdraw)
+
+IRs:
+TMP_450(bool) = claimerId != 0
+TMP_451(None) = SOLIDITY_CALL require(bool,string)(TMP_450,Vault: token id is not a withdraw)"];
+7->8;
+8[label="Node Type: NEW VARIABLE 8
+
+EXPRESSION:
+claimerShares = claimers.sharesOf(claimerId)
+
+IRs:
+TMP_452(uint256) = HIGH_LEVEL_CALL, dest:claimers(Claimers), function:sharesOf, arguments:['claimerId']  
+claimerShares(uint256) := TMP_452(uint256)"];
+8->9;
+9[label="Node Type: NEW VARIABLE 9
+
+EXPRESSION:
+depositShares = _computeShares(depositAmount,_totalShares,_totalUnderlyingMinusSponsored)
+
+IRs:
+TMP_453(uint256) = INTERNAL_CALL, Vault._computeShares(uint256,uint256,uint256)(depositAmount,_totalShares,_totalUnderlyingMinusSponsored)
+depositShares(uint256) := TMP_453(uint256)"];
+9->10;
+10[label="Node Type: IF 10
+
+EXPRESSION:
+_force && depositShares > claimerShares
+
+IRs:
+TMP_454(bool) = depositShares > claimerShares
+TMP_455(bool) = _force && TMP_454
+CONDITION TMP_455"];
+10->11[label="True"];
+10->12[label="False"];
+11[label="Node Type: EXPRESSION 11
+
+EXPRESSION:
+depositShares = claimerShares
+
+IRs:
+depositShares(uint256) := claimerShares(uint256)"];
+11->15;
+12[label="Node Type: IF 12
+
+EXPRESSION:
+! _force
+
+IRs:
+TMP_456 = ! _force 
+CONDITION TMP_456"];
+12->13[label="True"];
+12->14[label="False"];
+13[label="Node Type: EXPRESSION 13
+
+EXPRESSION:
+require(bool,string)(claimerShares >= depositShares,Vault: cannot withdraw more than the available amount)
+
+IRs:
+TMP_457(bool) = claimerShares >= depositShares
+TMP_458(None) = SOLIDITY_CALL require(bool,string)(TMP_457,Vault: cannot withdraw more than the available amount)"];
+13->14;
+14[label="Node Type: END_IF 14
+"];
+14->15;
+15[label="Node Type: END_IF 15
+"];
+15->16;
+16[label="Node Type: EXPRESSION 16
+
+EXPRESSION:
+claimers.onWithdraw(claimerId,depositAmount,depositShares)
+
+IRs:
+HIGH_LEVEL_CALL, dest:claimers(Claimers), function:onWithdraw, arguments:['claimerId', 'depositAmount', 'depositShares']  "];
+16->17;
+17[label="Node Type: EXPRESSION 17
+
+EXPRESSION:
+depositors.burn(_tokenId)
+
+IRs:
+HIGH_LEVEL_CALL, dest:depositors(Depositors), function:burn, arguments:['_tokenId']  "];
+17->18;
+18[label="Node Type: NEW VARIABLE 18
+
+EXPRESSION:
+claimer = claimers.ownerOf(claimerId)
+
+IRs:
+TMP_461(address) = HIGH_LEVEL_CALL, dest:claimers(Claimers), function:ownerOf, arguments:['claimerId']  
+claimer(address) := TMP_461(address)"];
+18->19;
+19[label="Node Type: IF 19
+
+EXPRESSION:
+_isIntegration(claimer)
+
+IRs:
+TMP_462(bool) = INTERNAL_CALL, Vault._isIntegration(address)(claimer)
+CONDITION TMP_462"];
+19->20[label="True"];
+19->22[label="False"];
+20[label="Node Type: NEW VARIABLE 20
+
+EXPRESSION:
+ret = IIntegration(claimer).onDepositBurned(_tokenId)
+
+IRs:
+TMP_463 = CONVERT claimer to IIntegration
+TMP_464(bytes4) = HIGH_LEVEL_CALL, dest:TMP_463(IIntegration), function:onDepositBurned, arguments:['_tokenId']  
+ret(bytes4) := TMP_464(bytes4)"];
+20->21;
+21[label="Node Type: EXPRESSION 21
+
+EXPRESSION:
+require(bool)(ret == IIntegration(claimer).onDepositBurned.selector)
+
+IRs:
+TMP_465 = CONVERT claimer to IIntegration
+REF_159 (->None) := 1219175650(uint256)
+TMP_466(bool) = ret == REF_159
+TMP_467(None) = SOLIDITY_CALL require(bool)(TMP_466)"];
+21->22;
+22[label="Node Type: END_IF 22
+"];
+22->23;
+23[label="Node Type: EXPRESSION 23
+
+EXPRESSION:
+DepositBurned(_tokenId,depositShares,_to)
+
+IRs:
+Emit DepositBurned(_tokenId.depositShares._to)"];
+23->24;
+24[label="Node Type: RETURN 24
+
+EXPRESSION:
+_computeAmount(depositShares,_totalShares,_totalUnderlyingMinusSponsored)
+
+IRs:
+TMP_469(uint256) = INTERNAL_CALL, Vault._computeAmount(uint256,uint256,uint256)(depositShares,_totalShares,_totalUnderlyingMinusSponsored)
+RETURN TMP_469"];
+}

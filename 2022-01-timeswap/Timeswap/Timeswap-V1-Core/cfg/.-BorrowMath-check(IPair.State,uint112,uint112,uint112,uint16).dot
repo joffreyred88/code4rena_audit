@@ -1,0 +1,110 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+feeBase = 0x10000 - fee
+
+IRs:
+TMP_327(uint256) = 65536 (c)- fee
+feeBase(uint128) := TMP_327(uint256)"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+
+EXPRESSION:
+xReserve = state.x - xDecrease
+
+IRs:
+REF_312(uint112) -> state.x
+TMP_328(uint112) = REF_312 (c)- xDecrease
+xReserve(uint112) := TMP_328(uint112)"];
+2->3;
+3[label="Node Type: NEW VARIABLE 3
+
+EXPRESSION:
+yAdjusted = adjust(state.y,yIncrease,feeBase)
+
+IRs:
+REF_313(uint112) -> state.y
+TMP_329(uint128) = INTERNAL_CALL, BorrowMath.adjust(uint112,uint112,uint128)(REF_313,yIncrease,feeBase)
+yAdjusted(uint128) := TMP_329(uint128)"];
+3->4;
+4[label="Node Type: NEW VARIABLE 4
+
+EXPRESSION:
+zAdjusted = adjust(state.z,zIncrease,feeBase)
+
+IRs:
+REF_314(uint112) -> state.z
+TMP_330(uint128) = INTERNAL_CALL, BorrowMath.adjust(uint112,uint112,uint128)(REF_314,zIncrease,feeBase)
+zAdjusted(uint128) := TMP_330(uint128)"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+state.checkConstantProduct(xReserve,yAdjusted,zAdjusted)
+
+IRs:
+LIBRARY_CALL, dest:ConstantProduct, function:ConstantProduct.checkConstantProduct(IPair.State,uint112,uint128,uint128), arguments:['state', 'xReserve', 'yAdjusted', 'zAdjusted'] "];
+5->6;
+6[label="Node Type: NEW VARIABLE 6
+
+EXPRESSION:
+minimum = xDecrease
+
+IRs:
+minimum(uint256) := xDecrease(uint112)"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+minimum *= state.y
+
+IRs:
+REF_316(uint112) -> state.y
+minimum(uint256) = minimum (c)* REF_316"];
+7->8;
+8[label="Node Type: EXPRESSION 8
+
+EXPRESSION:
+minimum <<= 12
+
+IRs:
+minimum(uint256) = minimum << 12"];
+8->9;
+9[label="Node Type: NEW VARIABLE 9
+
+EXPRESSION:
+denominator = xReserve
+
+IRs:
+denominator(uint256) := xReserve(uint112)"];
+9->10;
+10[label="Node Type: EXPRESSION 10
+
+EXPRESSION:
+denominator *= feeBase
+
+IRs:
+denominator(uint256) = denominator (c)* feeBase"];
+10->11;
+11[label="Node Type: EXPRESSION 11
+
+EXPRESSION:
+minimum = minimum.divUp(denominator)
+
+IRs:
+TMP_332(uint256) = LIBRARY_CALL, dest:Math, function:Math.divUp(uint256,uint256), arguments:['minimum', 'denominator'] 
+minimum(uint256) := TMP_332(uint256)"];
+11->12;
+12[label="Node Type: EXPRESSION 12
+
+EXPRESSION:
+require(bool,string)(yIncrease >= minimum,E302)
+
+IRs:
+TMP_333(bool) = yIncrease >= minimum
+TMP_334(None) = SOLIDITY_CALL require(bool,string)(TMP_333,E302)"];
+}

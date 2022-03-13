@@ -1,0 +1,185 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->19;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(block.timestamp >= maturity,E203)
+
+IRs:
+TMP_191(bool) = block.timestamp >= maturity
+TMP_192(None) = SOLIDITY_CALL require(bool,string)(TMP_191,E203)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(assetTo != address(0) && collateralTo != address(0),E201)
+
+IRs:
+TMP_193 = CONVERT 0 to address
+TMP_194(bool) = assetTo != TMP_193
+TMP_195 = CONVERT 0 to address
+TMP_196(bool) = collateralTo != TMP_195
+TMP_197(bool) = TMP_194 && TMP_196
+TMP_198(None) = SOLIDITY_CALL require(bool,string)(TMP_197,E201)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+require(bool,string)(assetTo != address(this) && collateralTo != address(this),E204)
+
+IRs:
+TMP_199 = CONVERT this to address
+TMP_200(bool) = assetTo != TMP_199
+TMP_201 = CONVERT this to address
+TMP_202(bool) = collateralTo != TMP_201
+TMP_203(bool) = TMP_200 && TMP_202
+TMP_204(None) = SOLIDITY_CALL require(bool,string)(TMP_203,E204)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+require(bool,string)(liquidityIn > 0,E205)
+
+IRs:
+TMP_205(bool) = liquidityIn > 0
+TMP_206(None) = SOLIDITY_CALL require(bool,string)(TMP_205,E205)"];
+4->5;
+5[label="Node Type: NEW VARIABLE 5
+
+EXPRESSION:
+pool = pools[maturity]
+
+IRs:
+REF_131(IPair.Pool) -> pools[maturity]
+pool(IPair.Pool) := REF_131(IPair.Pool)"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+tokensOut.asset = BurnMath.getAsset(pool.state,liquidityIn)
+
+IRs:
+REF_132(uint128) -> tokensOut.asset
+REF_134(IPair.State) -> pool.state
+TMP_207(uint128) = LIBRARY_CALL, dest:BurnMath, function:BurnMath.getAsset(IPair.State,uint256), arguments:['REF_134', 'liquidityIn'] 
+REF_132 (->tokensOut) := TMP_207(uint128)"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+tokensOut.collateral = BurnMath.getCollateral(pool.state,liquidityIn)
+
+IRs:
+REF_135(uint128) -> tokensOut.collateral
+REF_137(IPair.State) -> pool.state
+TMP_208(uint128) = LIBRARY_CALL, dest:BurnMath, function:BurnMath.getCollateral(IPair.State,uint256), arguments:['REF_137', 'liquidityIn'] 
+REF_135 (->tokensOut) := TMP_208(uint128)"];
+7->8;
+8[label="Node Type: EXPRESSION 8
+
+EXPRESSION:
+pool.state.totalLiquidity -= liquidityIn
+
+IRs:
+REF_138(IPair.State) -> pool.state
+REF_139(uint256) -> REF_138.totalLiquidity
+REF_139(-> pool) = REF_139 (c)- liquidityIn"];
+8->9;
+9[label="Node Type: EXPRESSION 9
+
+EXPRESSION:
+pool.liquidities[msg.sender] -= liquidityIn
+
+IRs:
+REF_140(mapping(address => uint256)) -> pool.liquidities
+REF_141(uint256) -> REF_140[msg.sender]
+REF_141(-> pool) = REF_141 (c)- liquidityIn"];
+9->10;
+10[label="Node Type: EXPRESSION 10
+
+EXPRESSION:
+pool.state.reserves.asset -= tokensOut.asset
+
+IRs:
+REF_142(IPair.State) -> pool.state
+REF_143(IPair.Tokens) -> REF_142.reserves
+REF_144(uint128) -> REF_143.asset
+REF_145(uint128) -> tokensOut.asset
+REF_144(-> pool) = REF_144 (c)- REF_145"];
+10->11;
+11[label="Node Type: EXPRESSION 11
+
+EXPRESSION:
+pool.state.reserves.collateral -= tokensOut.collateral
+
+IRs:
+REF_146(IPair.State) -> pool.state
+REF_147(IPair.Tokens) -> REF_146.reserves
+REF_148(uint128) -> REF_147.collateral
+REF_149(uint128) -> tokensOut.collateral
+REF_148(-> pool) = REF_148 (c)- REF_149"];
+11->12;
+12[label="Node Type: IF 12
+
+EXPRESSION:
+tokensOut.asset > 0
+
+IRs:
+REF_150(uint128) -> tokensOut.asset
+TMP_209(bool) = REF_150 > 0
+CONDITION TMP_209"];
+12->13[label="True"];
+12->14[label="False"];
+13[label="Node Type: EXPRESSION 13
+
+EXPRESSION:
+asset.safeTransfer(assetTo,tokensOut.asset)
+
+IRs:
+REF_152(uint128) -> tokensOut.asset
+LIBRARY_CALL, dest:SafeTransfer, function:SafeTransfer.safeTransfer(IERC20,address,uint256), arguments:['asset', 'assetTo', 'REF_152'] "];
+13->14;
+14[label="Node Type: END_IF 14
+"];
+14->15;
+15[label="Node Type: IF 15
+
+EXPRESSION:
+tokensOut.collateral > 0
+
+IRs:
+REF_153(uint128) -> tokensOut.collateral
+TMP_211(bool) = REF_153 > 0
+CONDITION TMP_211"];
+15->16[label="True"];
+15->17[label="False"];
+16[label="Node Type: EXPRESSION 16
+
+EXPRESSION:
+collateral.safeTransfer(collateralTo,tokensOut.collateral)
+
+IRs:
+REF_155(uint128) -> tokensOut.collateral
+LIBRARY_CALL, dest:SafeTransfer, function:SafeTransfer.safeTransfer(IERC20,address,uint256), arguments:['collateral', 'collateralTo', 'REF_155'] "];
+16->17;
+17[label="Node Type: END_IF 17
+"];
+17->18;
+18[label="Node Type: EXPRESSION 18
+
+EXPRESSION:
+Burn(maturity,msg.sender,assetTo,collateralTo,liquidityIn,tokensOut)
+
+IRs:
+Emit Burn(maturity.msg.sender.assetTo.collateralTo.liquidityIn.tokensOut)"];
+19[label="Node Type: EXPRESSION 19
+
+EXPRESSION:
+lock()
+
+IRs:
+MODIFIER_CALL, TimeswapPair.lock()()"];
+19->1;
+}

@@ -1,0 +1,13 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: RETURN 1
+
+EXPRESSION:
+WithdrawMath.getCollateral(state,insuranceIn)
+
+IRs:
+TMP_657(uint128) = LIBRARY_CALL, dest:WithdrawMath, function:WithdrawMath.getCollateral(IPair.State,uint128), arguments:['state', 'insuranceIn'] 
+RETURN TMP_657"];
+}

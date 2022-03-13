@@ -1,0 +1,20 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+super.finishRedeemStable(idx)
+
+IRs:
+INTERNAL_CALL, BaseStrategy.finishRedeemStable(uint256)(idx)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+_swapUstToUnderlying()
+
+IRs:
+INTERNAL_CALL, NonUSTStrategy._swapUstToUnderlying()()"];
+}

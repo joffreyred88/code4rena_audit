@@ -1,0 +1,54 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+_collateralIn = maturity
+
+IRs:
+_collateralIn(uint256) := maturity(uint256)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+_collateralIn -= block.timestamp
+
+IRs:
+_collateralIn(uint256) = _collateralIn (c)- block.timestamp"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+_collateralIn *= zIncrease
+
+IRs:
+_collateralIn(uint256) = _collateralIn (c)* zIncrease"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+_collateralIn = _collateralIn.shiftRightUp(25)
+
+IRs:
+TMP_471(uint256) = LIBRARY_CALL, dest:Math, function:Math.shiftRightUp(uint256,uint8), arguments:['_collateralIn', '25'] 
+_collateralIn(uint256) := TMP_471(uint256)"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+_collateralIn += zIncrease
+
+IRs:
+_collateralIn(uint256) = _collateralIn (c)+ zIncrease"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+collateralIn = _collateralIn.toUint112()
+
+IRs:
+TMP_472(uint112) = LIBRARY_CALL, dest:SafeCast, function:SafeCast.toUint112(uint256), arguments:['_collateralIn'] 
+collateralIn(uint112) := TMP_472(uint112)"];
+}

@@ -1,0 +1,22 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(_operator != address(0),invalid operator)
+
+IRs:
+TMP_598 = CONVERT 0 to address
+TMP_599(bool) = _operator != TMP_598
+TMP_600(None) = SOLIDITY_CALL require(bool,string)(TMP_599,invalid operator)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+pendingOperator = _operator
+
+IRs:
+pendingOperator(address) := _operator(address)"];
+}

@@ -1,0 +1,30 @@
+strict digraph {
+subgraph cluster_1415_TimeswapFactory {
+label = "TimeswapFactory"
+"1415_constructor" [label="constructor"]
+"1415_acceptOwner" [label="acceptOwner"]
+"1415_setOwner" [label="setOwner"]
+"1415_createPair" [label="createPair"]
+}subgraph cluster_3207_IFactory {
+label = "IFactory"
+"3207_protocolFee" [label="protocolFee"]
+"3207_acceptOwner" [label="acceptOwner"]
+"3207_setOwner" [label="setOwner"]
+"3207_fee" [label="fee"]
+"3207_getPair" [label="getPair"]
+"3207_pendingOwner" [label="pendingOwner"]
+"3207_owner" [label="owner"]
+"3207_createPair" [label="createPair"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"keccak256(bytes)" 
+"require(bool,string)" 
+"abi.encode()" 
+"1415_acceptOwner" -> "require(bool,string)"
+"1415_constructor" -> "require(bool,string)"
+"1415_createPair" -> "require(bool,string)"
+"1415_createPair" -> "abi.encode()"
+"1415_createPair" -> "keccak256(bytes)"
+"1415_setOwner" -> "require(bool,string)"
+}
+}

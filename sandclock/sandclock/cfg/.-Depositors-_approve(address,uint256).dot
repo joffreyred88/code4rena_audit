@@ -1,0 +1,22 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+_tokenApprovals[tokenId] = to
+
+IRs:
+REF_633(address) -> _tokenApprovals[tokenId]
+REF_633 (->_tokenApprovals) := to(address)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+Approval(ERC721.ownerOf(tokenId),to,tokenId)
+
+IRs:
+TMP_1610(address) = INTERNAL_CALL, ERC721.ownerOf(uint256)(tokenId)
+Emit Approval(TMP_1610.to.tokenId)"];
+}

@@ -1,0 +1,75 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+(prod0,prod1) = (uint256(yAdjusted) * zAdjusted).mul512(xReserve)
+
+IRs:
+TMP_387 = CONVERT yAdjusted to uint256
+TMP_388(uint256) = TMP_387 (c)* zAdjusted
+TUPLE_4(uint256,uint256) = LIBRARY_CALL, dest:FullMath, function:FullMath.mul512(uint256,uint256), arguments:['TMP_388', 'xReserve'] 
+prod0(uint256)= UNPACK TUPLE_4 index: 0 
+prod1(uint256)= UNPACK TUPLE_4 index: 1 "];
+3->4;
+4[label="Node Type: NEW VARIABLE 4
+"];
+4->5;
+5[label="Node Type: NEW VARIABLE 5
+"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+(_prod0,_prod1) = ((uint256(state.y) * state.z) << 32).mul512(state.x)
+
+IRs:
+REF_378(uint112) -> state.y
+TMP_389 = CONVERT REF_378 to uint256
+REF_379(uint112) -> state.z
+TMP_390(uint256) = TMP_389 (c)* REF_379
+TMP_391(uint256) = TMP_390 << 32
+REF_381(uint112) -> state.x
+TUPLE_5(uint256,uint256) = LIBRARY_CALL, dest:FullMath, function:FullMath.mul512(uint256,uint256), arguments:['TMP_391', 'REF_381'] 
+_prod0(uint256)= UNPACK TUPLE_5 index: 0 
+_prod1(uint256)= UNPACK TUPLE_5 index: 1 "];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+require(bool,string)(prod1 >= _prod1,E301)
+
+IRs:
+TMP_392(bool) = prod1 >= _prod1
+TMP_393(None) = SOLIDITY_CALL require(bool,string)(TMP_392,E301)"];
+7->8;
+8[label="Node Type: IF 8
+
+EXPRESSION:
+prod1 == _prod1
+
+IRs:
+TMP_394(bool) = prod1 == _prod1
+CONDITION TMP_394"];
+8->9[label="True"];
+8->10[label="False"];
+9[label="Node Type: EXPRESSION 9
+
+EXPRESSION:
+require(bool,string)(prod0 >= _prod0,E301)
+
+IRs:
+TMP_395(bool) = prod0 >= _prod0
+TMP_396(None) = SOLIDITY_CALL require(bool,string)(TMP_395,E301)"];
+9->10;
+10[label="Node Type: END_IF 10
+"];
+}

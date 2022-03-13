@@ -1,0 +1,39 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(msg.sender == owner,E102)
+
+IRs:
+TMP_139(bool) = msg.sender == owner
+TMP_140(None) = SOLIDITY_CALL require(bool,string)(TMP_139,E102)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(_pendingOwner != address(0),E101)
+
+IRs:
+TMP_141 = CONVERT 0 to address
+TMP_142(bool) = _pendingOwner != TMP_141
+TMP_143(None) = SOLIDITY_CALL require(bool,string)(TMP_142,E101)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+pendingOwner = _pendingOwner
+
+IRs:
+pendingOwner(address) := _pendingOwner(address)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+SetOwner(_pendingOwner)
+
+IRs:
+Emit SetOwner(_pendingOwner)"];
+}

@@ -1,0 +1,37 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->4;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(PercentMath.validPerc(_perfFeePct),invalid pct)
+
+IRs:
+TMP_711(bool) = LIBRARY_CALL, dest:PercentMath, function:PercentMath.validPerc(uint256), arguments:['_perfFeePct'] 
+TMP_712(None) = SOLIDITY_CALL require(bool,string)(TMP_711,invalid pct)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+perfFeePct = _perfFeePct
+
+IRs:
+perfFeePct(uint16) := _perfFeePct(uint16)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+PerfFeePctUpdated(_perfFeePct)
+
+IRs:
+Emit PerfFeePctUpdated(_perfFeePct)"];
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+restricted()
+
+IRs:
+MODIFIER_CALL, BaseStrategy.restricted()()"];
+4->1;
+}

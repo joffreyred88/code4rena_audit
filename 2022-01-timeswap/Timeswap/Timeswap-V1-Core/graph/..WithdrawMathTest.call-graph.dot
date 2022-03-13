@@ -1,0 +1,9 @@
+strict digraph {
+subgraph cluster_6996_WithdrawMathTest {
+label = "WithdrawMathTest"
+"6996_getCollateral" [label="getCollateral"]
+"6996_getAsset" [label="getAsset"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

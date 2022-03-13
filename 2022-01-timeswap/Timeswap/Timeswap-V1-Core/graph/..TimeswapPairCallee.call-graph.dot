@@ -1,0 +1,34 @@
+strict digraph {
+subgraph cluster_6044_TimeswapPairCallee {
+label = "TimeswapPairCallee"
+"6044_lend" [label="lend"]
+"6044_timeswapMintCallback" [label="timeswapMintCallback"]
+"6044_timeswapLendCallback" [label="timeswapLendCallback"]
+"6044_constructor" [label="constructor"]
+"6044_borrow" [label="borrow"]
+"6044_mint" [label="mint"]
+"6044_timeswapBorrowCallback" [label="timeswapBorrowCallback"]
+"6044_pay" [label="pay"]
+"6044_timeswapPayCallback" [label="timeswapPayCallback"]
+"6044_getData" [label="getData"]
+"6044_getDataMint" [label="getDataMint"]
+"6044_pay" -> "6044_getData"
+"6044_mint" -> "6044_getDataMint"
+"6044_lend" -> "6044_getData"
+"6044_borrow" -> "6044_getData"
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"abi.decode()" 
+"require(bool,string)" 
+"abi.encode()" 
+"6044_timeswapLendCallback" -> "abi.decode()"
+"6044_timeswapPayCallback" -> "abi.decode()"
+"6044_timeswapMintCallback" -> "abi.decode()"
+"6044_timeswapBorrowCallback" -> "require(bool,string)"
+"6044_timeswapLendCallback" -> "require(bool,string)"
+"6044_getData" -> "abi.encode()"
+"6044_timeswapBorrowCallback" -> "abi.decode()"
+"6044_timeswapMintCallback" -> "require(bool,string)"
+"6044_getDataMint" -> "abi.encode()"
+}
+}

@@ -1,0 +1,8 @@
+strict digraph {
+subgraph cluster_3676_ITimeswapPayCallback {
+label = "ITimeswapPayCallback"
+"3676_timeswapPayCallback" [label="timeswapPayCallback"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

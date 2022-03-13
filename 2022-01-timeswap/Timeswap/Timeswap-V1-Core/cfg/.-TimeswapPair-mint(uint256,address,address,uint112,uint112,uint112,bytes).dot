@@ -1,0 +1,330 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->32;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(block.timestamp < maturity,E202)
+
+IRs:
+TMP_149(bool) = block.timestamp < maturity
+TMP_150(None) = SOLIDITY_CALL require(bool,string)(TMP_149,E202)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+require(bool,string)(maturity - block.timestamp < 0x100000000,E208)
+
+IRs:
+TMP_151(uint256) = maturity (c)- block.timestamp
+TMP_152(bool) = TMP_151 < 4294967296
+TMP_153(None) = SOLIDITY_CALL require(bool,string)(TMP_152,E208)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+require(bool,string)(liquidityTo != address(0) && dueTo != address(0),E201)
+
+IRs:
+TMP_154 = CONVERT 0 to address
+TMP_155(bool) = liquidityTo != TMP_154
+TMP_156 = CONVERT 0 to address
+TMP_157(bool) = dueTo != TMP_156
+TMP_158(bool) = TMP_155 && TMP_157
+TMP_159(None) = SOLIDITY_CALL require(bool,string)(TMP_158,E201)"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+require(bool,string)(liquidityTo != address(this) && dueTo != address(this),E204)
+
+IRs:
+TMP_160 = CONVERT this to address
+TMP_161(bool) = liquidityTo != TMP_160
+TMP_162 = CONVERT this to address
+TMP_163(bool) = dueTo != TMP_162
+TMP_164(bool) = TMP_161 && TMP_163
+TMP_165(None) = SOLIDITY_CALL require(bool,string)(TMP_164,E204)"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+require(bool,string)(xIncrease > 0 && yIncrease > 0 && zIncrease > 0,E205)
+
+IRs:
+TMP_166(bool) = xIncrease > 0
+TMP_167(bool) = yIncrease > 0
+TMP_168(bool) = TMP_166 && TMP_167
+TMP_169(bool) = zIncrease > 0
+TMP_170(bool) = TMP_168 && TMP_169
+TMP_171(None) = SOLIDITY_CALL require(bool,string)(TMP_170,E205)"];
+5->6;
+6[label="Node Type: NEW VARIABLE 6
+
+EXPRESSION:
+pool = pools[maturity]
+
+IRs:
+REF_78(IPair.Pool) -> pools[maturity]
+pool(IPair.Pool) := REF_78(IPair.Pool)"];
+6->7;
+7[label="Node Type: IF 7
+
+EXPRESSION:
+pool.state.totalLiquidity == 0
+
+IRs:
+REF_79(IPair.State) -> pool.state
+REF_80(uint256) -> REF_79.totalLiquidity
+TMP_172(bool) = REF_80 == 0
+CONDITION TMP_172"];
+7->8[label="True"];
+7->12[label="False"];
+8[label="Node Type: NEW VARIABLE 8
+
+EXPRESSION:
+liquidityTotal = MintMath.getLiquidityTotal(xIncrease)
+
+IRs:
+TMP_173(uint256) = LIBRARY_CALL, dest:MintMath, function:MintMath.getLiquidityTotal(uint112), arguments:['xIncrease'] 
+liquidityTotal(uint256) := TMP_173(uint256)"];
+8->9;
+9[label="Node Type: EXPRESSION 9
+
+EXPRESSION:
+liquidityOut = MintMath.getLiquidity(maturity,liquidityTotal,protocolFee)
+
+IRs:
+TMP_174(uint256) = LIBRARY_CALL, dest:MintMath, function:MintMath.getLiquidity(uint256,uint256,uint16), arguments:['maturity', 'liquidityTotal', 'protocolFee'] 
+liquidityOut(uint256) := TMP_174(uint256)"];
+9->10;
+10[label="Node Type: EXPRESSION 10
+
+EXPRESSION:
+pool.state.totalLiquidity += liquidityTotal
+
+IRs:
+REF_83(IPair.State) -> pool.state
+REF_84(uint256) -> REF_83.totalLiquidity
+REF_84(-> pool) = REF_84 (c)+ liquidityTotal"];
+10->11;
+11[label="Node Type: EXPRESSION 11
+
+EXPRESSION:
+pool.liquidities[factory.owner()] += liquidityTotal - liquidityOut
+
+IRs:
+REF_85(mapping(address => uint256)) -> pool.liquidities
+TMP_175(address) = HIGH_LEVEL_CALL, dest:factory(IFactory), function:owner, arguments:[]  
+REF_87(uint256) -> REF_85[TMP_175]
+TMP_176(uint256) = liquidityTotal (c)- liquidityOut
+REF_87(-> pool) = REF_87 (c)+ TMP_176"];
+11->16;
+12[label="Node Type: NEW VARIABLE 12
+
+EXPRESSION:
+liquidityTotal_scope_0 = MintMath.getLiquidityTotal(pool.state,xIncrease,yIncrease,zIncrease)
+
+IRs:
+REF_89(IPair.State) -> pool.state
+TMP_177(uint256) = LIBRARY_CALL, dest:MintMath, function:MintMath.getLiquidityTotal(IPair.State,uint112,uint112,uint112), arguments:['REF_89', 'xIncrease', 'yIncrease', 'zIncrease'] 
+liquidityTotal_scope_0(uint256) := TMP_177(uint256)"];
+12->13;
+13[label="Node Type: EXPRESSION 13
+
+EXPRESSION:
+liquidityOut = MintMath.getLiquidity(maturity,liquidityTotal_scope_0,protocolFee)
+
+IRs:
+TMP_178(uint256) = LIBRARY_CALL, dest:MintMath, function:MintMath.getLiquidity(uint256,uint256,uint16), arguments:['maturity', 'liquidityTotal_scope_0', 'protocolFee'] 
+liquidityOut(uint256) := TMP_178(uint256)"];
+13->14;
+14[label="Node Type: EXPRESSION 14
+
+EXPRESSION:
+pool.state.totalLiquidity += liquidityTotal_scope_0
+
+IRs:
+REF_91(IPair.State) -> pool.state
+REF_92(uint256) -> REF_91.totalLiquidity
+REF_92(-> pool) = REF_92 (c)+ liquidityTotal_scope_0"];
+14->15;
+15[label="Node Type: EXPRESSION 15
+
+EXPRESSION:
+pool.liquidities[factory.owner()] += liquidityTotal_scope_0 - liquidityOut
+
+IRs:
+REF_93(mapping(address => uint256)) -> pool.liquidities
+TMP_179(address) = HIGH_LEVEL_CALL, dest:factory(IFactory), function:owner, arguments:[]  
+REF_95(uint256) -> REF_93[TMP_179]
+TMP_180(uint256) = liquidityTotal_scope_0 (c)- liquidityOut
+REF_95(-> pool) = REF_95 (c)+ TMP_180"];
+15->16;
+16[label="Node Type: END_IF 16
+"];
+16->17;
+17[label="Node Type: EXPRESSION 17
+
+EXPRESSION:
+require(bool,string)(liquidityOut > 0,E212)
+
+IRs:
+TMP_181(bool) = liquidityOut > 0
+TMP_182(None) = SOLIDITY_CALL require(bool,string)(TMP_181,E212)"];
+17->18;
+18[label="Node Type: EXPRESSION 18
+
+EXPRESSION:
+pool.liquidities[liquidityTo] += liquidityOut
+
+IRs:
+REF_96(mapping(address => uint256)) -> pool.liquidities
+REF_97(uint256) -> REF_96[liquidityTo]
+REF_97(-> pool) = REF_97 (c)+ liquidityOut"];
+18->19;
+19[label="Node Type: EXPRESSION 19
+
+EXPRESSION:
+dueOut.debt = MintMath.getDebt(maturity,xIncrease,yIncrease)
+
+IRs:
+REF_98(uint112) -> dueOut.debt
+TMP_183(uint112) = LIBRARY_CALL, dest:MintMath, function:MintMath.getDebt(uint256,uint112,uint112), arguments:['maturity', 'xIncrease', 'yIncrease'] 
+REF_98 (->dueOut) := TMP_183(uint112)"];
+19->20;
+20[label="Node Type: EXPRESSION 20
+
+EXPRESSION:
+dueOut.collateral = MintMath.getCollateral(maturity,zIncrease)
+
+IRs:
+REF_100(uint112) -> dueOut.collateral
+TMP_184(uint112) = LIBRARY_CALL, dest:MintMath, function:MintMath.getCollateral(uint256,uint112), arguments:['maturity', 'zIncrease'] 
+REF_100 (->dueOut) := TMP_184(uint112)"];
+20->21;
+21[label="Node Type: EXPRESSION 21
+
+EXPRESSION:
+dueOut.startBlock = BlockNumber.get()
+
+IRs:
+REF_102(uint32) -> dueOut.startBlock
+TMP_185(uint32) = LIBRARY_CALL, dest:BlockNumber, function:BlockNumber.get(), arguments:[] 
+REF_102 (->dueOut) := TMP_185(uint32)"];
+21->22;
+22[label="Node Type: EXPRESSION 22
+
+EXPRESSION:
+Callback.mint(asset,collateral,xIncrease,dueOut.collateral,data)
+
+IRs:
+REF_105(uint112) -> dueOut.collateral
+LIBRARY_CALL, dest:Callback, function:Callback.mint(IERC20,IERC20,uint112,uint112,bytes), arguments:['asset', 'collateral', 'xIncrease', 'REF_105', 'data'] "];
+22->23;
+23[label="Node Type: EXPRESSION 23
+
+EXPRESSION:
+id = pool.dues[dueTo].insert(dueOut)
+
+IRs:
+REF_106(mapping(address => IPair.Due[])) -> pool.dues
+REF_107(IPair.Due[]) -> REF_106[dueTo]
+TMP_187(uint256) = LIBRARY_CALL, dest:Array, function:Array.insert(IPair.Due[],IPair.Due), arguments:['REF_107', 'dueOut'] 
+id(uint256) := TMP_187(uint256)"];
+23->24;
+24[label="Node Type: EXPRESSION 24
+
+EXPRESSION:
+pool.state.reserves.asset += xIncrease
+
+IRs:
+REF_109(IPair.State) -> pool.state
+REF_110(IPair.Tokens) -> REF_109.reserves
+REF_111(uint128) -> REF_110.asset
+REF_111(-> pool) = REF_111 (c)+ xIncrease"];
+24->25;
+25[label="Node Type: EXPRESSION 25
+
+EXPRESSION:
+pool.state.reserves.collateral += dueOut.collateral
+
+IRs:
+REF_112(IPair.State) -> pool.state
+REF_113(IPair.Tokens) -> REF_112.reserves
+REF_114(uint128) -> REF_113.collateral
+REF_115(uint112) -> dueOut.collateral
+REF_114(-> pool) = REF_114 (c)+ REF_115"];
+25->26;
+26[label="Node Type: EXPRESSION 26
+
+EXPRESSION:
+pool.state.totalDebtCreated += dueOut.debt
+
+IRs:
+REF_116(IPair.State) -> pool.state
+REF_117(uint120) -> REF_116.totalDebtCreated
+REF_118(uint112) -> dueOut.debt
+REF_117(-> pool) = REF_117 (c)+ REF_118"];
+26->27;
+27[label="Node Type: EXPRESSION 27
+
+EXPRESSION:
+pool.state.x += xIncrease
+
+IRs:
+REF_119(IPair.State) -> pool.state
+REF_120(uint112) -> REF_119.x
+REF_120(-> pool) = REF_120 (c)+ xIncrease"];
+27->28;
+28[label="Node Type: EXPRESSION 28
+
+EXPRESSION:
+pool.state.y += yIncrease
+
+IRs:
+REF_121(IPair.State) -> pool.state
+REF_122(uint112) -> REF_121.y
+REF_122(-> pool) = REF_122 (c)+ yIncrease"];
+28->29;
+29[label="Node Type: EXPRESSION 29
+
+EXPRESSION:
+pool.state.z += zIncrease
+
+IRs:
+REF_123(IPair.State) -> pool.state
+REF_124(uint112) -> REF_123.z
+REF_124(-> pool) = REF_124 (c)+ zIncrease"];
+29->30;
+30[label="Node Type: EXPRESSION 30
+
+EXPRESSION:
+Sync(maturity,pool.state.x,pool.state.y,pool.state.z)
+
+IRs:
+REF_125(IPair.State) -> pool.state
+REF_126(uint112) -> REF_125.x
+REF_127(IPair.State) -> pool.state
+REF_128(uint112) -> REF_127.y
+REF_129(IPair.State) -> pool.state
+REF_130(uint112) -> REF_129.z
+Emit Sync(maturity.REF_126.REF_128.REF_130)"];
+30->31;
+31[label="Node Type: EXPRESSION 31
+
+EXPRESSION:
+Mint(maturity,msg.sender,liquidityTo,dueTo,xIncrease,liquidityOut,id,dueOut)
+
+IRs:
+Emit Mint(maturity.msg.sender.liquidityTo.dueTo.xIncrease.liquidityOut.id.dueOut)"];
+32[label="Node Type: EXPRESSION 32
+
+EXPRESSION:
+lock()
+
+IRs:
+MODIFIER_CALL, TimeswapPair.lock()()"];
+32->1;
+}

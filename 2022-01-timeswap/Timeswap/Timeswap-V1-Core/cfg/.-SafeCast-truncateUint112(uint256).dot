@@ -1,0 +1,36 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: IF 1
+
+EXPRESSION:
+x > type()(uint112).max
+
+IRs:
+TMP_493(uint112) := 5192296858534827628530496329220095(uint112)
+TMP_494(bool) = x > TMP_493
+CONDITION TMP_494"];
+1->2[label="True"];
+1->3[label="False"];
+2[label="Node Type: RETURN 2
+
+EXPRESSION:
+y = type()(uint112).max
+
+IRs:
+TMP_496(uint112) := 5192296858534827628530496329220095(uint112)
+y(uint112) := TMP_496(uint112)
+RETURN y"];
+3[label="Node Type: END_IF 3
+"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+y = uint112(x)
+
+IRs:
+TMP_497 = CONVERT x to uint112
+y(uint112) := TMP_497(uint112)"];
+}

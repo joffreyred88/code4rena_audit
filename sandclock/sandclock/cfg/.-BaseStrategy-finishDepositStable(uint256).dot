@@ -1,0 +1,89 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: EXPRESSION 1
+
+EXPRESSION:
+require(bool,string)(depositOperations.length > idx,not running)
+
+IRs:
+REF_353 -> LENGTH depositOperations
+TMP_997(bool) = REF_353 > idx
+TMP_998(None) = SOLIDITY_CALL require(bool,string)(TMP_997,not running)"];
+1->2;
+2[label="Node Type: NEW VARIABLE 2
+
+EXPRESSION:
+operation = depositOperations[idx]
+
+IRs:
+REF_354(BaseStrategy.Operation) -> depositOperations[idx]
+operation(BaseStrategy.Operation) := REF_354(BaseStrategy.Operation)"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+ethAnchorRouter.finishDepositStable(operation.operator)
+
+IRs:
+REF_356(address) -> operation.operator
+HIGH_LEVEL_CALL, dest:ethAnchorRouter(IEthAnchorRouter), function:finishDepositStable, arguments:['REF_356']  "];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+pendingDeposits -= operation.amount
+
+IRs:
+REF_357(uint256) -> operation.amount
+pendingDeposits(uint256) = pendingDeposits (c)- REF_357"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+convertedUst += operation.amount
+
+IRs:
+REF_358(uint256) -> operation.amount
+convertedUst(uint256) = convertedUst (c)+ REF_358"];
+5->6;
+6[label="Node Type: EXPRESSION 6
+
+EXPRESSION:
+operation.operator = depositOperations[depositOperations.length - 1].operator
+
+IRs:
+REF_359(address) -> operation.operator
+REF_360 -> LENGTH depositOperations
+TMP_1000(uint256) = REF_360 (c)- 1
+REF_361(BaseStrategy.Operation) -> depositOperations[TMP_1000]
+REF_362(address) -> REF_361.operator
+REF_359 (->operation) := REF_362(address)"];
+6->7;
+7[label="Node Type: EXPRESSION 7
+
+EXPRESSION:
+operation.amount = depositOperations[depositOperations.length - 1].amount
+
+IRs:
+REF_363(uint256) -> operation.amount
+REF_364 -> LENGTH depositOperations
+TMP_1001(uint256) = REF_364 (c)- 1
+REF_365(BaseStrategy.Operation) -> depositOperations[TMP_1001]
+REF_366(uint256) -> REF_365.amount
+REF_363 (->operation) := REF_366(uint256)"];
+7->8;
+8[label="Node Type: EXPRESSION 8
+
+EXPRESSION:
+depositOperations.pop()
+
+IRs:
+REF_368 -> LENGTH depositOperations
+TMP_1003(uint256) = REF_368 (c)- 1
+REF_369(uint256) -> depositOperations[TMP_1003]
+depositOperations = delete REF_369 
+REF_370 -> LENGTH depositOperations
+REF_370 (->depositOperations) := TMP_1003(uint256)"];
+}

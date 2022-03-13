@@ -1,0 +1,45 @@
+digraph{
+0[label="Node Type: ENTRY_POINT 0
+"];
+0->1;
+1[label="Node Type: NEW VARIABLE 1
+
+EXPRESSION:
+denominator = maturity
+
+IRs:
+denominator(uint256) := maturity(uint256)"];
+1->2;
+2[label="Node Type: EXPRESSION 2
+
+EXPRESSION:
+denominator -= block.timestamp
+
+IRs:
+denominator(uint256) = denominator (c)- block.timestamp"];
+2->3;
+3[label="Node Type: EXPRESSION 3
+
+EXPRESSION:
+denominator *= protocolFee
+
+IRs:
+denominator(uint256) = denominator (c)* protocolFee"];
+3->4;
+4[label="Node Type: EXPRESSION 4
+
+EXPRESSION:
+denominator += 0x10000000000
+
+IRs:
+denominator(uint256) = denominator (c)+ 1099511627776"];
+4->5;
+5[label="Node Type: EXPRESSION 5
+
+EXPRESSION:
+liquidityOut = liquidityTotal.mulDiv(0x10000000000,denominator)
+
+IRs:
+TMP_462(uint256) = LIBRARY_CALL, dest:FullMath, function:FullMath.mulDiv(uint256,uint256,uint256), arguments:['liquidityTotal', '1099511627776', 'denominator'] 
+liquidityOut(uint256) := TMP_462(uint256)"];
+}

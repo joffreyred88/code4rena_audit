@@ -1,0 +1,8 @@
+strict digraph {
+subgraph cluster_3664_ITimeswapMintCallback {
+label = "ITimeswapMintCallback"
+"3664_timeswapMintCallback" [label="timeswapMintCallback"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+}
+}

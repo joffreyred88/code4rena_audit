@@ -1,0 +1,6 @@
+{
+    "remappings": [ "@openzeppelin/contracts/token/ERC20/=../" ],
+     "optimizer": {
+       "enabled": true
+     }
+   }
